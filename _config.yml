@@ -21,7 +21,7 @@
 title: Nandan Joshi
 email: nandanito@pm.me
 description: Scientist & Venturer
-baseurl: "" # the subpath of your site, e.g. /blog
+# baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://nandanito.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: nandanito
 github_username: nandanito
