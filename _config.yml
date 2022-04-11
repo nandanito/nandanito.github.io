@@ -18,22 +18,21 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Nandan Joshi
-email: nandanito@pm.me
-description: Scientist & Venturer
-# baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://nandanito.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+title: Your awesome title
+email: your-email@example.com
+description: >- # this means to ignore newlines until "baseurl:"
+  Write an awesome description for your new site here. You can edit this
+  line in _config.yml. It will appear in your document head meta (for
+  Google search results) and in your feed.xml site description.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: https://nandanito.github.io # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: nandanito
-github_username: nandanito
+github_username:  nandanito
 
 # Build settings
-# theme: jekyll-theme-so-simple-libre
-remote-theme: mmistakes/so-simple-theme@3.2.0
+theme: minima
 plugins:
   - jekyll-feed
-  - jekyll-remote-theme
-  - jekyll-gist
-  - jekyll-sitemap
 
 # Exclude from processing.
 # The following items will not be processed, by default.
@@ -54,48 +53,3 @@ plugins:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
-
-# So-Simple-Theme specific configuration
-logo: nanee-logo.png
-search: true
-
-permalink:   /:categories/:title:output_ext
-markdown:    kramdown
-highlighter: rouge
-sass:
-  sass_dir: _sass
-  style: compressed
-
-kramdown:
-  input: GFM
-  auto_ids: true
-  footnote_nr: 1
-  entity_output: as_char
-  toc_levels: 1..6
-#  enable_coderay: false
-
-mathjax: true
-
-# Site owner
-owner:
-  name: Nandan Joshi
-  avatar: nanee-bio-photo.png
-  email: nandanito@gmail.com
-  disqus-shortname: #nandanblog
-  twitter: nandanito
-  facebook: #nandanito
-  github: calculi
-  stackexchange: #http://stackoverflow.com/users/123456/username
-  linkedin: NandanJoshi
-  instagram: #username
-  flickr: 
-  tumblr: 
-  pinterest: 
-  weibo: #userid
-  google:
-    plus: 
-    analytics:
-    verify:
-    ad-client:
-    ad-slot:
-  bing-verify:
