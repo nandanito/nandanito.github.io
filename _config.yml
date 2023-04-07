@@ -27,8 +27,9 @@ twitter_username: nandanito
 github_username:  nandanito
 
 locale: en_US
-logo: /images/nanee-logo.png
+logo: /images/nannii-logo.png
 search: true
+skin: "/assets/css/skins/purple.css"
 
 # Build settings
 # theme: minima
@@ -40,6 +41,7 @@ plugins:
   - jekyll-include-cache
   - jekyll-sitemap
   - jekyll-gist
+  - jekyll-paginate
 
 # Jekyll configuration
 
@@ -58,12 +60,34 @@ kramdown:
   toc_levels: 1..6
   enable_coderay: false
 
-mathjax: true
+mathjax:
+  enable: true
+  tags: "ams"
+
+read_time: true
+words_per_minute: 200
+
+paginate: 5  # amount of posts to show per page
+paginate_path: /page:num/
+
+category_archive_path: "/categories/#"
+tag_archive_path: "/tags/#"
+
+footer_links:
+    - title: Twitter
+      url: https://twitter.com/nandanito
+      icon: fab fa-twitter-square
+    - title: LinkedIn
+      url: https://linkedin.com/in/NandanJoshi
+      icon: fab fa-linkedin
+    - title: GitHub
+      url: https://github.com/nandanito
+      icon: fab fa-github-square
 
 # Site owner
 owner:
   name: Nandan Joshi
-  avatar: /images/nanee-bio-photo.png
+  avatar: /images/nannii-bio-photo.png
   email: nandanito@pm.me
   disqus-shortname: 
   twitter: nandanito

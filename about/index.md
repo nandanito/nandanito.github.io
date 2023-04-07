@@ -4,20 +4,24 @@ title: About Me
 excerpt: "About Nandan Joshi"
 modified: 2014-08-08T19:44:38.564948-04:00
 image:
-  feature: /images/Spectrum.jpg
-  credit: Nandan Joshi
+  path: /images/Spectrum.jpg
 ---
 
 <table>
     <tr>
         <td width="25%">
           <figure>
-            <a href="#"><img src="/images/Portrait.Photo_Nandan.Joshi.jpg" alt="image" width="100%"></a>
-            <!-- <figcaption>Nandan Joshi</figcaption> -->
+            <a href="#"><img src="/images/nannii-bio-photo.png" alt="image" width="100%"></a>
           </figure>
         </td>
         <td width="75%">
-          <p style="margin-left: 5%">Nandan Joshi is an ardent entrepreneur with a creative spirit and a scientific mind. He is fiercely passionate about building an enduring organization based on vision, innovation and strategy. He has been DFG PhD Fellow in Astrophysics and has 3 years of founding experience with startups (as co-founding member of VoiceDrop, Zamosa and NextWorkspace). He is presently <strong>CEO</strong> of <a href="http://www.transelektra.com"><strong>Transelektra</strong></a>, <i>a renewable energy company</i> and <a href="http://www.danista.in"><strong>Danista</strong></a>, <i>a P2P Lending Platform</i>.</p>
+          <p style="margin-left: 5%">Nandan Joshi is working as <strong>Senior Business Manager & Solution Architect</strong> at <a href="http://www.settlemint.com"><strong>Settlemint</strong></a>, a blockchain platform company. His areas of responsibility include the conception, testing and implementation of blockchain solutions.</p>
+
+          <p style="margin-left: 5%">Previously, he worked as a Senior Consultant and Product Manager in several digitisation projects in the financial sector. Over the past 12 years, he has gained extensive professional and entrepreneurial experience in various industries in financial technology, banking, IoT and the energy sector.</p>
+
+          <p style="margin-left: 5%">For the last four years, Nandan has been working intensively on the topics of blockchain, distributed ledger, FinTech & automation.</p>
+
+          <p style="margin-left: 5%">He graduated from the University of Göttingen, Germany, with a degree in Physics and research specialisation in Astrophysics.</p>
         </td>
     </tr>
 </table>
