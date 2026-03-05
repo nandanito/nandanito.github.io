@@ -1,13 +1,13 @@
 nandan:
   name: Nandan Joshi
-  web: http://nandan.me
+  web: https://nandan.me
   email: nandanito@gmail.com
   bio: "Scientist & Venturer"
   picture: /images/nannii-bio-photo.png
   twitter: nandanito
   links:
-    - title: Twitter
-      url: https://twitter.com/nandanito
+    - title: X
+      url: https://x.com/nandanito
       icon: fab fa-twitter-square
     - title: LinkedIn
       url: https://linkedin.com/in/NandanJoshi

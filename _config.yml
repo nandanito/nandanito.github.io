@@ -22,7 +22,7 @@ title: Nandan Joshi
 email: nandanito@pm.me
 description: Scientist & Venturer
 baseurl: "" # the subpath of your site, e.g. /blog
-url: https://nandanito.github.io # the base hostname & protocol for your site, e.g. http://example.com
+url: https://nandan.me # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: nandanito
 github_username:  nandanito
 
@@ -73,9 +73,11 @@ paginate_path: /page:num/
 category_archive_path: "/categories/#"
 tag_archive_path: "/tags/#"
 
+author: nandan
+
 footer_links:
-    - title: Twitter
-      url: https://twitter.com/nandanito
+    - title: X
+      url: https://x.com/nandanito
       icon: fab fa-twitter-square
     - title: LinkedIn
       url: https://linkedin.com/in/NandanJoshi
@@ -83,30 +85,6 @@ footer_links:
     - title: GitHub
       url: https://github.com/nandanito
       icon: fab fa-github-square
-
-# Site owner
-owner:
-  name: Nandan Joshi
-  avatar: /images/nannii-bio-photo.png
-  email: nandanito@pm.me
-  disqus-shortname: 
-  twitter: nandanito
-  facebook: 
-  github: nandanito
-  stackexchange: #http://stackoverflow.com/users/123456/username
-  linkedin: NandanJoshi
-  instagram: #username
-  flickr: 
-  tumblr: 
-  pinterest: 
-  weibo: #userid
-  google:
-    plus: 
-    analytics:
-    verify:
-    ad-client:
-    ad-slot:
-  bing-verify:
 
 google_fonts:
   - name: "Source Sans Pro"
