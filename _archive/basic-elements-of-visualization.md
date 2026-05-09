@@ -1,12 +1,10 @@
 ---
-layout: post
 title: Basic Elements of Visualization
+date: 2013-11-05
 excerpt: "A periodic table of visualization methods"
-modified: 2013-06-29
-category: notes
 tags: [Art, Design]
-comments: true
-share: true
+redirect_from:
+  - /notes/basic-elements-of-visualization/
 ---
 
 Ralph Lengler &amp; Martin J. Eppler did an amazing job of compiling various visualization methods in periodic table form showing different elements of data, information, concept, strategy, metaphor and compound visualization.
@@ -18,4 +16,4 @@ Ralph Lengler &amp; Martin J. Eppler did an amazing job of compiling various vis
     <figcaption>A periodic table of visualisation methods.</figcaption>
 </figure>
 
-Find out about each element in interactive form on the _source_ site of the creator: [A Periodic Table of Visualization Methods](https://www.visual-literacy.org/periodic_table/periodic_table.html).
+Find out about each element in interactive form on the _source_ site of the creator: [A Periodic Table of Visualization Methods](https://www.visual-literacy.org/periodic_table/periodic_table.html).

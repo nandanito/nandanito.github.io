@@ -76,6 +76,23 @@ tag_archive_path: "/tags/#"
 
 author: nandan
 
+# Archive collection: 2012–2013 posts moved here so they are excluded
+# from the main feed and the homepage chronology, while still resolving
+# at /archive/<slug>/ via the redirects in each item's front matter.
+collections:
+  archive:
+    output: true
+    permalink: /archive/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: archive
+    values:
+      layout: archived
+      sitemap: false
+      noindex: true
+
 footer_links:
     - title: X
       url: https://x.com/nandanito

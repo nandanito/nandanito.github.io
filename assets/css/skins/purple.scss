@@ -42,3 +42,24 @@ $base0e: #6c71c4 !default;
 $base0f: #d33682 !default;
 
 @import "so-simple/skin";
+
+/* Archive banner — shown at the top of every archived post (2012–2013 era).
+   Visual cue that the post is preserved for continuity but does not
+   reflect current views or focus. */
+.archive-banner {
+  background: #f4efe8;
+  border-left: 4px solid #b58900;
+  color: #4a3f2a;
+  padding: 0.85em 1.25em;
+  margin: 0 0 2em 0;
+  font-size: 0.95em;
+  border-radius: 2px;
+
+  p {
+    margin: 0;
+  }
+
+  strong {
+    color: #2a1f0a;
+  }
+}

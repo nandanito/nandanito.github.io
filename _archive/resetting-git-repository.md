@@ -1,12 +1,10 @@
 ---
-layout: post
 title: Easiest way to reset GIT repository
+date: 2013-01-10
 excerpt: "Follow these instructions to reset the repository rather than replacing with new one."
-modified: 2013-01-10
-category: notes
 tags: [Programming]
-comments: true
-share: true
+redirect_from:
+  - /notes/resetting-git-repository/
 ---
 
 Sometimes you want/need to reset the `git` folder to complete new code. Rather than simply removing the folder and repository and creating new one, the following method solves the problem in couple of minutes. Follow the instructions, of course, at your own risk! I can simply assure you that I used it and it worked in my case.

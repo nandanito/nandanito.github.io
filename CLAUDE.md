@@ -77,7 +77,7 @@ Hosted on GitHub Pages. The `gh-pages` branch deploys automatically. Custom doma
 
 - Remote theme: `mmistakes/so-simple-theme` via `jekyll-remote-theme` — layouts, includes, base styles come from the theme repo, not this repo. Last upstream release was Nov 2019; theme is effectively unmaintained.
 - Custom skin: `assets/css/skins/purple.scss` — overrides theme color variables.
-- To override a theme layout or include, copy it from the [so-simple-theme repo](https://github.com/mmistakes/so-simple-theme) into the corresponding local directory (`_layouts/` or `_includes/` — neither exists yet).
+- To override a theme layout or include, copy it from the [so-simple-theme repo](https://github.com/mmistakes/so-simple-theme) into the corresponding local directory (`_layouts/` or `_includes/`). **Watch the include name carefully** — `jekyll-remote-theme` only resolves local overrides for the exact filename the theme calls. So-simple's head hook is `_includes/head-custom.html` (hyphenated, top-level), NOT `_includes/head/custom.html` (subdirectory). If you put your override in the wrong path, the theme's default silently wins.
 - **Phase 1 decision:** stay on so-simple, customize via local overrides. **Future direction (Phase 3 candidate):** if local overrides accumulate substantially or we need theme-wide capabilities for Publications / Talks / Now-style pages, fork `mmistakes/so-simple-theme` to a Nandan-owned repo (e.g. `nandanito/so-simple-theme` or rename to `nandanito/cybernandan-theme`), publish, and switch `remote_theme:` in `_config.yml` to point at the fork. Do not silently migrate themes without raising the option for review.
 
 ### Content organization

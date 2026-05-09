@@ -1,16 +1,14 @@
 ---
-layout: post
 title: India's maiden mission to Mars
+date: 2013-11-05
 excerpt: "India's important step to reach out to the Universe"
-modified: 2013-06-29
-category: notes
 tags: [Space]
 image:
   feature: /images/India.MOM.jpg
   credit: ISRO
   creditlink: https://isro.org
-comments: true
-share: true
+redirect_from:
+  - /notes/indias-maiden-mission-to-mars/
 ---
 
 India's space agency, [ISRO](https://www.isro.org/), successfully launched its maiden mission to __Mars__, in the form of Mars Orbiter, called [__Mangalyaan__](https://en.wikipedia.org/wiki/Mangalyaan). It was deployed on indigenously made [PSLV-XL C25](https://en.wikipedia.org/wiki/Polar_Satellite_Launch_Vehicle) launcher.

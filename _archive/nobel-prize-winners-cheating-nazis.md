@@ -1,20 +1,18 @@
 ---
-layout: post
 title: Nobel Prize winners cheating the Nazis
+date: 2012-11-13
 excerpt: "Amusing story of some scientists during second world war cheating the Nazis very humanly."
-modified: 2012-11-13
-category: notes
 tags: [History, Science]
 image:
   feature: /images/Nobel.Prize.jpg
   thumb: /images/Nobel.Prize.thumb.jpg
   credit: Adam Baker
   creditlink: https://flic.kr/p/dTw4ga
-comments: true
-share: true
+redirect_from:
+  - /notes/nobel-prize-winners-cheating-nazis/
 ---
 
-I just found very amusing story about two great physicists, [James Franck][jamesfranck] (Jew german physicist) and [Max von Laue][maxvonlaue] (non-jew german physicist, but Hitler critic), from the university where I studied ([University of Göttingen][unigoe]). They had to hide their Nobel prize medals at [Niels Bohr’s][neilsbohr] lab in Copenhagen, for not to be confiscated by Nazis. The situation became tricky when Nazi rolled into Copenhagen in 1940, but Niels Bohr and his colleague, [George de Hevesy][dehevesy] managed to hide those medals interestingly _very scientific_ way.
+I just found very amusing story about two great physicists, [James Franck][jamesfranck] (Jew german physicist) and [Max von Laue][maxvonlaue] (non-jew german physicist, but Hitler critic), from the university where I studied ([University of Göttingen][unigoe]). They had to hide their Nobel prize medals at [Niels Bohr’s][neilsbohr] lab in Copenhagen, for not to be confiscated by Nazis. The situation became tricky when Nazi rolled into Copenhagen in 1940, but Niels Bohr and his colleague, [George de Hevesy][dehevesy] managed to hide those medals interestingly _very scientific_ way.
 
 <!--more-->
 
@@ -25,7 +23,7 @@ I just found very amusing story about two great physicists, [James Franck][james
 
 Read the whole story below to find out. :-)
 
-Unfortunately, my university, [hometown/host to 44 Nobel Laureates](https://webdoc.sub.gwdg.de/ebook/a/2002/nobelcd/html/hauptmenue.htm), had seen great exodus of mathematicians, scientists and intellectuals during Nazi period. Though few of them decided to come back from exile, including [Max von Laue][maxvonlaue], who, in the end, got possession of his Nobel Prize Medal. The same story explains it how.
+Unfortunately, my university, [hometown/host to 44 Nobel Laureates](https://webdoc.sub.gwdg.de/ebook/a/2002/nobelcd/html/hauptmenue.htm), had seen great exodus of mathematicians, scientists and intellectuals during Nazi period. Though few of them decided to come back from exile, including [Max von Laue][maxvonlaue], who, in the end, got possession of his Nobel Prize Medal. The same story explains it how.
 
 _Source:_ [The Nobel Winners Who Foiled the Führer - Mental Floss](https://www.mentalfloss.com/blogs/archives/150995).
 
