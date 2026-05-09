@@ -3,17 +3,17 @@
 - title: Home
   url: /
 
-- title: About
-  url: /about/
+- title: Research
+  url: /research/
 
-- title: Notes
-  url: /notes/
+- title: Writing
+  url: /writing/
 
-- title: Blog
-  url: /blog/
+- title: CV
+  url: /cv/
 
-- title: Topics
-  url: /topics/
+- title: Now
+  url: /now/
 
-- title: Search
-  url: /search/
+- title: Contact
+  url: /contact/

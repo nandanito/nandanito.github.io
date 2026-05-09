@@ -1,8 +1,8 @@
 nandan:
   name: Nandan Joshi
   web: https://nandan.me
-  email: nandan@fastmail.net
-  bio: "Scientist & Venturer"
+  email: noreply@nandan.me
+  bio: "Physics → Software → Quantum"
   picture: /images/nannii-bio-photo.png
   twitter: nandanito
   links:
@@ -15,3 +15,6 @@ nandan:
     - title: GitHub
       url: https://github.com/nandanito
       icon: fab fa-github-square
+    - title: Hugging Face
+      url: https://huggingface.co/cybernandan
+      icon: fas fa-robot
