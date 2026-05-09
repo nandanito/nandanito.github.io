@@ -43,6 +43,92 @@ $base0f: #d33682 !default;
 
 @import "so-simple/skin";
 
+/* Home identity hub */
+.home-hub {
+  max-width: 64em;
+  margin: 0 auto;
+  padding: 2.5em 1.25em;
+}
+
+.positioning {
+  max-width: 42em;
+  margin: 0 auto 4em auto;
+  font-size: 1.05em;
+  line-height: 1.65;
+  color: #333;
+}
+
+.featured-work,
+.latest-writing {
+  margin: 0 0 4em 0;
+
+  h2 {
+    border-bottom: 1px solid #e8e8e8;
+    padding-bottom: 0.4em;
+    margin-bottom: 1.5em;
+    font-size: 1.4em;
+  }
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(17em, 1fr));
+  gap: 1.5em;
+}
+
+.card {
+  padding: 1.5em;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  background: #fafafa;
+
+  .card-title {
+    margin: 0 0 0.5em 0;
+    font-size: 1.15em;
+
+    a {
+      text-decoration: none;
+    }
+  }
+
+  p {
+    margin: 0 0 1em 0;
+    font-size: 0.95em;
+    line-height: 1.55;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+/* Status badges — used on home cards and on each /research/ project page.
+   Colours are derived from the syntax-highlighting palette so the
+   site stays visually coherent when the skin changes. */
+.status {
+  display: inline-block;
+  font-size: 0.72em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.25em 0.6em;
+  border-radius: 3px;
+  margin: 0 0 0.75em 0;
+}
+
+.status--active   { background: #d1f4d1; color: #1a5d1a; }
+.status--in-prep  { background: #fff4d1; color: #6e5500; }
+.status--planned  { background: #e4e4e4; color: #555;   }
+.status--archived { background: #ede5d6; color: #6e5500; }
+
+/* Now page — last-updated meta line at the top */
+.now-meta {
+  font-size: 0.9em;
+  color: #777;
+  font-style: italic;
+  margin-bottom: 2em;
+}
+
 /* Archive banner — shown at the top of every archived post (2012–2013 era).
    Visual cue that the post is preserved for continuity but does not
    reflect current views or focus. */
