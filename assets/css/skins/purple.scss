@@ -121,6 +121,55 @@ $base0f: #d33682 !default;
 .status--planned  { background: #e4e4e4; color: #555;   }
 .status--archived { background: #ede5d6; color: #6e5500; }
 
+/* CV page — identity block at the top + right-floated dates inside entries */
+.cv-identity {
+  margin: 0 0 2.5em 0;
+  padding: 0 0 1.5em 0;
+  border-bottom: 1px solid #e8e8e8;
+
+  .cv-tagline {
+    font-family: monospace;
+    font-size: 1.15em;
+    color: #555;
+    margin: 0 0 0.75em 0;
+  }
+
+  .cv-contact {
+    margin: 0.75em 0 0 0;
+    color: #777;
+    font-size: 0.95em;
+
+    a {
+      color: #555;
+    }
+  }
+}
+
+.cv-date,
+.cv-meta {
+  float: right;
+  font-family: monospace;
+  font-size: 0.85em;
+  color: #777;
+  font-weight: normal;
+}
+
+/* Tighten the visual gap when a lead-in paragraph (e.g. "Selected
+   engagements:") is immediately followed by a list. Browser defaults
+   give both the paragraph and the list ~1em vertical margin, which
+   adds up to a full blank line of dead space between the lead-in and
+   its bullets. Pull both sides toward each other so the list reads
+   as visually attached to its introduction. Uses :has(), which is
+   supported across all current browsers. */
+p:has(+ ul),
+p:has(+ ol) {
+  margin-bottom: 0.25em;
+}
+p + ul,
+p + ol {
+  margin-top: 0;
+}
+
 /* Now page — last-updated meta line at the top */
 .now-meta {
   font-size: 0.9em;
