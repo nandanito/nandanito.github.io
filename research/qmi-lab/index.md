@@ -63,8 +63,6 @@ Position paper. Provides a taxonomy of domains where quantum world models might 
 - `qmilab/quantum-world-models` — Pillar III planned project repo
 - arXiv preprints: Q3 2026 (romanization), mid-2026 (hybrid quantum NLP), Q4 2026 (quantum world models position paper), Q1 2027 (world model evaluation methodology)
 
-All research artifacts host on [QubitHub](/research/qubithub/) by deliberate commitment.
-
 ## Related work
 
 Pillar-anchored references:

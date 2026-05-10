@@ -22,9 +22,9 @@ Three independent projects, distinct in scope but sharing methodological commitm
   </article>
 
   <article class="card">
-    <h3 class="card-title"><a href="/research/qubithub/">QubitHub</a></h3>
-    <p class="status status--active">Active development</p>
-    <p>Developer platform for quantum computing — multi-framework, reproducibility-first, with Git-backed collaboration and sandboxed execution. Live at <a href="https://qubithub.co">qubithub.co</a>.</p>
+    <h3 class="card-title">Developer infrastructure for quantum computing</h3>
+    <p class="status status--planned">Coming soon</p>
+    <p>A multi-framework platform for quantum-circuit development and research-grade artifact hosting. Details forthcoming.</p>
   </article>
 
 </div>

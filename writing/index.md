@@ -11,6 +11,6 @@ The first long-form posts arrive in 2026. Planned categories:
 - **Scientific AI and domain-specialized LLMs** — retrieval grounding, tool integration, evaluation.
 - **Physics × ML interface** — physics-informed methods, quantum simulation, world models.
 - **Methodology and evaluation** — what counts as honest reporting in fields still finding their feet.
-- **Project notes** — release announcements and milestone updates from [QMI Lab](/research/qmi-lab/), [AstroLLM](/research/astrollm/), and [QubitHub](/research/qubithub/).
+- **Project notes** — release announcements and milestone updates from [QMI Lab](/research/qmi-lab/) and [AstroLLM](/research/astrollm/).
 
 A separate `/writing/notes/` sub-section will host shorter informal pieces — paper reading notes, conference reflections — kept visually distinct from long-form essays.

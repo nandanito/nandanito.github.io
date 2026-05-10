@@ -9,7 +9,7 @@ modified: 2026-05-10
 
 ## Building
 
-- **Day job** — Director, Digital Assets at SettleMint. Solutions architecture and pre-sales across Japan and Germany; recent engagements include Sony Bank's first stablecoin issuance, OCBC's three-year on-premise platform implementation, and the Islamic Development Bank Institute's Sharia-compliant trading mechanism.
+- **At SettleMint** — Director, Digital Assets. Solutions architecture and pre-sales across Japan and Germany; recent engagements include Sony Bank's first stablecoin issuance, OCBC's three-year on-premise platform implementation, and the Islamic Development Bank Institute's Sharia-compliant trading mechanism.
 - **AstroLLM** — pre-training phase. Working on the data-engineering pipeline for ADS bulk ingestion and the synthetic SFT dataset with provenance tracking. Public beta target Q3 2026.
 - **QMI Lab Pillar I** — *Cross-Lingual Transfer Through Romanization*. Experimental setup; arXiv preprint target Q3 2026, EMNLP workshop submission planned.
 - **QMI Lab Pillar II** — *Hybrid Quantum-Classical Transformer NLP*. Experimental harness in development; baseline classical heads benchmarked; encoding-strategy ablations being designed. arXiv preprint target mid-2026.
@@ -21,9 +21,9 @@ modified: 2026-05-10
 
 ## Learning
 
-- Quantum machine learning credentials in progress.
+- IBM Qiskit Developer certification in progress.
 - NLP coursework alongside the romanization project.
 
 ## Where
 
-Splitting time between Tokyo and Stuttgart.
+Currently in Tokyo; Stuttgart for family and work travel.
