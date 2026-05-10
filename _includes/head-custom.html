@@ -1,3 +1,91 @@
+{%- comment -%}
+Font Awesome 7.2.0 (Free) loaded from jsDelivr. Replaces the FA 5.0.12
+JS that the so-simple theme bundles by default — newer version brings
+brand icons added after 2018 (notably fa-hugging-face). The
+corresponding script-load disable lives in _includes/scripts.html
+override.
+{%- endcomment -%}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" crossorigin="anonymous">
+
 {%- if page.noindex -%}
 <meta name="robots" content="noindex,nofollow">
+{%- endif -%}
+
+{%- comment -%}
+OpenGraph + Twitter Card. Computed once, emitted on every page.
+- og:title: page title or site title for the home page
+- og:description: page excerpt or site description, plain text and truncated
+- og:image: per-page page.image, otherwise site-wide default
+- og:url: absolute URL of current page
+- og:type: 'article' for posts and archive items, 'website' otherwise
+{%- endcomment -%}
+
+{%- assign og_title = page.title | default: site.title -%}
+{%- assign og_description = page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 200 -%}
+{%- assign og_image_path = page.image.path | default: page.image | default: '/images/nannii-logo.png' -%}
+{%- assign og_image = og_image_path | absolute_url -%}
+{%- assign og_url = page.url | replace: 'index.html', '' | absolute_url -%}
+{%- if page.layout == 'post' or page.layout == 'archived' -%}
+  {%- assign og_type = 'article' -%}
+{%- else -%}
+  {%- assign og_type = 'website' -%}
+{%- endif -%}
+
+<meta property="og:title" content="{{ og_title | escape }}">
+<meta property="og:description" content="{{ og_description | escape }}">
+<meta property="og:image" content="{{ og_image }}">
+<meta property="og:url" content="{{ og_url }}">
+<meta property="og:type" content="{{ og_type }}">
+<meta property="og:site_name" content="{{ site.title | escape }}">
+<meta property="og:locale" content="en_US">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ og_title | escape }}">
+<meta name="twitter:description" content="{{ og_description | escape }}">
+<meta name="twitter:image" content="{{ og_image }}">
+{%- if site.twitter_username -%}
+<meta name="twitter:site" content="@{{ site.twitter_username }}">
+<meta name="twitter:creator" content="@{{ site.twitter_username }}">
+{%- endif -%}
+
+{%- comment -%}
+Schema.org Person markup on home and /cv/ — for search-result rich
+results and knowledge-graph eligibility.
+{%- endcomment -%}
+{%- if page.url == '/' or page.url == '/cv/' -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Nandan Joshi",
+  "url": "{{ '/' | absolute_url }}",
+  "image": "{{ '/images/Portrait.Photo_Nandan.Joshi_Square.jpg' | absolute_url }}",
+  "jobTitle": "Director, Digital Assets at SettleMint",
+  "alumniOf": [
+    {
+      "@type": "CollegeOrUniversity",
+      "name": "Georg-August-Universität Göttingen"
+    },
+    {
+      "@type": "CollegeOrUniversity",
+      "name": "Northwestern Kellogg School of Management"
+    }
+  ],
+  "sameAs": [
+    "https://linkedin.com/in/NandanJoshi",
+    "https://x.com/nandanito",
+    "https://github.com/nandanito",
+    "https://huggingface.co/cybernandan"
+  ],
+  "knowsAbout": [
+    "Quantum Machine Learning",
+    "Scientific AI",
+    "Quantum Computing",
+    "Machine Intelligence",
+    "Reinforcement Learning",
+    "Astrophysics",
+    "Physics-informed Machine Learning"
+  ]
+}
+</script>
 {%- endif -%}

@@ -8,13 +8,13 @@ nandan:
   links:
     - title: X
       url: https://x.com/nandanito
-      icon: fab fa-twitter-square
+      icon: fa-brands fa-x-twitter
     - title: LinkedIn
       url: https://linkedin.com/in/NandanJoshi
-      icon: fab fa-linkedin
+      icon: fa-brands fa-linkedin-in
     - title: GitHub
       url: https://github.com/nandanito
-      icon: fab fa-github-square
+      icon: fa-brands fa-github
     - title: Hugging Face
       url: https://huggingface.co/cybernandan
-      icon: fas fa-robot
+      icon: fa-brands fa-hugging-face

@@ -116,10 +116,25 @@ $base0f: #d33682 !default;
   margin: 0 0 0.75em 0;
 }
 
-.status--active   { background: #d1f4d1; color: #1a5d1a; }
-.status--in-prep  { background: #fff4d1; color: #6e5500; }
-.status--planned  { background: #e4e4e4; color: #555;   }
-.status--archived { background: #ede5d6; color: #6e5500; }
+.status--active {
+  background: #d1f4d1;
+  color: #1a5d1a;
+}
+
+.status--in-prep {
+  background: #fff4d1;
+  color: #6e5500;
+}
+
+.status--planned {
+  background: #e4e4e4;
+  color: #555;
+}
+
+.status--archived {
+  background: #ede5d6;
+  color: #6e5500;
+}
 
 /* CV page — identity block at the top + right-floated dates inside entries */
 .cv-identity {
@@ -165,9 +180,60 @@ p:has(+ ul),
 p:has(+ ol) {
   margin-bottom: 0.25em;
 }
-p + ul,
-p + ol {
+
+p+ul,
+p+ol {
   margin-top: 0;
+}
+
+/* Footer social icons — uniform circular frames so brand glyphs of
+   different visual weights (X letter, LinkedIn "in", Octocat, HF face)
+   read as one consistent row. The frame normalises the optical
+   weight; hover gives subtle lift + soft fill so the icons feel
+   tactile without competing with content. */
+.social-icons {
+  margin: 1.5em 0;
+  text-align: center;
+}
+
+.social-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 2.4em;
+  height: 2.4em;
+  margin: 0 0.35em;
+  padding: 0;
+  border-radius: 50%;
+  background: $accent-color;
+  color: #fff;
+  text-decoration: none;
+  line-height: 1;
+  transition: background 0.15s ease, transform 0.15s ease;
+
+  i {
+    display: block;
+    font-size: 1.25em !important;
+    line-height: 1 !important;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+  }
+
+  i::before {
+    font-size: 1.15em !important;
+    line-height: 1.7 !important;
+  }
+
+  &:hover,
+  &:focus {
+    background: #000;
+    transform: translateY(-2px);
+    color: #fff;
+  }
+
+  &:visited {
+    color: #fff;
+  }
 }
 
 /* Now page — last-updated meta line at the top */
