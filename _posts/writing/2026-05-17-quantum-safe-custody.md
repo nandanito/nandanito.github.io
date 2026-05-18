@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Quantum-safe custody — what changes for hardware-anchored and MPC signing when ECDSA falls"
-excerpt: "The Q-Day timeline compressed in March 2026, and the question for institutional digital-asset custody is no longer when, but whether the cryptography can be migrated fast enough. Hardware-anchored signing and MPC have different migration paths — and one will be substantially easier."
+excerpt: "The planning baseline for Q-Day compressed in March 2026, and the question for institutional digital-asset custody is no longer when, but whether the cryptography can be migrated fast enough. Hardware-anchored signing and MPC have different migration paths — and one will be substantially easier."
 modified: 2026-05-17
 category: writing
 tags: [Quantum Cryptography, Post-Quantum Cryptography, Digital Assets, Custody, Crypto-Agility, IBM Quantum Safe, Methodology]
@@ -66,7 +66,7 @@ This is the hard boundary for hardware-anchored signing. The migration path is c
 
 ## MPC signing under post-quantum migration
 
-MPC-based signing distributes signing authority across multiple parties so that no single party ever holds the full private key. Fireblocks, Curv — now part of PayPal — Copper, DFNS, and other institutional custody providers have used variations of this model. Threshold ECDSA, the dominant production pattern, is mature enough for institutional use. The performance is acceptable, and the operational model is familiar to many digital-asset teams.
+MPC-based signing distributes signing authority across multiple parties so that no single party ever holds the full private key. Fireblocks, Curv — now part of PayPal — Copper, Dfns, and other institutional custody providers have used variations of this model. Threshold ECDSA, the dominant production pattern, is mature enough for institutional use. The performance is acceptable, and the operational model is familiar to many digital-asset teams.
 
 Post-quantum migration changes three things here as well.
 
@@ -97,7 +97,7 @@ This is the **crypto-agility** frame [IBM Quantum Safe](https://www.ibm.com/quan
 
 ## What this means for buyers
 
-Most institutional custody operators are not ready for any of this. [CNN, citing McKinsey data](https://www.cnn.com/2026/05/17/science/quantum-computing-cybersecurity-q-day), reports that more than 90% of businesses still lack a quantum-security roadmap of any kind. The implication for procurement is direct: the majority of platforms a buyer evaluates in 2026 will not yet have credible answers to the questions below.
+Most institutional buyers and many custody operators are not yet organised for this migration. [CNN, citing McKinsey data](https://www.cnn.com/2026/05/17/science/quantum-computing-cybersecurity-q-day), reports that more than 90% of businesses still lack a quantum-security roadmap of any kind. The implication for procurement is direct: the majority of platforms a buyer evaluates in 2026 will not yet have credible answers to the questions below.
 
 For institutional clients evaluating custody platforms in the 2026–2028 window, the useful questions are concrete.
 
@@ -113,7 +113,7 @@ For institutional clients evaluating custody platforms in the 2026–2028 window
 
 ## The point
 
-The Q-Day timeline compressed in March 2026. Hardware-anchored signing and MPC signing now face different migration problems. Both can reach post-quantum custody, but not through the same path.
+The planning baseline for Q-Day compressed in March 2026. Hardware-anchored signing and MPC signing now face different migration problems. Both can reach post-quantum custody, but not through the same path.
 
 The platforms that migrate cleanly will be the ones designed for crypto-agility before the emergency. The platforms that did not will discover, around 2028 or 2029, that a deferred cryptography problem has become an operational one.
 
