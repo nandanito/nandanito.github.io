@@ -52,11 +52,19 @@ $base0f: #d33682 !default;
 
 .positioning {
   max-width: 42em;
-  margin: 0 auto 4em auto;
+  margin: 0 auto 1em auto;
   font-size: 1.05em;
   line-height: 1.65;
   color: #333;
   text-align: left;
+}
+
+/* Last positioning paragraph keeps the larger gap before the next
+   section (Featured work). Intermediate positioning paragraphs use
+   the smaller default above so multi-paragraph intros read as
+   continuous prose, not as visually disconnected blocks. */
+.positioning:last-of-type {
+  margin-bottom: 4em;
 }
 
 .featured-work,
