@@ -1,13 +1,13 @@
 ---
 layout: page
 title: CV
-excerpt: "Curriculum vitae of Nandan Joshi — physicist working on machine intelligence and quantum computing."
+excerpt: "Curriculum vitae of Nandan Joshi — physicist working across machine intelligence, quantum computing, and digital-asset infrastructure."
 modified: 2026-05-10
 ---
 
 <div class="cv-identity">
   <p class="cv-tagline">Physics → Software → Quantum</p>
-  <p>Physicist working on machine intelligence and quantum computing. Currently Director, Digital Assets at SettleMint (Tokyo). Independent research at <a href="/research/qmi-lab/">QMI Lab</a> and <a href="/research/astrollm/">AstroLLM</a>.</p>
+  <p>Physicist working across machine intelligence, quantum computing, and digital-asset infrastructure. Currently Director, Digital Assets at SettleMint (Tokyo). Independent research at <a href="/research/qmi-lab/">QMI Lab</a> and <a href="/research/astrollm/">AstroLLM</a>.</p>
   <p class="cv-contact"><a href="https://linkedin.com/in/NandanJoshi">LinkedIn</a> · <a href="https://x.com/nandanito">X</a> · <a href="https://github.com/nandanito">GitHub</a> · <a href="https://huggingface.co/cybernandan">HuggingFace</a></p>
 </div>
 

@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Research
-excerpt: "Independent research at the intersection of physics, AI, and quantum computing."
+excerpt: "Independent research projects in machine intelligence and quantum computing — QMI Lab, AstroLLM, and adjacent developer-platform work."
 modified: 2026-05-10
 ---
 
