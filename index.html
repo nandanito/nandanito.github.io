@@ -34,7 +34,29 @@ title: Nandan Joshi — physicist working on machine intelligence and quantum co
 
   <section class="latest-writing" aria-labelledby="latest-writing-heading">
     <h2 id="latest-writing-heading">Latest writing</h2>
+
+    {% assign latest_writing = site.categories.writing | sort: 'date' | reverse %}
+
+    {% if latest_writing.size > 0 %}
+    <ul class="latest-writing-list">
+    {% for post in latest_writing limit: 3 %}
+      <li class="latest-writing-entry">
+        <a class="latest-writing-link" href="{{ post.url | relative_url }}">
+          <h3 class="latest-writing-title">{{ post.title }}</h3>
+          <p class="latest-writing-meta">
+            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time>
+          </p>
+          {% if post.excerpt %}
+          <p class="latest-writing-excerpt">{{ post.excerpt | strip_html | strip_newlines | truncate: 180 }}</p>
+          {% endif %}
+        </a>
+      </li>
+    {% endfor %}
+    </ul>
+    <p class="latest-writing-more"><a href="/writing/">All writing →</a></p>
+    {% else %}
     <p>The first long-form posts arrive in 2026 — quantum machine learning, scientific AI, and the physics × ML interface. The <a href="/writing/">writing index</a> tracks them as they ship.</p>
+    {% endif %}
   </section>
 
 </main>

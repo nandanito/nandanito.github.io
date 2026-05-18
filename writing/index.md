@@ -19,7 +19,7 @@ Long-form pieces on quantum machine learning, scientific AI, the physics × ML i
       {%- assign words = post.content | number_of_words -%}
       {%- assign minutes = words | divided_by: site.words_per_minute | at_least: 1 -%}
       &nbsp;·&nbsp;{{ minutes }} min read
-      {% if post.tags %}&nbsp;·&nbsp;{{ post.tags | join: ' · ' }}{% endif %}
+      {% if post.tags %}&nbsp;·&nbsp;{{ post.tags | slice: 0, 3 | join: ' · ' }}{% endif %}
     </p>
     {% if post.excerpt %}
     <p class="writing-entry-excerpt">{{ post.excerpt | strip_html | strip_newlines | truncate: 280 }}</p>
