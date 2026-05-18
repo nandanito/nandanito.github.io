@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 470" role="img" aria-labelledby="title desc">
+  <title id="title">Resource estimate compression for breaking ECDSA — 2019 to March 2026</title>
+  <desc id="desc">A horizontal bar chart showing how physical qubit estimates for attacking elliptic-curve cryptography compressed dramatically between 2019 and March 2026.</desc>
+
+  <rect width="900" height="470" fill="#ffffff"></rect>
+
+  <text x="450" y="36" text-anchor="middle" font-family="Source Sans Pro, -apple-system, BlinkMacSystemFont, sans-serif" font-weight="700" font-size="20" fill="#000000">Resource-estimate compression for breaking ECDSA</text>
+  <text x="450" y="58" text-anchor="middle" font-family="Source Sans Pro, -apple-system, BlinkMacSystemFont, sans-serif" font-size="13" fill="#555555">Physical qubits required to attack secp256k1 / P-256 — and how the number moved in March 2026</text>
+
+  <g font-family="Source Sans Pro, -apple-system, BlinkMacSystemFont, sans-serif">
+    <text x="232" y="140" text-anchor="end" font-size="13" font-weight="700" fill="#000000">Gidney</text>
+    <text x="232" y="156" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#777777">2019–2021</text>
+    <rect x="240" y="128" width="620" height="40" fill="#fafafa" stroke="#34374c" stroke-width="1"></rect>
+    <text x="852" y="153" text-anchor="end" font-size="13" font-weight="700" fill="#000000">~1,000,000 qubits</text>
+
+    <text x="232" y="210" text-anchor="end" font-size="13" font-weight="700" fill="#000000">Google + Drake + Boneh</text>
+    <text x="232" y="226" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#777777">March 2026 whitepaper</text>
+    <rect x="240" y="198" width="310" height="40" fill="#fafafa" stroke="#34374c" stroke-width="1"></rect>
+    <text x="542" y="223" text-anchor="end" font-size="13" font-weight="700" fill="#000000">&lt; 500,000 qubits</text>
+
+    <text x="232" y="300" text-anchor="end" font-size="13" font-weight="700" fill="#000000">Caltech + Oratomic</text>
+    <text x="232" y="316" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#777777">March 2026 preprint</text>
+    <rect x="240" y="288" width="16" height="40" fill="#b58900" stroke="#b58900" stroke-width="1"></rect>
+    <line x1="260" y1="308" x2="340" y2="308" stroke="#34374c" stroke-width="1" stroke-dasharray="3 3"></line>
+    <text x="345" y="312" font-size="13" font-weight="700" fill="#000000">10,000–26,000 reconfigurable neutral-atom qubits</text>
+  </g>
+
+  <line x1="240" y1="350" x2="860" y2="350" stroke="#34374c" stroke-width="1"></line>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#777777" text-anchor="middle">
+    <line x1="240" y1="350" x2="240" y2="356" stroke="#34374c" stroke-width="1"></line>
+    <text x="240" y="372">0</text>
+    <line x1="395" y1="350" x2="395" y2="356" stroke="#34374c" stroke-width="1"></line>
+    <text x="395" y="372">250K</text>
+    <line x1="550" y1="350" x2="550" y2="356" stroke="#34374c" stroke-width="1"></line>
+    <text x="550" y="372">500K</text>
+    <line x1="705" y1="350" x2="705" y2="356" stroke="#34374c" stroke-width="1"></line>
+    <text x="705" y="372">750K</text>
+    <line x1="860" y1="350" x2="860" y2="356" stroke="#34374c" stroke-width="1"></line>
+    <text x="860" y="372" text-anchor="end">1M physical qubits</text>
+  </g>
+
+  <g font-family="Source Sans Pro, -apple-system, BlinkMacSystemFont, sans-serif" font-style="italic" font-size="11" fill="#555555">
+    <path d="M 545 125 Q 545 105 555 105 L 850 105" stroke="#34374c" stroke-width="1" fill="none"></path>
+    <path d="M 850 105 L 845 102 M 850 105 L 845 108" stroke="#34374c" stroke-width="1" fill="none"></path>
+    <text x="555" y="98">~2× reduction (Google)</text>
+
+    <path d="M 257 290 Q 257 265 270 265 L 540 265" stroke="#b58900" stroke-width="1" fill="none"></path>
+    <path d="M 540 265 L 535 262 M 540 265 L 535 268" stroke="#b58900" stroke-width="1" fill="none"></path>
+    <text x="270" y="259" font-weight="700" fill="#6e5500">~40–100× reduction (Caltech / Oratomic)</text>
+  </g>
+
+  <rect x="40" y="408" width="820" height="44" fill="#f4efe8"></rect>
+  <rect x="40" y="408" width="4" height="44" fill="#b58900"></rect>
+  <text x="450" y="436" text-anchor="middle" font-family="Source Sans Pro, -apple-system, BlinkMacSystemFont, sans-serif" font-style="italic" font-size="12" fill="#4a3f2a">Both 2026 results are whitepaper and preprint, not peer-reviewed engineering fact — but taken seriously by the cryptography and quantum-computing communities.</text>
+</svg>

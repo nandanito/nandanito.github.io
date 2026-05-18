@@ -38,17 +38,19 @@ The binding brand / CV content lives in `_drafts/linkedin-locked-content.md` —
 - **Never add external font CDN dependencies.** Host all fonts locally.
 - **Never add social-share buttons** that load third-party JavaScript.
 
-### Site posture (reverted to LinkedIn-locked constraints, 2026-05-10 brand-review)
+### Site posture (current, updated 2026-05-18)
 
-An earlier "staging-mode relaxation" on this same date allowed Quantputation, QubitHub, and other held-back items to appear on the site. The brand-review session in Claude Desktop pushed back hard: `nandan.me` is a public domain, so `noindex` + "we haven't shared the URL" is obscurity rather than access control. CT-log monitoring, path guessing, and shared-with-reviewer URLs all defeat the obscurity. The relaxation has been reverted. The site is now treated as **publicly readable** for constraint purposes, even though it has not been publicized.
+`nandan.me` is treated as **publicly readable** for constraint purposes even before formal launch (a `noindex` + "URL not shared" approach is obscurity, not access control).
 
 What this means for site content:
 
 - **Quantputation: absent.** No mention, no link, no implication through any project name or relationship phrasing ("first product of", "scientific foundation of", etc.). Stays absent until Fachanwalt clearance.
 - **QubitHub: absent.** No `/research/qubithub/` page, no link, no logo, no project entry. The page authored during the relaxation period has been moved to `_drafts/qubithub-page-draft.md` so the work is preserved without shipping. Stays absent until Fachanwalt clearance.
 - **The home page and `/research/` index keep a third "Coming soon" tile in the developer-platform-for-quantum-computing slot** — vague enough to honour the rubric (no Quantputation, no QubitHub name, no live URL) while preserving the structural three-card grid.
-- **AstroLLM and QMI Lab: named freely** as before. Public-OK on their own terms.
-- **SettleMint, blockchain, DLT, distributed ledger** — fine in CV / work-history context. Identity headline still physics → AI → quantum.
+- **AstroLLM and QMI Lab: named freely.** Public-OK on their own terms. Nandan is the official researcher of record for both; writing and analysis under their research scope is squarely within his publishable identity.
+- **Post-quantum cryptography, quantum-safe systems, quantum cryptanalysis (Shor's algorithm and successors), and the broader quantum-security topic area: in scope.** These topics are part of the quantum research surface AstroLLM and QMI Lab cover. Confirmed 2026-05-18; earlier sessions over-extended the Quantputation hold to cover the whole subject area, which was wrong. The hold applies to the **company name and product**, not to the research domain.
+- **SettleMint, blockchain, DLT, distributed ledger** — fine in CV / work-history context. Identity headline still physics → AI → quantum, with blockchain / digital-assets as a complementary strength.
+- **Naming SettleMint partners by name (Fireblocks, Ripple Custody / Metaco, DFNS, Copper, etc.) in industry analysis: fine.** SettleMint does not provide custody services itself; it partners with the named providers. They are not competitors, so analytical writing that names them does not create employer conflict. Confirmed 2026-05-18.
 - **Contact page non-availability line** ("Not currently available for new blockchain consulting engagements") **was dropped** per the brand review — reads as soft "I'm done with the field" signal that the SettleMint employer would notice; the Availability list itself carries the signal by what it doesn't include.
 
 **If access control changes** (basic-auth / IP allowlist / Cloudflare Access added at the edge), revisit. With genuine access control in front of the domain, the staging posture becomes defensible — but even then, the QubitHub-Quantputation linkage paragraph on `/research/qubithub/` should stay out of the build because it's the durable legal exposure point.

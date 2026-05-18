@@ -245,6 +245,122 @@ p+ol {
   margin-bottom: 2em;
 }
 
+/* Page / post H1 — the theme defaults to italic Lora at a very large
+   size, which is decorative for short titles but reads as a wall for
+   multi-line technical post titles. Switch to Source Sans Pro 700
+   upright, smaller, with tight line-height. Keeps article titles
+   reportorial instead of literary; aligns with the sans body type. */
+.page-title {
+  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 2em;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.5em;
+}
+
+/* Author-column metadata (name, reading time, date, categories, tags)
+   on post pages — theme sets these in italic Lora at body size, which
+   overshoots for chrome. Drop to sans, ~10% smaller. */
+.author-info,
+.author-name,
+.author-links,
+.entry-meta,
+.post-meta,
+.entry-categories,
+.entry-tags {
+  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, sans-serif;
+  font-size: 0.88em;
+  font-style: normal;
+}
+
+/* Image lightbox — only on post pages that load lightbox.js (gated
+   in _includes/scripts.html to writing + notes categories). Uses the
+   native <dialog> element so ESC-to-close and focus trap come from
+   the browser. */
+.lightbox {
+  padding: 0;
+  border: none;
+  background: transparent;
+  max-width: 100vw;
+  max-height: 100vh;
+  width: auto;
+  height: auto;
+  margin: auto;
+  overflow: visible;
+  color: #fff;
+
+  &::backdrop {
+    background: rgba(0, 0, 0, 0.88);
+  }
+
+  &[open] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+  }
+
+  .lightbox-image {
+    max-width: calc(100vw - 4em);
+    max-height: calc(100vh - 9em);
+    width: auto;
+    height: auto;
+    display: block;
+    background: #fff;
+    border-radius: 4px;
+  }
+
+  .lightbox-caption {
+    max-width: 60em;
+    margin: 0 auto;
+    padding: 0 1.5em;
+    color: #ddd;
+    font-family: "Source Sans Pro", -apple-system, sans-serif;
+    font-style: italic;
+    font-size: 0.9em;
+    line-height: 1.55;
+    text-align: center;
+  }
+
+  .lightbox-close {
+    position: fixed;
+    top: 1em;
+    right: 1em;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    width: 2.5em;
+    height: 2.5em;
+    font-size: 1.5em;
+    line-height: 1;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.15s ease;
+
+    &:hover,
+    &:focus {
+      background: rgba(255, 255, 255, 0.2);
+      outline: none;
+    }
+  }
+}
+
+/* Lightbox-trigger affordance on post-figure images */
+article figure img {
+  cursor: zoom-in;
+  transition: opacity 0.15s ease;
+
+  &:hover {
+    opacity: 0.92;
+  }
+}
+
 /* Archive banner — shown at the top of every archived post (2012–2013 era).
    Visual cue that the post is preserved for continuity but does not
    reflect current views or focus. */

@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 720" role="img" aria-labelledby="title desc">
+  <title id="title">Hardware-anchored vs MPC signing under post-quantum migration</title>
+  <desc id="desc">A side-by-side comparison of the two dominant institutional custody signing architectures and how they differ under post-quantum cryptographic migration.</desc>
+
+  <rect width="900" height="720" fill="#ffffff"></rect>
+
+  <text x="450" y="36" text-anchor="middle" font-family="Source Sans Pro, -apple-system, BlinkMacSystemFont, sans-serif" font-weight="700" font-size="20" fill="#000000">Hardware-anchored vs MPC signing under post-quantum migration</text>
+  <text x="450" y="58" text-anchor="middle" font-family="Source Sans Pro, -apple-system, BlinkMacSystemFont, sans-serif" font-weight="400" font-size="13" fill="#555555">Two architectures, two different migration problems</text>
+
+  <rect x="40" y="100" width="410" height="56" fill="#000000"></rect>
+  <rect x="450" y="100" width="410" height="56" fill="#000000"></rect>
+  <line x1="450" y1="100" x2="450" y2="636" stroke="#ffffff" stroke-width="1"></line>
+  <text x="245" y="126" text-anchor="middle" font-family="Source Sans Pro, -apple-system, BlinkMacSystemFont, sans-serif" font-weight="700" font-size="15" fill="#ffffff" letter-spacing="0.04em">HARDWARE-ANCHORED</text>
+  <text x="245" y="144" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10.5" fill="#cbd5e1">Thales · Utimaco · AWS CloudHSM · IBM Cloud HPCS</text>
+  <text x="655" y="126" text-anchor="middle" font-family="Source Sans Pro, -apple-system, BlinkMacSystemFont, sans-serif" font-weight="700" font-size="15" fill="#ffffff" letter-spacing="0.04em">MPC</text>
+  <text x="655" y="144" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10.5" fill="#cbd5e1">Fireblocks · Curv · Copper · DFNS</text>
+
+  <g font-family="Source Sans Pro, -apple-system, BlinkMacSystemFont, sans-serif" font-size="14" fill="#000000">
+    <g>
+      <rect x="40" y="156" width="410" height="80" fill="#fafafa" stroke="#e8e8e8" stroke-width="1"></rect>
+      <rect x="450" y="156" width="410" height="80" fill="#fafafa" stroke="#e8e8e8" stroke-width="1"></rect>
+      <text x="58" y="178" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#777777" letter-spacing="0.08em">WHERE SIGNING HAPPENS</text>
+      <text x="58" y="202">Inside the HSM or secure enclave</text>
+      <text x="58" y="218">boundary. Key never leaves hardware.</text>
+      <text x="468" y="202">Distributed across multiple parties.</text>
+      <text x="468" y="218">No single party holds the full key.</text>
+    </g>
+
+    <g>
+      <rect x="40" y="236" width="410" height="80" fill="#ffffff" stroke="#e8e8e8" stroke-width="1"></rect>
+      <rect x="450" y="236" width="410" height="80" fill="#ffffff" stroke="#e8e8e8" stroke-width="1"></rect>
+      <text x="58" y="258" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#777777" letter-spacing="0.08em">WHAT BOUNDS MIGRATION SPEED</text>
+      <text x="58" y="282">HSM firmware roadmaps and</text>
+      <text x="58" y="298">FIPS validation cycles.</text>
+      <text x="468" y="282">Threshold-cryptography research</text>
+      <text x="468" y="298">maturity and protocol implementation.</text>
+    </g>
+
+    <g>
+      <rect x="40" y="316" width="410" height="80" fill="#fafafa" stroke="#e8e8e8" stroke-width="1"></rect>
+      <rect x="450" y="316" width="410" height="80" fill="#fafafa" stroke="#e8e8e8" stroke-width="1"></rect>
+      <text x="58" y="338" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#777777" letter-spacing="0.08em">UPGRADE PATH</text>
+      <text x="58" y="362">Hardware-bounded. New firmware,</text>
+      <text x="58" y="378">re-validated devices, new attestation.</text>
+      <text x="468" y="362">Software-bounded. Protocol update</text>
+      <text x="468" y="378">deployable through normal release.</text>
+    </g>
+
+    <g>
+      <rect x="40" y="396" width="410" height="80" fill="#ffffff" stroke="#e8e8e8" stroke-width="1"></rect>
+      <rect x="450" y="396" width="410" height="80" fill="#ffffff" stroke="#e8e8e8" stroke-width="1"></rect>
+      <text x="58" y="418" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#777777" letter-spacing="0.08em">ATTESTATION CHAIN</text>
+      <text x="58" y="442">Anchored in HSM manufacturer root</text>
+      <text x="58" y="458">keys — must themselves become PQ-safe.</text>
+      <text x="468" y="442">No hardware attestation dependency.</text>
+      <text x="468" y="458">Software attestation, swappable.</text>
+    </g>
+
+    <g>
+      <rect x="40" y="476" width="410" height="80" fill="#fafafa" stroke="#e8e8e8" stroke-width="1"></rect>
+      <rect x="450" y="476" width="410" height="80" fill="#fafafa" stroke="#e8e8e8" stroke-width="1"></rect>
+      <text x="58" y="498" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#777777" letter-spacing="0.08em">PQC PRODUCTION STATUS</text>
+      <text x="58" y="522">IBM Cloud HPCS ships quantum-safe</text>
+      <text x="58" y="538">signing using Dilithium. Others on roadmap.</text>
+      <text x="468" y="522">Threshold ML-DSA / SLH-DSA active</text>
+      <text x="468" y="538">research; not yet production-grade.</text>
+    </g>
+
+    <g>
+      <rect x="40" y="556" width="410" height="80" fill="#ffffff" stroke="#e8e8e8" stroke-width="1"></rect>
+      <rect x="450" y="556" width="410" height="80" fill="#ffffff" stroke="#e8e8e8" stroke-width="1"></rect>
+      <text x="58" y="578" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#777777" letter-spacing="0.08em">DOMINANT UNKNOWN</text>
+      <text x="58" y="602">Vendor PQC firmware timelines and</text>
+      <text x="58" y="618">PQ-safe device-attestation rollout.</text>
+      <text x="468" y="602">Threshold ML-DSA performance gap</text>
+      <text x="468" y="618">vs sub-second threshold ECDSA.</text>
+    </g>
+  </g>
+
+  <rect x="40" y="656" width="820" height="44" fill="#f4efe8"></rect>
+  <rect x="40" y="656" width="4" height="44" fill="#b58900"></rect>
+  <text x="450" y="684" text-anchor="middle" font-family="Source Sans Pro, -apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-style="italic" fill="#4a3f2a"><tspan font-weight="700" fill="#2a1f0a">Both will reach post-quantum custody</tspan> — through different bottlenecks. The differentiator is crypto-agility built before the emergency.</text>
+</svg>
