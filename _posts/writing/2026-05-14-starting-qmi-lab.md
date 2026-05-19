@@ -40,6 +40,11 @@ The third reason is more personal. I would rather work inside a structure that h
 
 The three pillars are not separate research programs. They are one program viewed from three time horizons. Pillar I's methodological work feeds Pillar II's evaluation discipline. Pillar II's benchmark results inform what is realistic in Pillar III. Pillar III's questions, in turn, shape what is worth investing classical effort to understand first.
 
+<figure>
+  <img src="/images/posts/starting-qmi-lab/figure-1-three-pillars.svg" alt="A horizontal three-column diagram showing QMI Lab's three research pillars. Above the columns sits the lab's founding question about how information becomes knowledge. Each column describes one pillar with its time horizon, evidentiary standard, current project, and methods. Pillar I (Foundations of machine intelligence) is present-day experimental work on cross-lingual transfer through romanization. Pillar II (Quantum machine intelligence) is near-term benchmark-driven work on hybrid quantum-classical Transformer fine-tuning. Pillar III (Quantum world models) is long-horizon agenda-setting work on a position paper. A time axis runs beneath the columns from now to long, with an italic caption noting that this is one program viewed from three time horizons.">
+  <figcaption>QMI Lab's three pillars at three time horizons. Each pillar operates on its own evidentiary standard, but the methodology compounds across them.</figcaption>
+</figure>
+
 ## The principles
 
 Five, all stated openly so the work can be measured against them.

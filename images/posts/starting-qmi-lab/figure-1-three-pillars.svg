@@ -1,0 +1,186 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 680" role="img" aria-labelledby="title desc" font-family="-apple-system, BlinkMacSystemFont, &#39;Segoe UI&#39;, Roboto, sans-serif">
+  <title id="title">QMI Lab: three pillars of research</title>
+  <desc id="desc">A horizontal three-column diagram showing the three research pillars of QMI Lab. Above the columns sits the lab&#39;s founding question about how information becomes knowledge and how to build machines that genuinely understand rather than merely predict. Each column describes one pillar with its time horizon, evidentiary standard, current project, and methods. Pillar I (Foundations of machine intelligence) is present-day, experimental, publish-now work, currently a cross-lingual transfer project on five languages using QLoRA on Llama 3.1 8B. Pillar II (Quantum machine intelligence) is near-term, benchmark-driven with matched-resource comparisons, currently hybrid quantum-classical Transformer fine-tuning for NLP using PennyLane and classical baselines. Pillar III (Quantum world models) is long-horizon, agenda-setting and conceptual, currently a position paper on quantum world models. A thin horizontal time axis runs beneath the columns marking now, near-term, and long. Below the axis an italic line notes that this is one program viewed from three time horizons: Pillar I&#39;s methodology feeds Pillar II&#39;s evaluation discipline, and Pillar II&#39;s results inform what is realistic in Pillar III.</desc>
+
+  
+  <rect width="900" height="680" fill="#ffffff"></rect>
+
+  
+  <text x="450" y="38" text-anchor="middle" font-size="11" letter-spacing="2.2" fill="#6b7280">A FOUNDING QUESTION</text>
+
+  <g font-size="18" fill="#1f2937" text-anchor="middle">
+    <text x="450" y="74">How does information become knowledge?</text>
+    <text x="450" y="100">How do we build machines that genuinely understand rather than merely predict?</text>
+  </g>
+
+  
+  <path d="M 60 132 L 60 122 L 840 122 L 840 132" fill="none" stroke="#cbd5e1" stroke-width="1"></path>
+  <line x1="450" y1="112" x2="450" y2="122" stroke="#cbd5e1" stroke-width="1"></line>
+  <line x1="190" y1="122" x2="190" y2="132" stroke="#cbd5e1" stroke-width="1"></line>
+  <line x1="450" y1="122" x2="450" y2="132" stroke="#cbd5e1" stroke-width="1"></line>
+  <line x1="710" y1="122" x2="710" y2="132" stroke="#cbd5e1" stroke-width="1"></line>
+
+  
+  <g>
+    
+    <rect x="60" y="146" width="260" height="418" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"></rect>
+    
+    <line x1="60" y1="146" x2="60" y2="564" stroke="#1f2937" stroke-width="3"></line>
+
+    <text x="80" y="174" font-size="11" letter-spacing="2" fill="#6b7280">PILLAR I</text>
+    <g font-size="17" fill="#1f2937" font-weight="600">
+      <text x="80" y="200">Foundations of</text>
+      <text x="80" y="222">machine intelligence</text>
+    </g>
+
+    <line x1="80" y1="246" x2="300" y2="246" stroke="#e5e7eb" stroke-width="1"></line>
+
+    <text x="80" y="266" font-size="10" letter-spacing="1.4" fill="#6b7280">TIME HORIZON</text>
+    <text x="80" y="286" font-size="14" fill="#1f2937" font-weight="500">Now</text>
+
+    <line x1="80" y1="306" x2="300" y2="306" stroke="#e5e7eb" stroke-width="1"></line>
+
+    <text x="80" y="326" font-size="10" letter-spacing="1.4" fill="#6b7280">EVIDENTIARY STANDARD</text>
+    <g font-size="13" fill="#1f2937" font-style="italic">
+      <text x="80" y="346">Experimental,</text>
+      <text x="80" y="362">publish-now</text>
+    </g>
+
+    <line x1="80" y1="382" x2="300" y2="382" stroke="#e5e7eb" stroke-width="1"></line>
+
+    <text x="80" y="402" font-size="10" letter-spacing="1.4" fill="#6b7280">CURRENT PROJECT</text>
+    <g font-size="13" fill="#1f2937">
+      <text x="80" y="422">Cross-lingual transfer</text>
+      <text x="80" y="440">through romanization</text>
+    </g>
+    <g font-size="12" fill="#475569">
+      <text x="80" y="462">5 languages, QLoRA on</text>
+      <text x="80" y="478">Llama 3.1 8B</text>
+    </g>
+
+    <line x1="80" y1="498" x2="300" y2="498" stroke="#e5e7eb" stroke-width="1"></line>
+
+    <text x="80" y="514" font-size="10" letter-spacing="1.4" fill="#6b7280">METHODS</text>
+    <g font-size="12" fill="#475569">
+      <text x="80" y="530">HuggingFace, PyTorch,</text>
+      <text x="80" y="546">QLoRA</text>
+    </g>
+  </g>
+
+  
+  <g>
+    <rect x="320" y="146" width="260" height="418" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"></rect>
+    <line x1="320" y1="146" x2="320" y2="564" stroke="#475569" stroke-width="2"></line>
+
+    <text x="340" y="174" font-size="11" letter-spacing="2" fill="#6b7280">PILLAR II</text>
+    <g font-size="17" fill="#1f2937" font-weight="600">
+      <text x="340" y="200">Quantum machine</text>
+      <text x="340" y="222">intelligence</text>
+    </g>
+
+    <line x1="340" y1="246" x2="560" y2="246" stroke="#e5e7eb" stroke-width="1"></line>
+
+    <text x="340" y="266" font-size="10" letter-spacing="1.4" fill="#6b7280">TIME HORIZON</text>
+    <text x="340" y="286" font-size="14" fill="#1f2937" font-weight="500">Near-term</text>
+
+    <line x1="340" y1="306" x2="560" y2="306" stroke="#e5e7eb" stroke-width="1"></line>
+
+    <text x="340" y="326" font-size="10" letter-spacing="1.4" fill="#6b7280">EVIDENTIARY STANDARD</text>
+    <g font-size="13" fill="#1f2937" font-style="italic">
+      <text x="340" y="346">Benchmark-driven,</text>
+      <text x="340" y="362">matched-resource comparisons</text>
+    </g>
+
+    <line x1="340" y1="382" x2="560" y2="382" stroke="#e5e7eb" stroke-width="1"></line>
+
+    <text x="340" y="402" font-size="10" letter-spacing="1.4" fill="#6b7280">CURRENT PROJECT</text>
+    <g font-size="13" fill="#1f2937">
+      <text x="340" y="422">Hybrid quantum-classical</text>
+      <text x="340" y="440">Transformer fine-tuning for NLP</text>
+    </g>
+    <g font-size="12" fill="#475569">
+      <text x="340" y="462">PennyLane, classical baselines,</text>
+      <text x="340" y="478">matched-resource</text>
+    </g>
+
+    <line x1="340" y1="498" x2="560" y2="498" stroke="#e5e7eb" stroke-width="1"></line>
+
+    <text x="340" y="514" font-size="10" letter-spacing="1.4" fill="#6b7280">METHODS</text>
+    <g font-size="12" fill="#475569">
+      <text x="340" y="530">PennyLane, HuggingFace,</text>
+      <text x="340" y="546">PyTorch</text>
+    </g>
+  </g>
+
+  
+  <g>
+    <rect x="580" y="146" width="260" height="418" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"></rect>
+    <line x1="580" y1="146" x2="580" y2="564" stroke="#94a3b8" stroke-width="1"></line>
+
+    <text x="600" y="174" font-size="11" letter-spacing="2" fill="#6b7280">PILLAR III</text>
+    <g font-size="17" fill="#1f2937" font-weight="600">
+      <text x="600" y="200">Quantum world</text>
+      <text x="600" y="222">models</text>
+    </g>
+
+    <line x1="600" y1="246" x2="820" y2="246" stroke="#e5e7eb" stroke-width="1"></line>
+
+    <text x="600" y="266" font-size="10" letter-spacing="1.4" fill="#6b7280">TIME HORIZON</text>
+    <text x="600" y="286" font-size="14" fill="#1f2937" font-weight="500">Long</text>
+
+    <line x1="600" y1="306" x2="820" y2="306" stroke="#e5e7eb" stroke-width="1"></line>
+
+    <text x="600" y="326" font-size="10" letter-spacing="1.4" fill="#6b7280">EVIDENTIARY STANDARD</text>
+    <g font-size="13" fill="#1f2937" font-style="italic">
+      <text x="600" y="346">Agenda-setting and</text>
+      <text x="600" y="362">conceptual</text>
+    </g>
+
+    <line x1="600" y1="382" x2="820" y2="382" stroke="#e5e7eb" stroke-width="1"></line>
+
+    <text x="600" y="402" font-size="10" letter-spacing="1.4" fill="#6b7280">CURRENT PROJECT</text>
+    <g font-size="13" fill="#1f2937">
+      <text x="600" y="422">Quantum world models</text>
+      <text x="600" y="440">position paper</text>
+    </g>
+    <g font-size="12" fill="#475569">
+      <text x="600" y="462">Frontier mapping,</text>
+      <text x="600" y="478">evaluation frameworks</text>
+    </g>
+
+    <line x1="600" y1="498" x2="820" y2="498" stroke="#e5e7eb" stroke-width="1"></line>
+
+    <text x="600" y="514" font-size="10" letter-spacing="1.4" fill="#6b7280">METHODS</text>
+    <g font-size="12" fill="#475569">
+      <text x="600" y="530">Conceptual analysis,</text>
+      <text x="600" y="546">classical-quantum framework</text>
+    </g>
+  </g>
+
+  
+  <g>
+    <line x1="60" y1="606" x2="840" y2="606" stroke="#94a3b8" stroke-width="1"></line>
+
+    
+    <circle cx="190" cy="606" r="4" fill="#1f2937"></circle>
+    <circle cx="450" cy="606" r="4" fill="#475569"></circle>
+    <circle cx="710" cy="606" r="4" fill="#94a3b8"></circle>
+
+    
+    <path d="M 840 606 L 852 606 M 847 602 L 852 606 L 847 610" fill="none" stroke="#94a3b8" stroke-width="1"></path>
+    <text x="860" y="609" font-size="10" letter-spacing="1.4" fill="#6b7280">t</text>
+
+    <g font-size="12" fill="#1f2937" text-anchor="middle">
+      <text x="190" y="626">Now</text>
+      <text x="450" y="626">Near-term</text>
+      <text x="710" y="626">Long</text>
+    </g>
+  </g>
+
+  
+  <g font-size="12" fill="#475569" font-style="italic" text-anchor="middle">
+    <text x="450" y="652">One program viewed from three time horizons.</text>
+    <text x="450" y="668">Pillar I&#39;s methodology feeds Pillar II&#39;s evaluation discipline. Pillar II&#39;s results inform what is realistic in Pillar III.</text>
+  </g>
+</svg>
