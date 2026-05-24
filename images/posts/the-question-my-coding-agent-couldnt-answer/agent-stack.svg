@@ -1,0 +1,184 @@
+<?xml version="1.0"?>
+<svg viewBox="0 0 1700 800" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="t d">
+        <title id="t">The agent stack — three captured layers plus one missing layer</title>
+        <desc id="d">A vertical stack of four lanes: Runtime at the top, then Memory, then Observability, and finally a dashed Epistemic state / trust layer at the bottom marked with a question mark. Each lane shows what artifacts it captures.</desc>
+
+        <defs>
+          <marker id="arrS" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+            <path d="M0 0 L10 5 L0 10 z" fill="#34374C"></path>
+          </marker>
+          <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+            <path d="M0 0 L10 5 L0 10 z" fill="#dc322f"></path>
+          </marker>
+          <marker id="arrFlow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0 0 L10 5 L0 10 z" fill="#777777"></path>
+          </marker>
+        </defs>
+
+        <rect width="1700" height="800" fill="#ffffff"></rect>
+
+        
+        <g>
+          <rect x="20" y="20" width="1660" height="140" fill="#ffffff" stroke="#34374C" stroke-width="1.5" rx="3"></rect>
+          
+          <text x="36" y="44" font-family="ui-monospace, monospace" font-size="10" fill="#777777" letter-spacing="0.10em">L1</text>
+          <text x="36" y="80" font-family="Source Sans Pro, sans-serif" font-size="22" font-weight="700" fill="#000000">Runtime</text>
+          <text x="36" y="102" font-family="ui-monospace, monospace" font-size="11" fill="#555555">what is happening now</text>
+          <text x="36" y="124" font-family="Source Sans Pro, sans-serif" font-size="12" font-style="italic" fill="#555555">the live, currently-executing agent</text>
+          <line x1="350" y1="36" x2="350" y2="144" stroke="#e5e5e5" stroke-width="1"></line>
+          
+          <text x="370" y="48" font-family="ui-monospace, monospace" font-size="10" font-weight="700" fill="#777777" letter-spacing="0.10em">CAPTURES →</text>
+
+          
+          <g font-family="Source Sans Pro, sans-serif" font-size="13" fill="#000000">
+            
+            <rect x="370" y="76" width="170" height="44" fill="#fafafa" stroke="#34374C" stroke-width="1" rx="2"></rect>
+            <text x="455" y="103" text-anchor="middle">user input</text>
+            <line x1="545" y1="98" x2="568" y2="98" stroke="#777777" stroke-width="1" marker-end="url(#arrFlow)"></line>
+
+            <rect x="570" y="76" width="170" height="44" fill="#fafafa" stroke="#34374C" stroke-width="1" rx="2"></rect>
+            <text x="655" y="103" text-anchor="middle">planner / reasoning</text>
+            <line x1="745" y1="98" x2="768" y2="98" stroke="#777777" stroke-width="1" marker-end="url(#arrFlow)"></line>
+
+            <rect x="770" y="76" width="170" height="44" fill="#fafafa" stroke="#34374C" stroke-width="1" rx="2"></rect>
+            <text x="855" y="103" text-anchor="middle">tool call</text>
+            <line x1="945" y1="98" x2="968" y2="98" stroke="#777777" stroke-width="1" marker-end="url(#arrFlow)"></line>
+
+            <rect x="970" y="76" width="170" height="44" fill="#fafafa" stroke="#34374C" stroke-width="1" rx="2"></rect>
+            <text x="1055" y="103" text-anchor="middle">tool result</text>
+            <line x1="1145" y1="98" x2="1168" y2="98" stroke="#777777" stroke-width="1" marker-end="url(#arrFlow)"></line>
+
+            <rect x="1170" y="76" width="170" height="44" fill="#fafafa" stroke="#34374C" stroke-width="1" rx="2"></rect>
+            <text x="1255" y="103" text-anchor="middle">action</text>
+            <line x1="1345" y1="98" x2="1368" y2="98" stroke="#777777" stroke-width="1" marker-end="url(#arrFlow)"></line>
+
+            <rect x="1370" y="76" width="170" height="44" fill="#fafafa" stroke="#34374C" stroke-width="1" rx="2"></rect>
+            <text x="1455" y="103" text-anchor="middle">response</text>
+          </g>
+        </g>
+
+        
+        <g>
+          <rect x="20" y="190" width="1660" height="130" fill="#ffffff" stroke="#34374C" stroke-width="1.5" rx="3"></rect>
+          <text x="36" y="214" font-family="ui-monospace, monospace" font-size="10" fill="#777777" letter-spacing="0.10em">L2</text>
+          <text x="36" y="250" font-family="Source Sans Pro, sans-serif" font-size="22" font-weight="700" fill="#000000">Memory</text>
+          <text x="36" y="272" font-family="ui-monospace, monospace" font-size="11" fill="#555555">what is retained</text>
+          <text x="36" y="294" font-family="Source Sans Pro, sans-serif" font-size="12" font-style="italic" fill="#555555">the slice the agent will need next time</text>
+          <line x1="350" y1="206" x2="350" y2="304" stroke="#e5e5e5" stroke-width="1"></line>
+          <text x="370" y="218" font-family="ui-monospace, monospace" font-size="10" font-weight="700" fill="#777777" letter-spacing="0.10em">CAPTURES →</text>
+
+          <g font-family="Source Sans Pro, sans-serif" font-size="13" fill="#000000">
+            
+            <rect x="370" y="244" width="225" height="44" fill="#fafafa" stroke="#34374C" stroke-width="1" rx="2"></rect>
+            <text x="482" y="271" text-anchor="middle">working context</text>
+
+            <rect x="615" y="244" width="225" height="44" fill="#fafafa" stroke="#34374C" stroke-width="1" rx="2"></rect>
+            <text x="727" y="271" text-anchor="middle">long-term store</text>
+
+            <rect x="860" y="244" width="225" height="44" fill="#fafafa" stroke="#34374C" stroke-width="1" rx="2"></rect>
+            <text x="972" y="271" text-anchor="middle">embeddings · vectors</text>
+
+            <rect x="1105" y="244" width="225" height="44" fill="#fafafa" stroke="#34374C" stroke-width="1" rx="2"></rect>
+            <text x="1217" y="271" text-anchor="middle">retrieved facts</text>
+
+            <rect x="1350" y="244" width="225" height="44" fill="#fafafa" stroke="#34374C" stroke-width="1" rx="2"></rect>
+            <text x="1462" y="271" text-anchor="middle">user preferences</text>
+          </g>
+        </g>
+
+        
+        <g>
+          <rect x="20" y="350" width="1660" height="130" fill="#ffffff" stroke="#34374C" stroke-width="1.5" rx="3"></rect>
+          <text x="36" y="374" font-family="ui-monospace, monospace" font-size="10" fill="#777777" letter-spacing="0.10em">L3</text>
+          <text x="36" y="410" font-family="Source Sans Pro, sans-serif" font-size="22" font-weight="700" fill="#000000">Observability</text>
+          <text x="36" y="432" font-family="ui-monospace, monospace" font-size="11" fill="#555555">what is recorded</text>
+          <text x="36" y="454" font-family="Source Sans Pro, sans-serif" font-size="12" font-style="italic" fill="#555555">the slice an engineer will need to debug</text>
+          <line x1="350" y1="366" x2="350" y2="464" stroke="#e5e5e5" stroke-width="1"></line>
+          <text x="370" y="378" font-family="ui-monospace, monospace" font-size="10" font-weight="700" fill="#777777" letter-spacing="0.10em">CAPTURES →</text>
+
+          <g font-family="Source Sans Pro, sans-serif" font-size="13" fill="#000000">
+            <rect x="370" y="404" width="225" height="44" fill="#fafafa" stroke="#34374C" stroke-width="1" rx="2"></rect>
+            <text x="482" y="431" text-anchor="middle">traces</text>
+
+            <rect x="615" y="404" width="225" height="44" fill="#fafafa" stroke="#34374C" stroke-width="1" rx="2"></rect>
+            <text x="727" y="431" text-anchor="middle">spans · timings</text>
+
+            <rect x="860" y="404" width="225" height="44" fill="#fafafa" stroke="#34374C" stroke-width="1" rx="2"></rect>
+            <text x="972" y="431" text-anchor="middle">metrics · counters</text>
+
+            <rect x="1105" y="404" width="225" height="44" fill="#fafafa" stroke="#34374C" stroke-width="1" rx="2"></rect>
+            <text x="1217" y="431" text-anchor="middle">evals · scores</text>
+
+            <rect x="1350" y="404" width="225" height="44" fill="#fafafa" stroke="#34374C" stroke-width="1" rx="2"></rect>
+            <text x="1462" y="431" text-anchor="middle">errors · logs</text>
+          </g>
+        </g>
+
+        
+        
+        <line x1="850" y1="480" x2="850" y2="518" stroke="#dc322f" stroke-width="1.8" stroke-dasharray="6 5"></line>
+        <line x1="850" y1="542" x2="850" y2="580" stroke="#dc322f" stroke-width="1.8" stroke-dasharray="6 5" marker-end="url(#arrR)"></line>
+
+        
+        <circle cx="850" cy="530" r="22" fill="#ffffff" stroke="#dc322f" stroke-width="1.8" stroke-dasharray="4 3"></circle>
+        <text x="850" y="540" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="28" font-weight="700" fill="#dc322f">?</text>
+
+        
+        <text x="900" y="513" font-family="ui-monospace, monospace" font-size="11" font-weight="700" fill="#dc322f" letter-spacing="0.08em">A LAYER THAT DOESN&#39;T EXIST IN MOST STACKS</text>
+        <text x="900" y="530" font-family="Source Sans Pro, sans-serif" font-size="12" font-style="italic" fill="#dc322f">the runtime emits these signals; nothing currently catches them</text>
+        <text x="900" y="547" font-family="ui-monospace, monospace" font-size="10" fill="#777777" letter-spacing="0.04em">traces are not beliefs · metrics are not evidence · logs are not claims</text>
+
+        
+        <text x="800" y="513" text-anchor="end" font-family="ui-monospace, monospace" font-size="10" fill="#dc322f" letter-spacing="0.06em">↑ none of L1-L3</text>
+        <text x="800" y="530" text-anchor="end" font-family="ui-monospace, monospace" font-size="10" fill="#dc322f" letter-spacing="0.06em">capture this</text>
+
+        
+        <g>
+          <rect x="20" y="580" width="1660" height="160" fill="#ffffff" stroke="#dc322f" stroke-width="1.8" stroke-dasharray="8 5" rx="3"></rect>
+          <text x="36" y="604" font-family="ui-monospace, monospace" font-size="10" fill="#dc322f" letter-spacing="0.10em">L4</text>
+          <text x="36" y="642" font-family="Source Sans Pro, sans-serif" font-size="22" font-weight="700" fill="#dc322f">Epistemic state</text>
+          <text x="36" y="666" font-family="Source Sans Pro, sans-serif" font-size="16" font-weight="700" fill="#dc322f">/ trust layer<tspan font-size="22" dx="6">?</tspan></text>
+          <text x="36" y="690" font-family="ui-monospace, monospace" font-size="11" fill="#dc322f">what is known and held</text>
+          <text x="36" y="710" font-family="Source Sans Pro, sans-serif" font-size="12" font-style="italic" fill="#dc322f">the slice a reviewer will need to trust the run</text>
+
+          <line x1="350" y1="596" x2="350" y2="724" stroke="#dc322f" stroke-width="1" stroke-dasharray="3 3" opacity="0.5"></line>
+          <text x="370" y="608" font-family="ui-monospace, monospace" font-size="10" font-weight="700" fill="#dc322f" letter-spacing="0.10em">WOULD CAPTURE →</text>
+
+          
+          <g font-family="Source Sans Pro, sans-serif" font-size="13" fill="#dc322f">
+            
+            <rect x="370" y="634" width="225" height="74" fill="#ffffff" stroke="#dc322f" stroke-width="1.2" stroke-dasharray="5 3" rx="2"></rect>
+            <text x="482" y="662" text-anchor="middle" font-weight="700">claims</text>
+            <text x="482" y="682" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10" fill="#777777">&#34;what it means&#34;</text>
+            <text x="482" y="698" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10" fill="#777777">↳ from observations</text>
+
+            <rect x="615" y="634" width="225" height="74" fill="#ffffff" stroke="#dc322f" stroke-width="1.2" stroke-dasharray="5 3" rx="2"></rect>
+            <text x="727" y="662" text-anchor="middle" font-weight="700">evidence</text>
+            <text x="727" y="682" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10" fill="#777777">&#34;what backs them&#34;</text>
+            <text x="727" y="698" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10" fill="#777777">↳ with warrants</text>
+
+            <rect x="860" y="634" width="225" height="74" fill="#ffffff" stroke="#dc322f" stroke-width="1.2" stroke-dasharray="5 3" rx="2"></rect>
+            <text x="972" y="662" text-anchor="middle" font-weight="700">beliefs</text>
+            <text x="972" y="682" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10" fill="#777777">&#34;what is now held&#34;</text>
+            <text x="972" y="698" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10" fill="#777777">↳ with confidence</text>
+
+            <rect x="1105" y="634" width="225" height="74" fill="#ffffff" stroke="#dc322f" stroke-width="1.2" stroke-dasharray="5 3" rx="2"></rect>
+            <text x="1217" y="662" text-anchor="middle" font-weight="700">decisions</text>
+            <text x="1217" y="682" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10" fill="#777777">&#34;why this action&#34;</text>
+            <text x="1217" y="698" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10" fill="#777777">↳ preferences shown</text>
+
+            <rect x="1350" y="634" width="225" height="74" fill="#ffffff" stroke="#dc322f" stroke-width="1.2" stroke-dasharray="5 3" rx="2"></rect>
+            <text x="1462" y="662" text-anchor="middle" font-weight="700">revisions</text>
+            <text x="1462" y="682" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10" fill="#777777">&#34;what changed after&#34;</text>
+            <text x="1462" y="698" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10" fill="#777777">↳ posterior + rename</text>
+          </g>
+        </g>
+
+        
+        <rect x="20" y="760" width="1660" height="36" fill="#f4efe8"></rect>
+        <rect x="20" y="760" width="4" height="36" fill="#b58900"></rect>
+        <text x="850" y="783" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="13" font-style="italic" fill="#4a3f2a">
+          <tspan font-weight="700" fill="#2a1f0a">Add L4 to the stack.</tspan>
+          Until claims, evidence, beliefs and revisions are first-class artifacts, &#34;trust&#34; is something we assert, not something we can audit.
+        </text>
+      </svg>

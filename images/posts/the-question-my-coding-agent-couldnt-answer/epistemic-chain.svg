@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<svg viewBox="0 0 1700 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="t d">
+        <title id="t">The epistemic chain from observation to revision</title>
+        <desc id="d">A horizontal chain of seven stages — observation, claim, evidence, belief, decision, action, outcome — connected by labeled transitions. Implicit transitions and the revision loop back from outcome to claim and belief are highlighted in red.</desc>
+
+        <defs>
+          <marker id="arrS" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+            <path d="M0 0 L10 5 L0 10 z" fill="#34374C"></path>
+          </marker>
+          <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+            <path d="M0 0 L10 5 L0 10 z" fill="#dc322f"></path>
+          </marker>
+        </defs>
+
+        <rect width="1700" height="520" fill="#ffffff"></rect>
+
+        
+        
+        <path d="M 1605 140 C 1605 280, 855 280, 855 142" fill="none" stroke="#dc322f" stroke-width="1.8" stroke-dasharray="7 5" marker-end="url(#arrR)"></path>
+        
+        <path d="M 1605 140 C 1605 510, 355 510, 355 142" fill="none" stroke="#dc322f" stroke-width="1.8" stroke-dasharray="7 5" marker-end="url(#arrR)"></path>
+
+        
+        <text x="1230" y="215" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" font-weight="700" fill="#dc322f" letter-spacing="0.08em">REVISION · RE-WEIGHT</text>
+        <text x="1230" y="231" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="12" font-style="italic" fill="#dc322f">re-weight the evidence given what happened</text>
+
+        
+        <text x="980" y="388" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" font-weight="700" fill="#dc322f" letter-spacing="0.08em">REVISION · RENAME</text>
+        <text x="980" y="404" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="12" font-style="italic" fill="#dc322f">re-interpret what the observation was</text>
+
+        
+        
+        <line x1="175" y1="100" x2="282" y2="100" stroke="#dc322f" stroke-width="1.8" marker-end="url(#arrR)"></line>
+        <text x="228" y="82" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10" font-weight="700" fill="#dc322f" letter-spacing="0.08em">INTERPRETATION</text>
+        <text x="228" y="95" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="11" font-style="italic" fill="#dc322f">pattern → name</text>
+
+        
+        <line x1="425" y1="100" x2="532" y2="100" stroke="#dc322f" stroke-width="1.8" marker-end="url(#arrR)"></line>
+        <text x="478" y="82" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10" font-weight="700" fill="#dc322f" letter-spacing="0.08em">WARRANT</text>
+        <text x="478" y="95" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="11" font-style="italic" fill="#dc322f">what counts as proof</text>
+
+        
+        <line x1="675" y1="100" x2="782" y2="100" stroke="#34374C" stroke-width="1.6" marker-end="url(#arrS)"></line>
+        <text x="728" y="82" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10" font-weight="700" fill="#555555" letter-spacing="0.08em">INFERENCE</text>
+        <text x="728" y="95" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="11" font-style="italic" fill="#555555">likelihood weighting</text>
+
+        
+        <line x1="925" y1="100" x2="1032" y2="100" stroke="#dc322f" stroke-width="1.8" marker-end="url(#arrR)"></line>
+        <text x="978" y="82" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10" font-weight="700" fill="#dc322f" letter-spacing="0.08em">PREFERENCE</text>
+        <text x="978" y="95" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="11" font-style="italic" fill="#dc322f">values, stakes, costs</text>
+
+        
+        <line x1="1175" y1="100" x2="1282" y2="100" stroke="#34374C" stroke-width="1.6" marker-end="url(#arrS)"></line>
+        <text x="1228" y="82" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10" font-weight="700" fill="#555555" letter-spacing="0.08em">COMMITMENT</text>
+        <text x="1228" y="95" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="11" font-style="italic" fill="#555555">will → execution</text>
+
+        
+        <line x1="1425" y1="100" x2="1532" y2="100" stroke="#34374C" stroke-width="1.6" marker-end="url(#arrS)"></line>
+        <text x="1478" y="82" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10" font-weight="700" fill="#555555" letter-spacing="0.08em">CONSEQUENCE</text>
+        <text x="1478" y="95" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="11" font-style="italic" fill="#555555">world responds</text>
+
+        
+        <g>
+          
+          <rect x="40" y="60" width="130" height="80" fill="#ffffff" stroke="#34374C" stroke-width="1.5" rx="2"></rect>
+          <text x="52" y="80" font-family="ui-monospace, monospace" font-size="10" fill="#777777" letter-spacing="0.08em">01</text>
+          <line x1="52" y1="86" x2="158" y2="86" stroke="#e5e5e5" stroke-width="1"></line>
+          <text x="105" y="110" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="16" font-weight="700" fill="#000000">Observation</text>
+          <text x="105" y="128" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10" fill="#555555">what I noticed</text>
+
+          
+          <rect x="290" y="60" width="130" height="80" fill="#ffffff" stroke="#34374C" stroke-width="1.5" rx="2"></rect>
+          <text x="302" y="80" font-family="ui-monospace, monospace" font-size="10" fill="#777777" letter-spacing="0.08em">02</text>
+          <line x1="302" y1="86" x2="408" y2="86" stroke="#e5e5e5" stroke-width="1"></line>
+          <text x="355" y="110" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="16" font-weight="700" fill="#000000">Claim</text>
+          <text x="355" y="128" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10" fill="#555555">what it means</text>
+
+          
+          <rect x="540" y="60" width="130" height="80" fill="#ffffff" stroke="#34374C" stroke-width="1.5" rx="2"></rect>
+          <text x="552" y="80" font-family="ui-monospace, monospace" font-size="10" fill="#777777" letter-spacing="0.08em">03</text>
+          <line x1="552" y1="86" x2="658" y2="86" stroke="#e5e5e5" stroke-width="1"></line>
+          <text x="605" y="110" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="16" font-weight="700" fill="#000000">Evidence</text>
+          <text x="605" y="128" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10" fill="#555555">what backs it up</text>
+
+          
+          <rect x="790" y="60" width="130" height="80" fill="#ffffff" stroke="#34374C" stroke-width="1.5" rx="2"></rect>
+          <text x="802" y="80" font-family="ui-monospace, monospace" font-size="10" fill="#777777" letter-spacing="0.08em">04</text>
+          <line x1="802" y1="86" x2="908" y2="86" stroke="#e5e5e5" stroke-width="1"></line>
+          <text x="855" y="110" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="16" font-weight="700" fill="#000000">Belief</text>
+          <text x="855" y="128" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10" fill="#555555">what I now hold</text>
+
+          
+          <rect x="1040" y="60" width="130" height="80" fill="#ffffff" stroke="#34374C" stroke-width="1.5" rx="2"></rect>
+          <text x="1052" y="80" font-family="ui-monospace, monospace" font-size="10" fill="#777777" letter-spacing="0.08em">05</text>
+          <line x1="1052" y1="86" x2="1158" y2="86" stroke="#e5e5e5" stroke-width="1"></line>
+          <text x="1105" y="110" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="16" font-weight="700" fill="#000000">Decision</text>
+          <text x="1105" y="128" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10" fill="#555555">what to do</text>
+
+          
+          <rect x="1290" y="60" width="130" height="80" fill="#ffffff" stroke="#34374C" stroke-width="1.5" rx="2"></rect>
+          <text x="1302" y="80" font-family="ui-monospace, monospace" font-size="10" fill="#777777" letter-spacing="0.08em">06</text>
+          <line x1="1302" y1="86" x2="1408" y2="86" stroke="#e5e5e5" stroke-width="1"></line>
+          <text x="1355" y="110" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="16" font-weight="700" fill="#000000">Action</text>
+          <text x="1355" y="128" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10" fill="#555555">doing it</text>
+
+          
+          <rect x="1540" y="60" width="130" height="80" fill="#ffffff" stroke="#34374C" stroke-width="1.5" rx="2"></rect>
+          <text x="1552" y="80" font-family="ui-monospace, monospace" font-size="10" fill="#777777" letter-spacing="0.08em">07</text>
+          <line x1="1552" y1="86" x2="1658" y2="86" stroke="#e5e5e5" stroke-width="1"></line>
+          <text x="1605" y="110" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="16" font-weight="700" fill="#000000">Outcome</text>
+          <text x="1605" y="128" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10" fill="#555555">what happened</text>
+        </g>
+
+        
+        <rect x="40" y="464" width="1620" height="40" fill="#f4efe8"></rect>
+        <rect x="40" y="464" width="4" height="40" fill="#b58900"></rect>
+        <text x="850" y="489" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="13" font-style="italic" fill="#4a3f2a">
+          <tspan font-weight="700" fill="#2a1f0a">Five of eight links are normally implicit.</tspan>
+          Reasoning gets sharper when the red arrows are forced to carry an explicit rule.
+        </text>
+      </svg>
