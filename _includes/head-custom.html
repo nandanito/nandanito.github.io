@@ -22,7 +22,7 @@ OpenGraph + Twitter Card. Computed once, emitted on every page.
 
 {%- assign og_title = page.title | default: site.title -%}
 {%- assign og_description = page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 200 -%}
-{%- assign og_image_path = page.image.path | default: page.image | default: site.logo -%}
+{%- assign og_image_path = page.image.path | default: page.image | default: '/images/og-default.png' -%}
 {%- assign og_image = og_image_path | absolute_url -%}
 {%- assign og_url = page.url | replace: 'index.html', '' | absolute_url -%}
 {%- if page.layout == 'post' or page.layout == 'archived' -%}
