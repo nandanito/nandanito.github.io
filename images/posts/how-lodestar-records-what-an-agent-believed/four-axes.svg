@@ -1,0 +1,163 @@
+<?xml version="1.0"?>
+<svg viewBox="0 0 800 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="t d" font-family="Source Sans Pro, -apple-system, BlinkMacSystemFont, &#39;Segoe UI&#39;, Roboto, sans-serif">
+  <title id="t">Four lifecycle axes for belief blf-44a2</title>
+  <desc id="d">Four horizontal lifecycle bars stacked vertically, each labelled with one of the orthogonal axes from Lodestar&#39;s memory firewall: truth_status, retrieval_status, security_status, and freshness_status. Each bar shows its enum values as labelled segments along a track. For belief blf-44a2 — the Stack Overflow cache fix example — the current position on each bar is highlighted in red: truth_status is unverified, retrieval_status is restricted, security_status is clean, and freshness_status is fresh.</desc>
+
+  
+  <text x="30" y="28" font-size="10" letter-spacing="0.18em" fill="#777777"><tspan font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">BELIEF STATE · </tspan><tspan font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" fill="#34374C" font-weight="700">blf-44a2</tspan></text>
+
+  <text x="30" y="54" font-size="16" font-weight="600" fill="#000000">Stack Overflow cache fix</text>
+
+  <line x1="30" y1="70" x2="770" y2="70" stroke="#e5e5e5" stroke-width="1"></line>
+
+  
+  
+  <text x="185" y="114" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#34374C">truth_status</text>
+  <text x="185" y="128" text-anchor="end" font-family="Source Sans Pro, sans-serif" font-size="10" font-style="italic" fill="#777777">do we still trust it?</text>
+
+  
+  
+  <line x1="200" y1="110" x2="780" y2="110" stroke="#f0f0f0" stroke-width="1"></line>
+
+  
+  <rect x="200" y="91" width="134.5" height="38" rx="2" fill="#fdecec" stroke="#dc322f" stroke-width="1.8"></rect>
+  <text x="267.25" y="115" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" font-weight="700" fill="#dc322f">unverified</text>
+
+  
+  <line x1="334.5" y1="110" x2="348.5" y2="110" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 2"></line>
+
+  
+  <rect x="348.5" y="91" width="134.5" height="38" rx="2" fill="#ffffff" stroke="#34374C" stroke-width="1.2"></rect>
+  <text x="415.75" y="115" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#34374C">supported</text>
+
+  <line x1="483" y1="110" x2="497" y2="110" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 2"></line>
+
+  
+  <rect x="497" y="91" width="134.5" height="38" rx="2" fill="#ffffff" stroke="#34374C" stroke-width="1.2"></rect>
+  <text x="564.25" y="115" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#34374C">contradicted</text>
+
+  <line x1="631.5" y1="110" x2="645.5" y2="110" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 2"></line>
+
+  
+  <rect x="645.5" y="91" width="134.5" height="38" rx="2" fill="#ffffff" stroke="#34374C" stroke-width="1.2"></rect>
+  <text x="712.75" y="115" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#34374C">superseded</text>
+
+  
+  <path d="M 267.25 80 L 263.25 86 L 271.25 86 z" fill="#dc322f"></path>
+
+  
+  <text x="185" y="184" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#34374C">retrieval_status</text>
+  <text x="185" y="198" text-anchor="end" font-family="Source Sans Pro, sans-serif" font-size="10" font-style="italic" fill="#777777">who is allowed to see it?</text>
+
+  <line x1="200" y1="180" x2="780" y2="180" stroke="#f0f0f0" stroke-width="1"></line>
+
+  
+  
+
+  
+  <rect x="200" y="161" width="104.8" height="38" rx="2" fill="#ffffff" stroke="#34374C" stroke-width="1.2"></rect>
+  <text x="252.4" y="185" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#34374C">hidden</text>
+
+  <line x1="304.8" y1="180" x2="318.8" y2="180" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 2"></line>
+
+  
+  <rect x="318.8" y="161" width="104.8" height="38" rx="2" fill="#fdecec" stroke="#dc322f" stroke-width="1.8"></rect>
+  <text x="371.2" y="185" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" font-weight="700" fill="#dc322f">restricted</text>
+
+  <line x1="423.6" y1="180" x2="437.6" y2="180" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 2"></line>
+
+  
+  <rect x="437.6" y="161" width="104.8" height="38" rx="2" fill="#ffffff" stroke="#34374C" stroke-width="1.2"></rect>
+  <text x="490" y="185" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#34374C">normal</text>
+
+  <line x1="542.4" y1="180" x2="556.4" y2="180" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 2"></line>
+
+  
+  <rect x="556.4" y="161" width="104.8" height="38" rx="2" fill="#ffffff" stroke="#34374C" stroke-width="1.2"></rect>
+  <text x="608.8" y="185" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10.5" fill="#34374C">privileged_only</text>
+
+  <line x1="661.2" y1="180" x2="675.2" y2="180" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 2"></line>
+
+  
+  <rect x="675.2" y="161" width="104.8" height="38" rx="2" fill="#ffffff" stroke="#34374C" stroke-width="1.2"></rect>
+  <text x="727.6" y="185" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#34374C">blocked</text>
+
+  
+  <path d="M 371.2 150 L 367.2 156 L 375.2 156 z" fill="#dc322f"></path>
+
+  
+  <text x="185" y="254" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#34374C">security_status</text>
+  <text x="185" y="268" text-anchor="end" font-family="Source Sans Pro, sans-serif" font-size="10" font-style="italic" fill="#777777">has it been tampered with?</text>
+
+  <line x1="200" y1="250" x2="780" y2="250" stroke="#f0f0f0" stroke-width="1"></line>
+
+  
+
+  
+  <rect x="200" y="231" width="134.5" height="38" rx="2" fill="#fdecec" stroke="#dc322f" stroke-width="1.8"></rect>
+  <text x="267.25" y="255" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" font-weight="700" fill="#dc322f">clean</text>
+
+  <line x1="334.5" y1="250" x2="348.5" y2="250" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 2"></line>
+
+  
+  <rect x="348.5" y="231" width="134.5" height="38" rx="2" fill="#ffffff" stroke="#34374C" stroke-width="1.2"></rect>
+  <text x="415.75" y="255" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#34374C">suspicious</text>
+
+  <line x1="483" y1="250" x2="497" y2="250" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 2"></line>
+
+  
+  <rect x="497" y="231" width="134.5" height="38" rx="2" fill="#ffffff" stroke="#34374C" stroke-width="1.2"></rect>
+  <text x="564.25" y="255" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#34374C">quarantined</text>
+
+  <line x1="631.5" y1="250" x2="645.5" y2="250" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 2"></line>
+
+  
+  <rect x="645.5" y="231" width="134.5" height="38" rx="2" fill="#ffffff" stroke="#34374C" stroke-width="1.2"></rect>
+  <text x="712.75" y="255" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#34374C">malicious</text>
+
+  
+  <path d="M 267.25 220 L 263.25 226 L 271.25 226 z" fill="#dc322f"></path>
+
+  
+  <text x="185" y="324" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="600" fill="#34374C">freshness_status</text>
+  <text x="185" y="338" text-anchor="end" font-family="Source Sans Pro, sans-serif" font-size="10" font-style="italic" fill="#777777">is it still current?</text>
+
+  <line x1="200" y1="320" x2="780" y2="320" stroke="#f0f0f0" stroke-width="1"></line>
+
+  
+  
+
+  
+  <rect x="200" y="301" width="184" height="38" rx="2" fill="#fdecec" stroke="#dc322f" stroke-width="1.8"></rect>
+  <text x="292" y="325" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" font-weight="700" fill="#dc322f">fresh</text>
+
+  <line x1="384" y1="320" x2="398" y2="320" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 2"></line>
+
+  
+  <rect x="398" y="301" width="184" height="38" rx="2" fill="#ffffff" stroke="#34374C" stroke-width="1.2"></rect>
+  <text x="490" y="325" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#34374C">stale</text>
+
+  <line x1="582" y1="320" x2="596" y2="320" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 2"></line>
+
+  
+  <rect x="596" y="301" width="184" height="38" rx="2" fill="#ffffff" stroke="#34374C" stroke-width="1.2"></rect>
+  <text x="688" y="325" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#34374C">expired</text>
+
+  
+  <path d="M 292 290 L 288 296 L 296 296 z" fill="#dc322f"></path>
+
+  
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" letter-spacing="0.06em" fill="#777777">
+    
+    <rect x="200" y="378" width="14" height="10" rx="2" fill="#fdecec" stroke="#dc322f" stroke-width="1.5"></rect>
+    <text x="220" y="387">CURRENT</text>
+
+    
+    <line x1="305" y1="383" x2="325" y2="383" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="3 2"></line>
+    <text x="332" y="387" font-size="9" fill="#aaaaaa" letter-spacing="0.04em">transition</text>
+
+    
+    <text x="780" y="387" text-anchor="end" font-family="Source Sans Pro, sans-serif" font-size="11" font-style="italic" fill="#555555">four orthogonal axes · each set, transitioned, and queried independently</text>
+  </g>
+
+</svg>

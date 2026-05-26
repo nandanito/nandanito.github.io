@@ -493,6 +493,17 @@ article figure img {
   }
 }
 
+/* Code blocks — the so-simple theme sets `pre` to a smaller monospace size
+   (~14px at desktop body=18px) so code reads as data, not prose. But the
+   normalize.css rule `code,kbd,samp { font-size: 1rem }` bumps the inner
+   <code> back to body size, which made block code render visibly larger
+   than the surrounding paragraph. Force the inner <code> to inherit. */
+pre code,
+.highlight pre code,
+.highlighter-rouge pre code {
+  font-size: inherit;
+}
+
 /* Archive banner — shown at the top of every archived post (2012–2013 era).
    Visual cue that the post is preserved for continuity but does not
    reflect current views or focus. */

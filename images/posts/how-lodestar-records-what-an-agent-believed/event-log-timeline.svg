@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<svg viewBox="0 0 900 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="t d" font-family="Source Sans Pro, -apple-system, BlinkMacSystemFont, &#39;Segoe UI&#39;, Roboto, sans-serif">
+  <title id="t">One session, eight events on the append-only log</title>
+  <desc id="d">A horizontal timeline showing eight events (seq 47 through 54) appended to an NDJSON event log during a single agent session. Events 1 through 5 (observations, claims, evidence_set) render in slate as a baseline pipeline. Between event 5 (evd-9001 evidence_set) and event 6 (blf-44a2 belief_proposed), a vertical dashed red marker labels the moment the auto-observation gate fires and the belief&#39;s authority is downgraded from auto_observation to reflection. Event 6 renders in red as the downgraded belief. Events 7 (decision) and 8 (action) render in slate — they reference the flagged belief but cannot promote it.</desc>
+
+  
+  <text x="24" y="22" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" letter-spacing="0.16em" fill="#777777">EVENT LOG · session sess-9c81 · ndjson · append-only</text>
+
+  
+  <text x="550" y="42" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="13" font-weight="600" font-style="italic" fill="#dc322f">auto-observation gate fires</text>
+  <text x="550" y="60" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="11" font-style="italic" fill="#dc322f">authority: <tspan font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-style="normal">auto_observation</tspan> → <tspan font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-style="normal">reflection</tspan></text>
+
+  
+  <line x1="550" y1="76" x2="550" y2="240" stroke="#dc322f" stroke-width="1.8" stroke-dasharray="6 4"></line>
+  
+  <path d="M 545 76 L 555 76 L 550 82 z" fill="#dc322f"></path>
+  <path d="M 545 240 L 555 240 L 550 234 z" fill="#dc322f"></path>
+
+  
+  <line x1="556" y1="117" x2="588" y2="117" stroke="#dc322f" stroke-width="1.2" stroke-dasharray="4 3" opacity="0.9"></line>
+  <path d="M 594 117 L 586 113 L 586 121 z" fill="#dc322f"></path>
+
+  
+  <line x1="20" y1="160" x2="876" y2="160" stroke="#34374C" stroke-width="1.5"></line>
+  
+  <path d="M 876 154 L 886 160 L 876 166 z" fill="#34374C"></path>
+  
+  <line x1="20" y1="154" x2="20" y2="166" stroke="#34374C" stroke-width="1.5"></line>
+
+  
+  <line x1="60" y1="130" x2="60" y2="157" stroke="#34374C" stroke-width="1"></line>
+  <rect x="17" y="104" width="86" height="26" rx="3" fill="#ffffff" stroke="#34374C" stroke-width="1.2"></rect>
+  <text x="60" y="122" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" font-weight="600" fill="#34374C">obs-a3f1</text>
+  <circle cx="60" cy="160" r="3.5" fill="#34374C"></circle>
+  <text x="60" y="180" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#777777">seq 47</text>
+  <text x="60" y="196" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#34374C">observation</text>
+  <text x="60" y="212" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="10" font-style="italic" fill="#555555">github.issue</text>
+
+  
+  <line x1="160" y1="130" x2="160" y2="157" stroke="#34374C" stroke-width="1"></line>
+  <rect x="117" y="104" width="86" height="26" rx="3" fill="#ffffff" stroke="#34374C" stroke-width="1.2"></rect>
+  <text x="160" y="122" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" font-weight="600" fill="#34374C">clm-7b91</text>
+  <circle cx="160" cy="160" r="3.5" fill="#34374C"></circle>
+  <text x="160" y="180" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#777777">seq 48</text>
+  <text x="160" y="196" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#34374C">claim</text>
+  <text x="160" y="212" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="10" font-style="italic" fill="#555555">“cache eviction</text>
+  <text x="160" y="224" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="10" font-style="italic" fill="#555555">never runs”</text>
+
+  
+  <line x1="260" y1="130" x2="260" y2="157" stroke="#34374C" stroke-width="1"></line>
+  <rect x="217" y="104" width="86" height="26" rx="3" fill="#ffffff" stroke="#34374C" stroke-width="1.2"></rect>
+  <text x="260" y="122" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" font-weight="600" fill="#34374C">obs-d2e4</text>
+  <circle cx="260" cy="160" r="3.5" fill="#34374C"></circle>
+  <text x="260" y="180" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#777777">seq 49</text>
+  <text x="260" y="196" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#34374C">observation</text>
+  <text x="260" y="212" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="10" font-style="italic" fill="#555555">web.fetch</text>
+  <text x="260" y="224" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="10" font-style="italic" fill="#555555">(Stack Overflow)</text>
+
+  
+  <line x1="360" y1="130" x2="360" y2="157" stroke="#34374C" stroke-width="1"></line>
+  <rect x="317" y="104" width="86" height="26" rx="3" fill="#ffffff" stroke="#34374C" stroke-width="1.2"></rect>
+  <text x="360" y="122" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" font-weight="600" fill="#34374C">clm-8c44</text>
+  <circle cx="360" cy="160" r="3.5" fill="#34374C"></circle>
+  <text x="360" y="180" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#777777">seq 50</text>
+  <text x="360" y="196" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#34374C">claim</text>
+  <text x="360" y="212" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="10" font-style="italic" fill="#555555">“fix applies</text>
+  <text x="360" y="224" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="10" font-style="italic" fill="#555555">to our cache”</text>
+
+  
+  <line x1="460" y1="130" x2="460" y2="157" stroke="#34374C" stroke-width="1"></line>
+  <rect x="417" y="104" width="86" height="26" rx="3" fill="#ffffff" stroke="#34374C" stroke-width="1.2"></rect>
+  <text x="460" y="122" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" font-weight="600" fill="#34374C">evd-9001</text>
+  <circle cx="460" cy="160" r="3.5" fill="#34374C"></circle>
+  <text x="460" y="180" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#777777">seq 51</text>
+  <text x="460" y="196" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" font-weight="600" fill="#34374C">evidence_set</text>
+  <text x="460" y="212" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="10.5" font-style="italic" fill="#555555">external_document</text>
+
+  
+  <line x1="640" y1="130" x2="640" y2="157" stroke="#dc322f" stroke-width="1.4"></line>
+  <rect x="597" y="104" width="86" height="26" rx="3" fill="#fdecec" stroke="#dc322f" stroke-width="1.8"></rect>
+  <text x="640" y="122" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" font-weight="700" fill="#dc322f">blf-44a2</text>
+  <circle cx="640" cy="160" r="3.8" fill="#dc322f"></circle>
+  <text x="640" y="180" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#dc322f">seq 52</text>
+  <text x="640" y="196" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" font-weight="700" fill="#dc322f">belief_proposed</text>
+  <text x="640" y="212" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="10.5" font-weight="600" font-style="italic" fill="#dc322f">unverified /</text>
+  <text x="640" y="225" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="10.5" font-weight="600" font-style="italic" fill="#dc322f">restricted</text>
+
+  
+  <line x1="740" y1="130" x2="740" y2="157" stroke="#34374C" stroke-width="1"></line>
+  <rect x="697" y="104" width="86" height="26" rx="3" fill="#ffffff" stroke="#34374C" stroke-width="1.2"></rect>
+  <text x="740" y="122" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" font-weight="600" fill="#34374C">dec-1100</text>
+  <circle cx="740" cy="160" r="3.5" fill="#34374C"></circle>
+  <text x="740" y="180" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#777777">seq 53</text>
+  <text x="740" y="196" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#34374C">decision</text>
+  <text x="740" y="212" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="10" font-style="italic" fill="#555555">propose patch</text>
+
+  
+  <line x1="840" y1="130" x2="840" y2="157" stroke="#34374C" stroke-width="1"></line>
+  <rect x="797" y="104" width="86" height="26" rx="3" fill="#ffffff" stroke="#34374C" stroke-width="1.2"></rect>
+  <text x="840" y="122" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11.5" font-weight="600" fill="#34374C">act-2200</text>
+  <circle cx="840" cy="160" r="3.5" fill="#34374C"></circle>
+  <text x="840" y="180" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#777777">seq 54</text>
+  <text x="840" y="196" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#34374C">action</text>
+  <text x="840" y="212" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="10" font-style="italic" fill="#555555">executed</text>
+
+  
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" letter-spacing="0.06em" fill="#777777">
+    
+    <rect x="24" y="278" width="14" height="10" rx="2" fill="#ffffff" stroke="#34374C" stroke-width="1.2"></rect>
+    <text x="44" y="287">BASELINE</text>
+
+    
+    <rect x="120" y="278" width="14" height="10" rx="2" fill="#fdecec" stroke="#dc322f" stroke-width="1.5"></rect>
+    <text x="140" y="287">GATED BELIEF</text>
+
+    
+    <line x1="244" y1="277" x2="244" y2="290" stroke="#dc322f" stroke-width="1.8" stroke-dasharray="3 2"></line>
+    <text x="252" y="287">GATE</text>
+
+    
+    <text x="876" y="287" text-anchor="end" font-family="Source Sans Pro, sans-serif" font-size="11" font-style="italic" fill="#555555">downstream events reference blf-44a2 but cannot promote it</text>
+  </g>
+
+</svg>
