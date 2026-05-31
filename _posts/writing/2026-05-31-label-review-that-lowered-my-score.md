@@ -35,7 +35,7 @@ Split by query type, the result that matters shows up. On named-target queries �
 
 Two caveats keep me honest about the 0.542. There are only twelve broad known-item queries and seventeen named-target ones — small on both sides. And because those answer keys are landmark papers rather than exhaustive topical relevance, 0.542 is the optimistic reading; true topical recall is likely worse. The corpus is 500 abstracts, too: an earlier 14-document synthetic fixture scored a perfect 1.000/1.000, which only demonstrates that a number without a real, confusable corpus is theatre.
 
-Before building the reranker, though, I wanted to know whether hybrid fusion was even the right first-stage baseline. So I ran an ablation, switching each engine off in turn to see what it contributed. That is the next note.
+Before building the reranker, though, I wanted to know whether hybrid fusion was even the right first-stage baseline. So I ran an ablation, switching each engine off in turn to see what it contributed. That is the [next note](/writing/notes/headline-that-was-within-noise/).
 
 [^recall]: Recall@10 — of the papers labelled relevant for a query, the fraction that land in the top ten results, averaged over queries. With a single target paper per query it reduces to whether the right paper made the top ten.
 [^mrr]: MRR, mean reciprocal rank — 1 ÷ (rank of the first relevant hit), averaged over queries: first place scores 1.0, third place 0.33, not found 0. It rewards ranking the answer high rather than merely surfacing it.
