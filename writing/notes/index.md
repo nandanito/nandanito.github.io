@@ -1,19 +1,20 @@
 ---
 layout: page
-title: Writing
-excerpt: "Long-form writing on quantum machine learning, scientific AI, and the physics × ML interface."
-modified: 2026-05-18
+title: Notes
+excerpt: "Shorter informal pieces — paper reading notes, conference reflections, project-status updates."
+modified: 2026-05-31
+permalink: /writing/notes/
 ---
 
-Long-form pieces on quantum machine learning, scientific AI, the physics × ML interface, and the methodology questions that show up at all three intersections. Project notes from [QMI Lab](/research/qmi-lab/) and [AstroLLM](/research/astrollm/) land here as they ship.
+Shorter, lower-overhead pieces: paper reading notes, conference reflections, and project-status updates from [QMI Lab](/research/qmi-lab/) and [AstroLLM](/research/astrollm/). Long-form essays live at [/writing/](/writing/).
 
-Shorter informal pieces — paper reading notes, conference reflections, project-status updates — live separately at [**/writing/notes/**](/writing/notes/) ([feed](/writing/notes/feed.xml)).
+Subscribe via the [notes feed](/writing/notes/feed.xml).
 
-{% assign writing_posts = site.categories.writing | sort: 'date' | reverse %}
+{% assign notes_posts = site.categories.notes | sort: 'date' | reverse %}
 
-{% if writing_posts.size > 0 %}
+{% if notes_posts.size > 0 %}
 <ul class="writing-list">
-{% for post in writing_posts %}
+{% for post in notes_posts %}
   <li class="writing-entry">
     <h2 class="writing-entry-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
     <p class="writing-entry-meta">
@@ -30,6 +31,5 @@ Shorter informal pieces — paper reading notes, conference reflections, project
 {% endfor %}
 </ul>
 {% else %}
-<p>The first long-form posts arrive in 2026.</p>
+<p>The first notes arrive shortly.</p>
 {% endif %}
-
