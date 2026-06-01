@@ -33,6 +33,6 @@ The complementarity is real but thin. Pool the top fifty from each arm and 42 of
 
 I am keeping the hybrid as the stage-one candidate generator regardless. The job of stage one is to land the relevant papers somewhere in the pool a reranker will read, not to order them perfectly — so the number I should be optimising is candidate-set recall at the pool depth, not Recall@10. Recall@10 was the wrong target for a stage that feeds a second stage; it was measuring the reranker's job before the reranker existed.
 
-This is all still 500 abstracts. The question I am carrying into the corpus-widening work is whether the dense-blind class — papers like query 12's — grows as the corpus grows, or stays a handful of edge cases. That is the next note.
+This is all still 500 abstracts. The question I am carrying into the corpus-widening work is whether the dense-blind class — papers like query 12's — grows as the corpus grows, or stays a handful of edge cases. That is [the next note](/writing/notes/widening-that-lowered-every-score/).
 
 [^ci]: Each interval comes from ten thousand bootstrap resamples of the per-query scores (seed 20260531). An interval that spans zero means the data are consistent with no difference between the arms.
