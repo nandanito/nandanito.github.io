@@ -1,0 +1,171 @@
+<?xml version="1.0"?>
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="t d">
+      <title id="t">The candidate set filled up. The top-10 did not.</title>
+      <desc id="d">A retrieval pipeline — dense vector search plus lexical BM25 into a candidate union, RRF fusion, top-10 results, and a dashed future reranker stage — shown beside a result comparison: candidate union recall rises from 0.948 to 1.000 while fused top-10 recall stays flat at 0.592 across a pool-depth sweep from 50 to 500 candidates per arm.</desc>
+
+      <defs>
+        <marker id="aSlate" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7.5" markerHeight="7.5" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#34374C"></path>
+        </marker>
+        <marker id="aRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7.5" markerHeight="7.5" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#dc322f"></path>
+        </marker>
+      </defs>
+
+      <rect width="1600" height="900" fill="#ffffff"></rect>
+
+      
+      <text x="55" y="50" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="700" fill="#b58900" letter-spacing="0.14em">ASTROLLM · RETRIEVAL EXPERIMENT</text>
+      <text x="55" y="92" font-family="Source Sans Pro, sans-serif" font-size="38" font-weight="700" fill="#000000" letter-spacing="-0.01em">The candidate set filled up. The top-10 did not.</text>
+      <text x="55" y="123" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="16" fill="#555555">Pool depth sweep on the same 2,500-abstract exoplanet-atmosphere index</text>
+      <line x1="55" y1="146" x2="1545" y2="146" stroke="#e8e8e8" stroke-width="1"></line>
+
+      
+      <text x="55" y="184" font-family="ui-monospace, monospace" font-size="13" font-weight="700" fill="#777777" letter-spacing="0.12em">THE PIPELINE</text>
+      <text x="700" y="184" font-family="ui-monospace, monospace" font-size="13" font-weight="700" fill="#777777" letter-spacing="0.12em">THE RESULT — RECALL vs FROZEN LABELS</text>
+
+      
+      <line x1="673" y1="170" x2="673" y2="726" stroke="#e8e8e8" stroke-width="1"></line>
+
+      
+
+      
+      <g>
+        <rect x="55" y="200" width="275" height="74" fill="#ffffff" stroke="#34374C" stroke-width="1.5" rx="3"></rect>
+        <text x="192" y="234" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="20" font-weight="700" fill="#000000">Dense vector search</text>
+        <text x="192" y="256" text-anchor="middle" font-family="ui-monospace, monospace" font-size="12.5" fill="#555555">embeddings · cosine</text>
+
+        <rect x="388" y="200" width="277" height="74" fill="#ffffff" stroke="#34374C" stroke-width="1.5" rx="3"></rect>
+        <text x="526" y="234" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="20" font-weight="700" fill="#000000">Lexical BM25</text>
+        <text x="526" y="256" text-anchor="middle" font-family="ui-monospace, monospace" font-size="12.5" fill="#555555">term frequency</text>
+
+        
+        <text x="359" y="244" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="26" font-weight="400" fill="#777777">+</text>
+      </g>
+
+      
+      <path d="M 192 274 C 192 296, 300 292, 318 308" fill="none" stroke="#34374C" stroke-width="1.6" marker-end="url(#aSlate)"></path>
+      <path d="M 526 274 C 526 296, 420 292, 402 308" fill="none" stroke="#34374C" stroke-width="1.6" marker-end="url(#aSlate)"></path>
+
+      
+      <g>
+        <rect x="110" y="314" width="500" height="74" fill="#fafafa" stroke="#34374C" stroke-width="1.5" rx="3"></rect>
+        <rect x="110" y="314" width="6" height="74" fill="#34374C" rx="0"></rect>
+        <text x="134" y="348" font-family="Source Sans Pro, sans-serif" font-size="22" font-weight="700" fill="#000000">Candidate union</text>
+        <text x="134" y="371" font-family="ui-monospace, monospace" font-size="13" fill="#555555">union of both arms · the pool that gets ranked</text>
+      </g>
+      <line x1="360" y1="388" x2="360" y2="418" stroke="#34374C" stroke-width="1.6" marker-end="url(#aSlate)"></line>
+
+      
+      <g>
+        <rect x="110" y="422" width="500" height="74" fill="#ffffff" stroke="#34374C" stroke-width="1.5" rx="3"></rect>
+        <text x="134" y="456" font-family="Source Sans Pro, sans-serif" font-size="22" font-weight="700" fill="#000000">RRF fusion</text>
+        <text x="134" y="479" font-family="ui-monospace, monospace" font-size="13" fill="#555555">reciprocal rank fusion · interleaves the two arms</text>
+      </g>
+      <line x1="360" y1="496" x2="360" y2="526" stroke="#34374C" stroke-width="1.6" marker-end="url(#aSlate)"></line>
+
+      
+      <g>
+        <rect x="110" y="530" width="500" height="74" fill="#fafafa" stroke="#34374C" stroke-width="1.5" rx="3"></rect>
+        <rect x="110" y="530" width="6" height="74" fill="#b58900" rx="0"></rect>
+        <text x="134" y="564" font-family="Source Sans Pro, sans-serif" font-size="22" font-weight="700" fill="#000000">Top-10 results</text>
+        <text x="134" y="587" font-family="ui-monospace, monospace" font-size="13" fill="#555555">what the reader actually sees</text>
+      </g>
+      
+      <line x1="360" y1="604" x2="360" y2="634" stroke="#dc322f" stroke-width="1.8" stroke-dasharray="6 5" marker-end="url(#aRed)"></line>
+
+      
+      <g>
+        <rect x="110" y="638" width="500" height="82" fill="#ffffff" stroke="#dc322f" stroke-width="1.8" stroke-dasharray="8 5" rx="3"></rect>
+        <text x="134" y="668" font-family="ui-monospace, monospace" font-size="12" font-weight="700" fill="#dc322f" letter-spacing="0.10em">NEXT HYPOTHESIS — NOT YET BUILT</text>
+        <text x="134" y="695" font-family="Source Sans Pro, sans-serif" font-size="22" font-weight="700" fill="#dc322f">Second-stage reranker</text>
+        <text x="134" y="713" font-family="Source Sans Pro, sans-serif" font-size="13.5" font-style="italic" fill="#dc322f">re-orders the pool that is already complete</text>
+      </g>
+
+      
+
+      
+      <g>
+        <rect x="700" y="200" width="845" height="116" fill="#fafafa" stroke="#e5e5e5" stroke-width="1" rx="4"></rect>
+        <rect x="700" y="200" width="6" height="116" fill="#34374C"></rect>
+        <text x="734" y="240" font-family="Source Sans Pro, sans-serif" font-size="25" font-weight="700" fill="#000000">Candidate union</text>
+        <text x="734" y="266" font-family="ui-monospace, monospace" font-size="13.5" fill="#555555">recall of the pool — is the right paper even in it?</text>
+        <g fill="#34374C">
+          <path d="M734 296 l9 -13 l9 13 z" fill="#34374C"></path>
+        </g>
+        <text x="752" y="299" font-family="ui-monospace, monospace" font-size="14" font-weight="700" fill="#34374C">fills up · +0.052</text>
+
+        
+        <text x="1300" y="288" text-anchor="end" font-family="Source Sans Pro, sans-serif" font-size="58" font-weight="700" fill="#999999" letter-spacing="-0.01em">0.948</text>
+        <text x="1338" y="282" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="34" font-weight="400" fill="#34374C">→</text>
+        <text x="1521" y="288" text-anchor="end" font-family="Source Sans Pro, sans-serif" font-size="58" font-weight="700" fill="#34374C" letter-spacing="-0.01em">1.000</text>
+      </g>
+
+      
+      <g>
+        <rect x="700" y="332" width="845" height="116" fill="#fafafa" stroke="#e5e5e5" stroke-width="1" rx="4"></rect>
+        <rect x="700" y="332" width="6" height="116" fill="#b58900"></rect>
+        <text x="734" y="372" font-family="Source Sans Pro, sans-serif" font-size="25" font-weight="700" fill="#000000">Fused top-10 (RRF)</text>
+        <text x="734" y="398" font-family="ui-monospace, monospace" font-size="13.5" fill="#555555">recall of surfaced results — same metric</text>
+        <rect x="734" y="421" width="18" height="3" fill="#b58900"></rect>
+        <text x="762" y="431" font-family="ui-monospace, monospace" font-size="14" font-weight="700" fill="#8a6800">flat · 0.000 across the whole sweep</text>
+
+        <text x="1300" y="420" text-anchor="end" font-family="Source Sans Pro, sans-serif" font-size="58" font-weight="700" fill="#b58900" letter-spacing="-0.01em">0.592</text>
+        <text x="1338" y="414" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="34" font-weight="400" fill="#999999">→</text>
+        <text x="1521" y="420" text-anchor="end" font-family="Source Sans Pro, sans-serif" font-size="58" font-weight="700" fill="#b58900" letter-spacing="-0.01em">0.592</text>
+      </g>
+
+      <text x="700" y="478" font-family="ui-monospace, monospace" font-size="13" font-weight="700" fill="#777777" letter-spacing="0.06em">POOL DEPTH SWEPT — 50 → 500 CANDIDATES PER ARM</text>
+
+      
+      
+      <g font-family="ui-monospace, monospace" font-size="12" fill="#aaaaaa">
+        
+        <line x1="740" y1="500" x2="1360" y2="500" stroke="#eeeeee" stroke-width="1"></line>
+        <text x="730" y="504" text-anchor="end">1.0</text>
+        <line x1="740" y1="544" x2="1360" y2="544" stroke="#eeeeee" stroke-width="1"></line>
+        <text x="730" y="548" text-anchor="end">0.9</text>
+        <line x1="740" y1="589" x2="1360" y2="589" stroke="#eeeeee" stroke-width="1"></line>
+        <text x="730" y="593" text-anchor="end">0.8</text>
+        <line x1="740" y1="633" x2="1360" y2="633" stroke="#eeeeee" stroke-width="1"></line>
+        <text x="730" y="637" text-anchor="end">0.7</text>
+        <line x1="740" y1="678" x2="1360" y2="678" stroke="#eeeeee" stroke-width="1"></line>
+        <text x="730" y="682" text-anchor="end">0.6</text>
+        <line x1="740" y1="700" x2="1360" y2="700" stroke="#dddddd" stroke-width="1"></line>
+      </g>
+
+      
+      <g font-family="ui-monospace, monospace" font-size="13" fill="#777777">
+        <text x="740" y="720" text-anchor="middle">50</text>
+        <text x="947" y="720" text-anchor="middle">100</text>
+        <text x="1153" y="720" text-anchor="middle">200</text>
+        <text x="1360" y="720" text-anchor="middle">500</text>
+      </g>
+
+      
+      <polyline points="740,592 947,561 1153,576 1360,569" fill="none" stroke="#999999" stroke-width="2"></polyline>
+      <g fill="#999999">
+        <circle cx="740" cy="592" r="3"></circle><circle cx="947" cy="561" r="3"></circle><circle cx="1153" cy="576" r="3"></circle><circle cx="1360" cy="569" r="3"></circle>
+      </g>
+      <text x="1372" y="573" font-family="ui-monospace, monospace" font-size="13" fill="#777777">top-50</text>
+
+      
+      <polyline points="740,523 947,515 1153,515 1360,500" fill="none" stroke="#34374C" stroke-width="2.4"></polyline>
+      <g fill="#34374C">
+        <circle cx="740" cy="523" r="3.4"></circle><circle cx="947" cy="515" r="3.4"></circle><circle cx="1153" cy="515" r="3.4"></circle><circle cx="1360" cy="500" r="3.4"></circle>
+      </g>
+      <text x="1372" y="504" font-family="ui-monospace, monospace" font-size="13" font-weight="700" fill="#34374C">union</text>
+
+      
+      <polyline points="740,681 947,681 1153,681 1360,681" fill="none" stroke="#b58900" stroke-width="2.6"></polyline>
+      <g fill="#b58900">
+        <circle cx="740" cy="681" r="3.4"></circle><circle cx="947" cy="681" r="3.4"></circle><circle cx="1153" cy="681" r="3.4"></circle><circle cx="1360" cy="681" r="3.4"></circle>
+      </g>
+      <text x="1372" y="685" font-family="ui-monospace, monospace" font-size="13" font-weight="700" fill="#8a6800">top-10</text>
+
+      
+      <rect x="55" y="788" width="1490" height="78" fill="#f4efe8"></rect>
+      <rect x="55" y="788" width="6" height="78" fill="#b58900"></rect>
+      <text x="88" y="822" font-family="Source Sans Pro, sans-serif" font-size="20" font-weight="700" fill="#2a1f0a">The pool had the papers. The ranking still did not surface them.</text>
+      <text x="88" y="849" font-family="Source Sans Pro, sans-serif" font-size="16" font-style="italic" fill="#4a3f2a">So the next test is ranking, not pool depth — not a deeper candidate pool.</text>
+    </svg>

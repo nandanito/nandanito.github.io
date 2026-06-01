@@ -15,6 +15,14 @@ share: false
 
 <!--more-->
 
+<figure class="figure">
+  <img src="/images/notes/astrollm-pool-depth.svg"
+       alt="A retrieval pipeline — dense vector search and lexical BM25 feeding a candidate union, RRF fusion, and the top-10 results a reader sees, with a dashed not-yet-built second-stage reranker — shown beside a pool-depth sweep from 50 to 500 candidates per arm. Candidate-union recall climbs from 0.948 to 1.000 while the fused top-10 stays flat at 0.592 and the fused top-50 moves only slightly and non-monotonically.">
+  <figcaption>
+    The pool-depth sweep on the frozen 2,500-abstract index. As the pool deepens from 50 to 500 candidates per arm, the candidate union rises to a perfect 1.000 against the frozen labels, while the fused top-10 a reader sees does not move by a single query — 0.592 at every depth — and the fused top-50 shifts only slightly, and not monotonically. The relevant papers are in the pool; the ranking is what keeps them off the top of the list, which is why the next lever is a second-stage reranker rather than a deeper pool.
+  </figcaption>
+</figure>
+
 ## What I changed
 
 This is the mirror image of the widening experiment. There I changed the corpus and held the method fixed; here I change one number — the per-arm candidate pool depth — and hold the corpus, the embedding, the index, and the fusion code fixed. No re-ingest, no re-embed, no re-index: the 2,500-abstract index from the last note is queried as-is at four depths. The metrics are the ones from [the first note](/writing/notes/label-review-that-lowered-my-score/).

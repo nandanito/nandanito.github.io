@@ -19,6 +19,14 @@ Before running the ablation on my retrieval pilot, I wrote down three prediction
 
 The obvious question — which arm wins Recall@10 — has a numerical answer and no defensible one. Across the same twenty-nine hand-reviewed queries from [the previous note](/writing/notes/label-review-that-lowered-my-score/), where Recall@10, MRR and reciprocal-rank fusion are defined, dense search has the highest Recall@10 at 0.724 and the hybrid the lowest at 0.690. But the paired-difference intervals reported in the ablation all cross zero[^ci]: dense over hybrid is +0.034, with an interval from −0.069 to +0.121. The two metrics do not even agree on direction — the hybrid is lowest on Recall@10 and highest on MRR, and that gap is within noise too. At twenty-nine queries there is no ordering to report.
 
+<figure class="figure">
+  <img src="/images/notes/recall-forest-within-noise.svg"
+       alt="Forest plot of pairwise Recall@10 differences over 29 queries with 95% bootstrap confidence intervals. Dense minus hybrid is +0.034 and lexical minus hybrid is +0.023; both intervals straddle the zero line.">
+  <figcaption>
+    Pairwise Recall@10 differences on the 500-abstract pilot, 29 queries, with 95% paired-difference bootstrap intervals (10,000 resamples, seed 20260531). Dense edges hybrid by +0.034 and lexical edges hybrid by +0.023, but every interval crosses zero — at this sample size the aggregate ranking of the three arms is within noise, which is why the decision below rests on the findings that survive it rather than on which arm sits highest.
+  </figcaption>
+</figure>
+
 My three predictions were that lexical search would beat the hybrid on queries with one strong single-arm answer, that dense would beat lexical on broad topic questions, and that the hybrid would win on average while losing on the tails. The middle one held in direction only — dense edged lexical on the broad queries, 0.625 to 0.583, well inside its interval. The "wins on average" prediction is exactly the averaged claim this sample cannot settle. The first prediction is the one that survived, and it survived as a single query.
 
 ## Two results that survive a small sample
