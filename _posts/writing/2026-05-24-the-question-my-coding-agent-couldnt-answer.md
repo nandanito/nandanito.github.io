@@ -291,7 +291,7 @@ standing on its own but building on the last.
 The gap, why it's harder than it looks, and the case for naming the
 missing piece.
 
-**Part 2: How Lodestar records what an agent believed.** A walk
+**[Part 2](/writing/how-lodestar-records-what-an-agent-believed/): How Lodestar records what an agent believed.** A walk
 through the architecture I'm building to fill the gap — not as a
 finished product but as a worked-through sketch with code that runs.
 It separates the lifecycle of any remembered information into four
@@ -301,7 +301,7 @@ can be replayed and audited. I'll show the data structures, the
 rules for promoting claims to beliefs, and the kind of audit trail
 that comes out the other end.
 
-**Part 3: What five rounds of adversarial review taught me about my
+**[Part 3](/writing/what-five-rounds-of-adversarial-review-taught-me-about-my-own-design/): What five rounds of adversarial review taught me about my
 own design.** A reflection on the review process I ran on Lodestar's
 architecture — pushing the design against a sceptical reviewer
 across five rounds, watching what survived, what got rebuilt, and
