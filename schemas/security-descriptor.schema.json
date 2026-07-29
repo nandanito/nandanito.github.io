@@ -1,0 +1,440 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zksdk.com/schemas/security-descriptor.schema.json",
+  "title": "PQ-zkSDK Security Descriptor",
+  "description": "Machine-readable cryptographic provenance record for a zkSDK primitive. Consumed by @zksdk/pq-audit, compliance reports, and GRC integrations. Hybrid primitives declare BOTH halves machine-readably: the classical half in classical_component, the PQ half in pq_component. The audit tool reads classical exposure from classical_component — never from prose notes.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "primitive",
+    "mode",
+    "assumption_family",
+    "classical_component",
+    "pq_component",
+    "classical_security_bits",
+    "quantum_security_bits",
+    "fips_conformance",
+    "status",
+    "last_reviewed"
+  ],
+  "properties": {
+    "primitive": {
+      "type": "string",
+      "description": "Package + primitive identifier, e.g. '@zksdk/e2e-encryption-secp256k1-pq'.",
+      "minLength": 1
+    },
+    "mode": {
+      "type": "string",
+      "enum": ["hybrid", "classical", "pq-only"],
+      "description": "Active cryptographic mode. Hybrid is the default for kit primitives."
+    },
+    "assumption_family": {
+      "type": "string",
+      "enum": ["pairing", "dlog", "hash", "lattice", "hybrid", "unknown"],
+      "description": "Underlying hardness assumption of the primitive as a whole. 'hybrid' means a combination that survives if one family breaks. A descriptor whose overall family is 'pairing' or 'dlog' is Shor-broken and must declare quantum_security_bits: 0."
+    },
+    "classical_component": {
+      "type": "object",
+      "description": "The classical half of the primitive. All fields 'none' in pq-only mode. Machine-readable so the audit tool can inventory classical (Shor-exposed) surface without parsing notes.",
+      "additionalProperties": false,
+      "required": ["kem", "signature", "proof_system"],
+      "properties": {
+        "kem": {
+          "type": "string",
+          "enum": ["none", "x25519", "ecdh_secp256k1"]
+        },
+        "signature": {
+          "type": "string",
+          "enum": ["none", "ed25519", "ecdsa_secp256k1"]
+        },
+        "proof_system": {
+          "type": "string",
+          "enum": ["none", "groth16", "plonk"]
+        }
+      }
+    },
+    "pq_component": {
+      "type": "object",
+      "description": "The post-quantum (or Grover-only, hash-based) half of the primitive. All fields 'none' in classical mode. FN-DSA (Falcon) is intentionally absent until FIPS 206 is finalized.",
+      "additionalProperties": false,
+      "required": ["kem", "signature", "proof_system"],
+      "properties": {
+        "kem": {
+          "type": "string",
+          "enum": ["none", "ml_kem_512", "ml_kem_768", "ml_kem_1024"]
+        },
+        "signature": {
+          "type": "string",
+          "enum": [
+            "none",
+            "ml_dsa_44",
+            "ml_dsa_65",
+            "ml_dsa_87",
+            "slh_dsa_sha2_128s",
+            "slh_dsa_sha2_128f",
+            "slh_dsa_shake_128s",
+            "slh_dsa_shake_128f"
+          ]
+        },
+        "proof_system": {
+          "type": "string",
+          "enum": ["none", "stark"]
+        }
+      }
+    },
+    "wrapper": {
+      "type": "string",
+      "enum": ["none", "groth16_bn254", "recursive_stark", "hybrid_classical_pq"],
+      "default": "none",
+      "description": "NOTE: a groth16_bn254 wrapper around a PQ proof makes on-chain soundness classical-only — the descriptor must not claim PQ soundness for the wrapped verification path."
+    },
+    "fiat_shamir_hash": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["poseidon", "keccak256", "sha256", "sha3_256", "shake128", "shake256", "blake2s", "none"]
+      },
+      "default": []
+    },
+    "classical_security_bits": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Estimated cost of the best classical attack, in bits. Name the metric and the component it comes from in notes (e.g. 'floor of the two components')."
+    },
+    "quantum_security_bits": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Estimated post-quantum security in bits. MUST be 0 for anything whose overall assumption family is Shor-broken (ECDLP, DLP, pairings). For hash-based schemes, reflect the Grover-reduced margin. A nonzero value requires a genuine PQ or hash basis (enforced below). Name the metric in notes."
+    },
+    "trusted_setup": {
+      "type": "string",
+      "enum": ["none", "universal_ptau", "per_circuit_phase2", "hybrid"],
+      "default": "none"
+    },
+    "onchain_verifier": {
+      "type": "string",
+      "enum": ["none", "ethereum_l1_groth16", "ethereum_l1_stark", "starknet", "l2_native", "offchain_only"],
+      "default": "none"
+    },
+    "onchain_soundness": {
+      "type": "string",
+      "enum": ["none", "classical_only", "hybrid_pq"],
+      "default": "none",
+      "description": "What the on-chain verification path actually enforces. 'classical_only' when only the classical proof (e.g. Groth16) is verified on-chain — regardless of what is verified off-chain. 'hybrid_pq' requires a PQ-sound proof actually verified on-chain. Commitments to off-chain verification results do NOT count as hybrid_pq."
+    },
+    "fips_conformance": {
+      "type": "array",
+      "description": "Algorithm-level conformance to the named FIPS, verified via NIST test vectors in CI. Use ['none'] if not verified — regardless of which library is used. IMPORTANT: this asserts algorithm conformance ONLY. It does NOT assert FIPS 140-3 / CMVP module validation; no package in this kit is a validated cryptographic module, and entities with validated-module obligations cannot discharge them with this kit. Generated reports must carry this disclaimer.",
+      "items": {
+        "type": "string",
+        "enum": ["fips_203", "fips_204", "fips_205", "none"]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "nist_security_category": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 5,
+      "description": "NIST security category (1-5) of the PQ component's parameter set, per FIPS 203/204/205. NIST assigns categories, not single bit numbers — report the category alongside any conservative bit estimate, and name the metric behind the bits in notes."
+    },
+    "cavp_validation": {
+      "type": "string",
+      "default": "none",
+      "description": "CAVP algorithm certificate ID if the implementation holds one; 'none' otherwise. Distinct from passing KATs in CI (fips_conformance) and from CMVP module validation."
+    },
+    "cmvp_validation": {
+      "type": "string",
+      "default": "none",
+      "description": "FIPS 140-3 CMVP module certificate ID; 'none' otherwise. No kit package is a validated module."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["production", "experimental", "research", "deprecated"],
+      "description": "Maturity. Anything without a third-party audit is 'experimental' at most, never 'production'."
+    },
+    "last_reviewed": {
+      "type": "string",
+      "format": "date",
+      "description": "When these claims were last checked against current cryptanalysis. A stale date is itself a signal."
+    },
+    "notes": {
+      "type": "string",
+      "description": "Caveats — especially anything that downgrades confidence in the numeric claims, and the metric behind each *_security_bits value."
+    }
+  },
+  "allOf": [
+    {
+      "$comment": "'none' in fips_conformance is exclusive — it cannot appear alongside a real conformance claim.",
+      "if": {
+        "properties": { "fips_conformance": { "contains": { "const": "none" } } },
+        "required": ["fips_conformance"]
+      },
+      "then": {
+        "properties": { "fips_conformance": { "maxItems": 1 } }
+      }
+    },
+    {
+      "$comment": "A fips_203 claim requires an ML-KEM in the PQ component.",
+      "if": {
+        "properties": { "fips_conformance": { "contains": { "const": "fips_203" } } },
+        "required": ["fips_conformance"]
+      },
+      "then": {
+        "properties": {
+          "pq_component": {
+            "properties": { "kem": { "enum": ["ml_kem_512", "ml_kem_768", "ml_kem_1024"] } }
+          }
+        }
+      }
+    },
+    {
+      "$comment": "A fips_204 claim requires an ML-DSA in the PQ component.",
+      "if": {
+        "properties": { "fips_conformance": { "contains": { "const": "fips_204" } } },
+        "required": ["fips_conformance"]
+      },
+      "then": {
+        "properties": {
+          "pq_component": {
+            "properties": { "signature": { "enum": ["ml_dsa_44", "ml_dsa_65", "ml_dsa_87"] } }
+          }
+        }
+      }
+    },
+    {
+      "$comment": "A fips_205 claim requires an SLH-DSA in the PQ component.",
+      "if": {
+        "properties": { "fips_conformance": { "contains": { "const": "fips_205" } } },
+        "required": ["fips_conformance"]
+      },
+      "then": {
+        "properties": {
+          "pq_component": {
+            "properties": {
+              "signature": {
+                "enum": ["slh_dsa_sha2_128s", "slh_dsa_sha2_128f", "slh_dsa_shake_128s", "slh_dsa_shake_128f"]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "$comment": "Classical mode carries no active PQ component.",
+      "if": {
+        "properties": { "mode": { "const": "classical" } },
+        "required": ["mode"]
+      },
+      "then": {
+        "properties": {
+          "pq_component": {
+            "properties": {
+              "kem": { "const": "none" },
+              "signature": { "const": "none" },
+              "proof_system": { "const": "none" }
+            }
+          }
+        }
+      }
+    },
+    {
+      "$comment": "pq-only mode carries no active classical component.",
+      "if": {
+        "properties": { "mode": { "const": "pq-only" } },
+        "required": ["mode"]
+      },
+      "then": {
+        "properties": {
+          "classical_component": {
+            "properties": {
+              "kem": { "const": "none" },
+              "signature": { "const": "none" },
+              "proof_system": { "const": "none" }
+            }
+          }
+        }
+      }
+    },
+    {
+      "$comment": "Hybrid mode requires a real algorithm on BOTH sides — a 'hybrid' of one component is a mislabel.",
+      "if": {
+        "properties": { "mode": { "const": "hybrid" } },
+        "required": ["mode"]
+      },
+      "then": {
+        "properties": {
+          "classical_component": { "$ref": "#/$defs/activeComponent" },
+          "pq_component": { "$ref": "#/$defs/activeComponent" }
+        }
+      }
+    },
+    {
+      "$comment": "A Groth16 L1 verifier enforces classical soundness only — the descriptor must say so.",
+      "if": {
+        "properties": { "onchain_verifier": { "const": "ethereum_l1_groth16" } },
+        "required": ["onchain_verifier"]
+      },
+      "then": {
+        "properties": { "onchain_soundness": { "const": "classical_only" } },
+        "required": ["onchain_soundness"]
+      }
+    },
+    {
+      "$comment": "Shor-broken assumption families must declare zero quantum security, in every mode.",
+      "if": {
+        "properties": { "assumption_family": { "enum": ["pairing", "dlog"] } },
+        "required": ["assumption_family"]
+      },
+      "then": {
+        "properties": { "quantum_security_bits": { "const": 0 } }
+      }
+    },
+    {
+      "$comment": "A nonzero quantum claim requires a genuine basis: a hash assumption family, or an active PQ component. (This replaces the old rule that MANDATED quantum_security_bits >= 1 from mode alone, which could force a false claim.)",
+      "if": {
+        "properties": { "quantum_security_bits": { "minimum": 1 } },
+        "required": ["quantum_security_bits"]
+      },
+      "then": {
+        "anyOf": [
+          {
+            "properties": { "assumption_family": { "const": "hash" } },
+            "required": ["assumption_family"]
+          },
+          {
+            "properties": { "pq_component": { "$ref": "#/$defs/activeComponent" } },
+            "required": ["pq_component"]
+          }
+        ]
+      }
+    },
+    {
+      "$comment": "An active classical component with NO PQ component is dlog/pairing cryptography and must say so (which in turn forces quantum_security_bits: 0 above).",
+      "if": {
+        "properties": {
+          "classical_component": { "$ref": "#/$defs/activeComponent" },
+          "pq_component": { "not": { "$ref": "#/$defs/activeComponent" } }
+        },
+        "required": ["classical_component", "pq_component"]
+      },
+      "then": {
+        "properties": { "assumption_family": { "enum": ["dlog", "pairing"] } }
+      }
+    },
+    {
+      "$comment": "A groth16_bn254 wrapper makes on-chain soundness classical-only: the wrapped verification rests on BN254 pairing (Shor-broken). It must NOT claim onchain_soundness: hybrid_pq.",
+      "if": {
+        "properties": { "wrapper": { "const": "groth16_bn254" } },
+        "required": ["wrapper"]
+      },
+      "then": {
+        "properties": { "onchain_soundness": { "not": { "const": "hybrid_pq" } } }
+      }
+    },
+    {
+      "$comment": "onchain_soundness: hybrid_pq requires a PQ-sound proof ACTUALLY verified on-chain — an active PQ (STARK) proof system AND an on-chain verifier that checks it (a STARK verifier). offchain_only, a Groth16 verifier, or 'none' can never be hybrid_pq; a commitment to an off-chain result does not count.",
+      "if": {
+        "properties": { "onchain_soundness": { "const": "hybrid_pq" } },
+        "required": ["onchain_soundness"]
+      },
+      "then": {
+        "properties": {
+          "pq_component": {
+            "properties": { "proof_system": { "const": "stark" } },
+            "required": ["proof_system"]
+          },
+          "onchain_verifier": { "enum": ["ethereum_l1_stark", "starknet"] }
+        },
+        "required": ["onchain_verifier"]
+      }
+    },
+    {
+      "$comment": "ML-KEM-512 is NIST Category 1: cap declared category at 1 and quantum_security_bits at a conservative 128 (AES-128-comparable). Prevents category/bit overclaims on a real PQ primitive.",
+      "if": {
+        "properties": { "pq_component": { "properties": { "kem": { "const": "ml_kem_512" } }, "required": ["kem"] } },
+        "required": ["pq_component"]
+      },
+      "then": {
+        "properties": { "nist_security_category": { "maximum": 1 }, "quantum_security_bits": { "maximum": 128 } }
+      }
+    },
+    {
+      "$comment": "ML-KEM-768 is NIST Category 3: cap category at 3 and quantum_security_bits at a conservative 192 (AES-192-comparable).",
+      "if": {
+        "properties": { "pq_component": { "properties": { "kem": { "const": "ml_kem_768" } }, "required": ["kem"] } },
+        "required": ["pq_component"]
+      },
+      "then": {
+        "properties": { "nist_security_category": { "maximum": 3 }, "quantum_security_bits": { "maximum": 192 } }
+      }
+    },
+    {
+      "$comment": "ML-KEM-1024 is NIST Category 5: cap category at 5 and quantum_security_bits at a conservative 256 (AES-256-comparable).",
+      "if": {
+        "properties": { "pq_component": { "properties": { "kem": { "const": "ml_kem_1024" } }, "required": ["kem"] } },
+        "required": ["pq_component"]
+      },
+      "then": {
+        "properties": { "nist_security_category": { "maximum": 5 }, "quantum_security_bits": { "maximum": 256 } }
+      }
+    },
+    {
+      "$comment": "ML-DSA-44 is NIST Category 2: cap category at 2 and quantum_security_bits at a conservative 128 (tracks the ~128-bit target of the rest of the stack; THREAT-MODEL §4.1).",
+      "if": {
+        "properties": { "pq_component": { "properties": { "signature": { "const": "ml_dsa_44" } }, "required": ["signature"] } },
+        "required": ["pq_component"]
+      },
+      "then": {
+        "properties": { "nist_security_category": { "maximum": 2 }, "quantum_security_bits": { "maximum": 128 } }
+      }
+    },
+    {
+      "$comment": "ML-DSA-65 is NIST Category 3: cap category at 3 and quantum_security_bits at a conservative 192.",
+      "if": {
+        "properties": { "pq_component": { "properties": { "signature": { "const": "ml_dsa_65" } }, "required": ["signature"] } },
+        "required": ["pq_component"]
+      },
+      "then": {
+        "properties": { "nist_security_category": { "maximum": 3 }, "quantum_security_bits": { "maximum": 192 } }
+      }
+    },
+    {
+      "$comment": "ML-DSA-87 is NIST Category 5: cap category at 5 and quantum_security_bits at a conservative 256.",
+      "if": {
+        "properties": { "pq_component": { "properties": { "signature": { "const": "ml_dsa_87" } }, "required": ["signature"] } },
+        "required": ["pq_component"]
+      },
+      "then": {
+        "properties": { "nist_security_category": { "maximum": 5 }, "quantum_security_bits": { "maximum": 256 } }
+      }
+    },
+    {
+      "$comment": "SLH-DSA-128 (SHA2 or SHAKE, s or f) is NIST Category 1: cap category at 1 and quantum_security_bits at a conservative 128. (Hash-based: the Grover-reduced margin lives here, and the parameter sets are the 128-bit family.)",
+      "if": {
+        "properties": {
+          "pq_component": {
+            "properties": {
+              "signature": { "enum": ["slh_dsa_sha2_128s", "slh_dsa_sha2_128f", "slh_dsa_shake_128s", "slh_dsa_shake_128f"] }
+            },
+            "required": ["signature"]
+          }
+        },
+        "required": ["pq_component"]
+      },
+      "then": {
+        "properties": { "nist_security_category": { "maximum": 1 }, "quantum_security_bits": { "maximum": 128 } }
+      }
+    }
+  ],
+  "$defs": {
+    "activeComponent": {
+      "$comment": "At least one of kem / signature / proof_system is not 'none'.",
+      "anyOf": [
+        { "properties": { "kem": { "not": { "const": "none" } } }, "required": ["kem"] },
+        { "properties": { "signature": { "not": { "const": "none" } } }, "required": ["signature"] },
+        { "properties": { "proof_system": { "not": { "const": "none" } } }, "required": ["proof_system"] }
+      ]
+    }
+  }
+}

@@ -84,6 +84,14 @@ collections:
   archive:
     output: true
     permalink: /archive/:name/
+  # Interim mirror of the PQ-zkSDK Compliance Kit docs, staged here until the
+  # pages go live under zksdk.com/docs/. GENERATED — do not edit
+  # _pq-readiness/*.md by hand; regenerate from the kit repo with:
+  #   bun run scripts/render-jekyll.ts --out <this site>
+  # Retire this collection (and /schemas/) once upstream hosts them.
+  pq-readiness:
+    output: true
+    permalink: /pq-readiness/:name/
 
 defaults:
   - scope:
@@ -91,6 +99,16 @@ defaults:
       type: archive
     values:
       layout: archived
+      sitemap: false
+      noindex: true
+  # Kept out of search and the sitemap on purpose: this is an interim mirror of
+  # documentation whose canonical home will be zksdk.com/docs/. Letting a
+  # personal-site copy rank as the authoritative source for zkSDK compliance
+  # guidance would be misleading, and would compete with the real pages later.
+  - scope:
+      path: ""
+      type: pq-readiness
+    values:
       sitemap: false
       noindex: true
 

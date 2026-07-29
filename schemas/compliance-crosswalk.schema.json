@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zksdk.com/schemas/compliance-crosswalk.schema.json",
+  "title": "PQ-zkSDK Compliance Crosswalk Row",
+  "description": "One control-granular mapping row: what a specific framework control requires, who it binds, what the kit actually provides, what evidence an assessor can inspect, and the honest gap. Consumed by @zksdk/pq-audit report generation. Verb discipline throughout: supports / provides evidence for — never satisfies / complies / certifies.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "framework",
+    "framework_version",
+    "control_id",
+    "applicability",
+    "requirement_summary",
+    "kit_provides",
+    "evidence_artifact",
+    "gap",
+    "readiness_statement",
+    "last_reviewed"
+  ],
+  "properties": {
+    "framework": {
+      "type": "string",
+      "enum": ["cnsa_2_0", "fips_203", "fips_204", "fips_205", "dora", "nis2", "iso_27001", "soc_2"]
+    },
+    "framework_version": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Exact instrument/version, e.g. 'CNSA 2.0 FAQ v2.1 (Dec 2024)', 'Regulation (EU) 2022/2554 + CDR (EU) 2024/1774', 'ISO/IEC 27001:2022', 'AICPA TSC 2017 (rev. 2022)'. Frameworks evolve — a row without a pinned version is unreviewable."
+    },
+    "control_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Specific control/article/clause, e.g. 'Art. 9(2)', 'CDR 2024/1774 Art. 6', 'Art. 21(2)(h)', 'A.8.24', 'CC6.1'. Never a bare framework name."
+    },
+    "applicability": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Who is actually bound — e.g. 'NSS and NSS vendors only; not commercial entities', 'EU financial entities incl. MiCA-authorized CASPs', 'essential and important entities in Annex I/II sectors, subject to size thresholds and national implementation'. If adopter scope is unknown, reports output not-assessed / out-of-scope-candidate, never an asserted scope."
+    },
+    "requirement_summary": {
+      "type": "string",
+      "minLength": 1,
+      "description": "What the control requires, in one or two sentences, faithful to the instrument's text."
+    },
+    "kit_provides": {
+      "type": "string",
+      "minLength": 1,
+      "description": "What the kit actually contributes toward the entity's obligation. Verbs: supports / provides evidence for."
+    },
+    "evidence_artifact": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The concrete inspectable artifact: a descriptor field, an audit-report section, a CI log, a signed access-trail entry."
+    },
+    "gap": {
+      "type": "string",
+      "minLength": 1,
+      "description": "What the control needs that the kit does not produce (organizational controls, policies, validated modules, auditor judgment). 'none' must be justified — an empty gap claim is itself suspect."
+    },
+    "readiness_statement": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Honest posture summary for the report. Readiness, not requirement; evidence input, not satisfaction."
+    },
+    "last_reviewed": {
+      "type": "string",
+      "format": "date",
+      "description": "When this mapping was last checked against the current text of the instrument."
+    }
+  }
+}
