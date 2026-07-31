@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 690" width="100%" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="slhTitle slhDesc" style="max-width:780px;height:auto;background:#ffffff" font-family="&#39;Source Sans Pro&#39;, ui-sans-serif, system-ui, -apple-system, &#39;Segoe UI&#39;, Roboto, Helvetica, Arial, sans-serif">
+<title id="slhTitle">SLH-DSA structure</title>
+<desc id="slhDesc">SLH-DSA structure diagram: three stacked XMSS trees forming the hypertree, with WOTS+ one-time signatures at the leaves and a FORS tree branching off for message signing. The root of the top XMSS tree is the public key. Downward arrows between consecutive trees are labelled auth path, and an ellipsis beside the middle tree indicates that the number of layers is a parameter rather than fixed at three. Along the base of the bottom tree sits a row of WOTS+ one-time signatures; a dashed connector from one of those leaves, annotated selected by message hash, leads to a separate bounded region labelled FORS, Forest Of Random Subsets, which signs the message hash and contains k trees of t leaves each.</desc>
+<defs>
+<marker id="slhArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#34374c"></path></marker>
+<marker id="slhArrowGold" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#b58900"></path></marker>
+<marker id="slhTick" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#6e6e6e"></path></marker>
+</defs>
+<rect x="0" y="0" width="780" height="690" fill="#ffffff"></rect>
+<text x="24" y="44" font-size="25" font-weight="700" fill="#1a1a1a" letter-spacing="-0.01em">SLH-DSA structure</text>
+<text x="24" y="70" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, &#39;Liberation Mono&#39;, monospace" font-size="13.5" fill="#6e6e6e">A hypertree of XMSS trees, with FORS for message signing</text>
+<line x1="24" y1="88" x2="756" y2="88" stroke="#e8e8e8" stroke-width="1"></line>
+<g>
+<text x="200" y="118" text-anchor="middle" font-size="12.5" fill="#555555">root = public key</text>
+<line x1="200" y1="124" x2="200" y2="132" stroke="#6e6e6e" stroke-width="1" marker-end="url(#slhTick)"></line>
+<path d="M 200 134 L 258 216 L 142 216 Z" fill="#fafafa" stroke="#34374c" stroke-width="1.25" stroke-linejoin="round"></path>
+<text x="200" y="206" text-anchor="middle" font-size="13" fill="#34374c">XMSS</text>
+<line x1="200" y1="216" x2="200" y2="254" stroke="#34374c" stroke-width="1.25" marker-end="url(#slhArrow)"></line>
+<text x="214" y="240" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, &#39;Liberation Mono&#39;, monospace" font-size="11" fill="#6e6e6e">auth path</text>
+<path d="M 200 256 L 258 338 L 142 338 Z" fill="#fafafa" stroke="#34374c" stroke-width="1.25" stroke-linejoin="round"></path>
+<text x="200" y="328" text-anchor="middle" font-size="13" fill="#34374c">XMSS</text>
+<g fill="#9a9a9a" stroke="none"><circle cx="306" cy="286" r="2"></circle><circle cx="306" cy="296" r="2"></circle><circle cx="306" cy="306" r="2"></circle></g>
+<text x="324" y="292" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, &#39;Liberation Mono&#39;, monospace" font-size="10.5" fill="#6e6e6e">d layers is</text>
+<text x="324" y="306" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, &#39;Liberation Mono&#39;, monospace" font-size="10.5" fill="#6e6e6e">a parameter</text>
+<line x1="200" y1="338" x2="200" y2="376" stroke="#34374c" stroke-width="1.25" marker-end="url(#slhArrow)"></line>
+<text x="214" y="362" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, &#39;Liberation Mono&#39;, monospace" font-size="11" fill="#6e6e6e">auth path</text>
+<path d="M 200 378 L 295 498 L 105 498 Z" fill="#fafafa" stroke="#34374c" stroke-width="1.25" stroke-linejoin="round"></path>
+<text x="200" y="480" text-anchor="middle" font-size="13" fill="#34374c">XMSS</text>
+<g fill="#ffffff" stroke="#34374c" stroke-width="1.1">
+<rect x="108" y="498" width="14" height="14"></rect>
+<rect x="142" y="498" width="14" height="14"></rect>
+<rect x="176" y="498" width="14" height="14"></rect>
+<rect x="210" y="498" width="14" height="14"></rect>
+<rect x="244" y="498" width="14" height="14"></rect>
+<rect x="278" y="498" width="14" height="14"></rect>
+</g>
+<text x="200" y="534" text-anchor="middle" font-size="13" fill="#34374c">WOTS+ one-time signatures</text>
+</g>
+<g>
+<text x="416" y="456" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, &#39;Liberation Mono&#39;, monospace" font-size="10" fill="#6e5500">selected by message hash</text>
+<path d="M 293 505 C 332 505, 352 484, 412 481" fill="none" stroke="#b58900" stroke-width="1.4" stroke-dasharray="4 3" marker-end="url(#slhArrowGold)"></path>
+<rect x="420" y="372" width="336" height="176" fill="#ffffff" stroke="#b58900" stroke-width="1.5"></rect>
+<text x="444" y="402" font-size="15" font-weight="700" fill="#6e5500">FORS — Forest Of Random Subsets</text>
+<text x="444" y="422" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, &#39;Liberation Mono&#39;, monospace" font-size="11.5" fill="#6e6e6e">signs the message hash</text>
+<line x1="444" y1="436" x2="732" y2="436" stroke="#e8e8e8" stroke-width="1"></line>
+<g fill="none" stroke="#b58900" stroke-width="1.1" stroke-linejoin="round">
+<path d="M 458.4 466 L 468.4 494 L 448.4 494 Z"></path>
+<path d="M 487.2 466 L 497.2 494 L 477.2 494 Z"></path>
+<path d="M 516 466 L 526 494 L 506 494 Z"></path>
+<path d="M 544.8 466 L 554.8 494 L 534.8 494 Z"></path>
+<path d="M 573.6 466 L 583.6 494 L 563.6 494 Z"></path>
+<path d="M 602.4 466 L 612.4 494 L 592.4 494 Z"></path>
+<path d="M 631.2 466 L 641.2 494 L 621.2 494 Z"></path>
+<path d="M 660 466 L 670 494 L 650 494 Z"></path>
+<path d="M 688.8 466 L 698.8 494 L 678.8 494 Z"></path>
+<path d="M 717.6 466 L 727.6 494 L 707.6 494 Z"></path>
+</g>
+<text x="444" y="520" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, &#39;Liberation Mono&#39;, monospace" font-size="11" fill="#6e6e6e">k trees, t leaves each</text>
+</g>
+<line x1="24" y1="584" x2="756" y2="584" stroke="#e8e8e8" stroke-width="1"></line>
+<g font-size="13" fill="#555555">
+<text x="24" y="608">Signature = FORS signature + WOTS+ signature + auth paths through every XMSS layer.</text>
+<text x="24" y="628">Verification reconstructs the root and checks it against the public key.</text>
+<text x="24" y="648">Stateless: no per-signing state to maintain.</text>
+</g>
+</svg>

@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 640" width="100%" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="xwTitle xwDesc" style="max-width:880px;height:auto;background:#ffffff" font-family="&#39;Source Sans Pro&#39;, ui-sans-serif, system-ui, -apple-system, &#39;Segoe UI&#39;, Roboto, Helvetica, Arial, sans-serif">
+<title id="xwTitle">X-Wing hybrid KEM</title>
+<desc id="xwDesc">X-Wing hybrid KEM: X25519 shared secret and ML-KEM-768 shared secret both feed into SHA3-256, along with both X25519 public keys and a domain-separation label, producing a single hybrid shared secret. The classical branch is an ECDH on Curve25519 producing a 32-byte ss_X; the post-quantum branch is the FIPS 203 module-lattice KEM ML-KEM-768 producing a 32-byte ss_M. The hash input is structured and listed in order: the domain-separation label backslash X-Wing, then ss_M, ss_X, the ephemeral public key pk_X and the long-term public key pk_S. The single output is a 32-byte hybrid shared secret.</desc>
+<defs>
+<marker id="xwArrowCool" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#34374c"></path></marker>
+<marker id="xwArrowWarm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#4a3f2a"></path></marker>
+<marker id="xwArrowGold" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#b58900"></path></marker>
+</defs>
+<rect x="0" y="0" width="880" height="640" fill="#ffffff"></rect>
+<text x="24" y="44" font-size="25" font-weight="700" fill="#1a1a1a" letter-spacing="-0.01em">X-Wing hybrid KEM</text>
+<text x="24" y="70" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, &#39;Liberation Mono&#39;, monospace" font-size="13.5" fill="#6e6e6e">Secure if either X25519 or ML-KEM-768 is unbroken</text>
+<line x1="24" y1="88" x2="856" y2="88" stroke="#e8e8e8" stroke-width="1"></line>
+<g>
+<rect x="64" y="112" width="310" height="132" fill="#f1f2f5" stroke="#34374c" stroke-width="1.25"></rect>
+<rect x="64" y="112" width="3" height="132" fill="#34374c" stroke="none"></rect>
+<text x="86" y="140" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, &#39;Liberation Mono&#39;, monospace" font-size="10.5" fill="#6e6e6e" letter-spacing="0.14em">CLASSICAL</text>
+<text x="86" y="169" font-size="20" font-weight="700" fill="#1a1a1a">X25519</text>
+<text x="86" y="191" font-size="13" fill="#555555">ECDH on Curve25519</text>
+<line x1="86" y1="206" x2="352" y2="206" stroke="#d9dce3" stroke-width="1"></line>
+<text x="86" y="229" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, &#39;Liberation Mono&#39;, monospace" font-size="14" font-weight="700" fill="#34374c">ss_X</text>
+<text x="136" y="229" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, &#39;Liberation Mono&#39;, monospace" font-size="11.5" fill="#777777">32 bytes</text>
+</g>
+<g>
+<rect x="506" y="112" width="310" height="132" fill="#f5f1ea" stroke="#4a3f2a" stroke-width="1.25"></rect>
+<rect x="506" y="112" width="3" height="132" fill="#4a3f2a" stroke="none"></rect>
+<text x="528" y="140" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, &#39;Liberation Mono&#39;, monospace" font-size="10.5" fill="#6e6e6e" letter-spacing="0.14em">POST-QUANTUM</text>
+<text x="794" y="140" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, &#39;Liberation Mono&#39;, monospace" font-size="10.5" fill="#6e6e6e">FIPS 203</text>
+<text x="528" y="169" font-size="20" font-weight="700" fill="#1a1a1a">ML-KEM-768</text>
+<text x="528" y="191" font-size="13" fill="#555555">Module-lattice KEM</text>
+<line x1="528" y1="206" x2="794" y2="206" stroke="#e0d9cc" stroke-width="1"></line>
+<text x="528" y="229" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, &#39;Liberation Mono&#39;, monospace" font-size="14" font-weight="700" fill="#4a3f2a">ss_M</text>
+<text x="578" y="229" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, &#39;Liberation Mono&#39;, monospace" font-size="11.5" fill="#777777">32 bytes</text>
+</g>
+<path d="M 219 244 L 219 274 L 352 274 L 352 294" fill="none" stroke="#34374c" stroke-width="1.4" marker-end="url(#xwArrowCool)"></path>
+<path d="M 661 244 L 661 274 L 528 274 L 528 294" fill="none" stroke="#4a3f2a" stroke-width="1.4" marker-end="url(#xwArrowWarm)"></path>
+<g>
+<rect x="290" y="300" width="300" height="200" fill="#ffffff" stroke="#34374c" stroke-width="2.5"></rect>
+<text x="440" y="332" text-anchor="middle" font-size="20" font-weight="700" fill="#1a1a1a">SHA3-256</text>
+<line x1="312" y1="350" x2="568" y2="350" stroke="#e8e8e8" stroke-width="1"></line>
+<g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, &#39;Liberation Mono&#39;, monospace" font-size="13.5" fill="#1a1a1a">
+<text x="312" y="374">&#34;\X-Wing&#34;</text>
+<text x="312" y="398">ss_M</text>
+<text x="312" y="422">ss_X</text>
+<text x="312" y="446">pk_X</text>
+<text x="312" y="470">pk_S</text>
+</g>
+<g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, &#39;Liberation Mono&#39;, monospace" font-size="10.5" fill="#777777" text-anchor="end">
+<text x="568" y="374">domain separation</text>
+<text x="568" y="446">ephemeral</text>
+<text x="568" y="470">long-term</text>
+</g>
+</g>
+<line x1="440" y1="500" x2="440" y2="532" stroke="#b58900" stroke-width="2" marker-end="url(#xwArrowGold)"></line>
+<g>
+<rect x="290" y="536" width="300" height="72" fill="#ffffff" stroke="#b58900" stroke-width="3"></rect>
+<text x="440" y="568" text-anchor="middle" font-size="18" font-weight="700" fill="#6e5500">Hybrid shared secret</text>
+<text x="440" y="590" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, &#39;Liberation Mono&#39;, monospace" font-size="12" fill="#6e5500">32 bytes</text>
+</g>
+</svg>

@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 650" width="100%" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="tlTitle tlDesc" style="max-width:880px;height:auto;background:#ffffff" font-family="&#39;Source Sans Pro&#39;, ui-sans-serif, system-ui, -apple-system, &#39;Segoe UI&#39;, Roboto, Helvetica, Arial, sans-serif">
+<title id="tlTitle">The two lanes</title>
+<desc id="tlDesc">Two-lane workflow diagram: a single specification, FIPS 205, branches into two paths of equal weight. Lane A covers the standalone library — src, tests, benchmarks, examples, CI and documentation — where AI assistance is permitted and every line is human-reviewed. Lane B covers the reserved upstream-candidate directory, which holds an independent from-scratch second reading of the same specification, is human-authored only, and has a commit-trailer check enforced in CI. There is no connection between the two lanes. Both descend to a single comparison at the bottom: where the two disagree, one of them is wrong.</desc>
+<defs>
+<marker id="tlArrowNeutral" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#555555"></path></marker>
+<marker id="tlArrowA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#34374c"></path></marker>
+<marker id="tlArrowB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#4a3f2a"></path></marker>
+<marker id="tlArrowGold" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#b58900"></path></marker>
+</defs>
+<rect x="0" y="0" width="880" height="650" fill="#ffffff"></rect>
+<text x="24" y="44" font-size="25" font-weight="700" fill="#1a1a1a" letter-spacing="-0.01em">The two lanes</text>
+<text x="24" y="70" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, &#39;Liberation Mono&#39;, monospace" font-size="13.5" fill="#6e6e6e">One specification, two independent derivations</text>
+<line x1="24" y1="88" x2="856" y2="88" stroke="#e8e8e8" stroke-width="1"></line>
+<g>
+<rect x="340" y="112" width="200" height="64" fill="#fafafa" stroke="#555555" stroke-width="2"></rect>
+<text x="440" y="143" text-anchor="middle" font-size="20" font-weight="700" fill="#1a1a1a">FIPS 205</text>
+<text x="440" y="163" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, &#39;Liberation Mono&#39;, monospace" font-size="11" fill="#777777">the specification</text>
+</g>
+<path d="M 440 176 L 440 204" fill="none" stroke="#555555" stroke-width="1.4"></path>
+<path d="M 214 204 L 666 204" fill="none" stroke="#555555" stroke-width="1.4"></path>
+<path d="M 214 204 L 214 232" fill="none" stroke="#34374c" stroke-width="1.4" marker-end="url(#tlArrowA)"></path>
+<path d="M 666 204 L 666 232" fill="none" stroke="#4a3f2a" stroke-width="1.4" marker-end="url(#tlArrowB)"></path>
+<g>
+<rect x="44" y="236" width="340" height="232" fill="#f1f2f5" stroke="#34374c" stroke-width="1.5"></rect>
+<rect x="44" y="236" width="3" height="232" fill="#34374c" stroke="none"></rect>
+<text x="70" y="268" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, &#39;Liberation Mono&#39;, monospace" font-size="10.5" fill="#6e6e6e" letter-spacing="0.14em">LANE A</text>
+<text x="70" y="294" font-size="17" font-weight="700" fill="#1a1a1a">The standalone library</text>
+<line x1="70" y1="312" x2="358" y2="312" stroke="#d9dce3" stroke-width="1"></line>
+<text x="70" y="332" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, &#39;Liberation Mono&#39;, monospace" font-size="10" fill="#6e6e6e" letter-spacing="0.14em">COVERS</text>
+<g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, &#39;Liberation Mono&#39;, monospace" font-size="12.5" fill="#34374c">
+<text x="70" y="352">src/ · tests · benchmarks</text>
+<text x="70" y="372">examples · CI · documentation</text>
+</g>
+<line x1="70" y1="390" x2="358" y2="390" stroke="#d9dce3" stroke-width="1"></line>
+<g fill="#34374c" stroke="none">
+<rect x="70" y="407" width="5" height="5"></rect>
+<rect x="70" y="431" width="5" height="5"></rect>
+</g>
+<g font-size="13.5" fill="#1a1a1a">
+<text x="86" y="412">AI assistance permitted</text>
+<text x="86" y="436">Every line human-reviewed</text>
+</g>
+</g>
+<g>
+<rect x="496" y="236" width="340" height="232" fill="#f5f1ea" stroke="#4a3f2a" stroke-width="1.5"></rect>
+<rect x="496" y="236" width="3" height="232" fill="#4a3f2a" stroke="none"></rect>
+<text x="522" y="268" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, &#39;Liberation Mono&#39;, monospace" font-size="10.5" fill="#6e6e6e" letter-spacing="0.14em">LANE B</text>
+<text x="522" y="294" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, &#39;Liberation Mono&#39;, monospace" font-size="16" font-weight="700" fill="#1a1a1a">upstream-candidate/</text>
+<line x1="522" y1="312" x2="810" y2="312" stroke="#e0d9cc" stroke-width="1"></line>
+<text x="522" y="332" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, &#39;Liberation Mono&#39;, monospace" font-size="10" fill="#6e6e6e" letter-spacing="0.14em">CONTAINS</text>
+<g font-size="13" fill="#4a3f2a">
+<text x="522" y="352">A from-scratch second reading</text>
+<text x="522" y="372">of the same specification</text>
+</g>
+<line x1="522" y1="390" x2="810" y2="390" stroke="#e0d9cc" stroke-width="1"></line>
+<g fill="#4a3f2a" stroke="none">
+<rect x="522" y="407" width="5" height="5"></rect>
+<rect x="522" y="431" width="5" height="5"></rect>
+</g>
+<g font-size="13.5" fill="#1a1a1a">
+<text x="538" y="412">Human-authored only</text>
+<text x="538" y="436">Commit-trailer check enforced in CI</text>
+</g>
+</g>
+<path d="M 214 468 L 214 500 L 440 500" fill="none" stroke="#34374c" stroke-width="1.4"></path>
+<path d="M 666 468 L 666 500 L 440 500" fill="none" stroke="#4a3f2a" stroke-width="1.4"></path>
+<path d="M 440 500 L 440 524" fill="none" stroke="#b58900" stroke-width="2" marker-end="url(#tlArrowGold)"></path>
+<g>
+<rect x="250" y="528" width="380" height="72" fill="#ffffff" stroke="#b58900" stroke-width="3"></rect>
+<text x="440" y="552" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, &#39;Liberation Mono&#39;, monospace" font-size="10" fill="#b58900" letter-spacing="0.14em">COMPARISON</text>
+<text x="440" y="578" text-anchor="middle" font-size="16" font-weight="700" fill="#6e5500">Where the two disagree, one of them is wrong.</text>
+</g>
+<text x="440" y="626" text-anchor="middle" font-size="12.5" font-style="italic" fill="#777777">The comparison is the output — not a shipped artifact.</text>
+</svg>
