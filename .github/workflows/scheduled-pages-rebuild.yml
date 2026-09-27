@@ -1,0 +1,29 @@
+# Publishes future-dated posts on their date.
+#
+# The site is built by GitHub Pages from the gh-pages branch (legacy build),
+# which only rebuilds on push and skips posts dated in the future. This
+# workflow asks Pages to rebuild every morning, so a post committed in advance
+# with a future date goes live on that date without anyone pushing.
+#
+# Scheduled workflows run from the default branch (main), which is why this
+# file lives here and not on gh-pages. GitHub may start a scheduled run late
+# at busy times, so there are two runs; a rebuild with nothing new is harmless.
+name: Scheduled Pages rebuild
+
+on:
+  schedule:
+    - cron: "15 5 * * *"  # 05:15 UTC = 07:15 CEST / 06:15 CET
+    - cron: "45 5 * * *"  # backup run
+  workflow_dispatch:
+
+permissions:
+  pages: write
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Request a GitHub Pages build
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds"
