@@ -1,0 +1,395 @@
+---
+layout: post
+title: "No headroom: what a null result on KX's q plugin actually measured"
+excerpt: "I set out to test whether KX's official Claude Code plugin for q measurably improves a frontier model's q output; on fifteen paired tasks I could not measure any improvement, and the more useful finding is why."
+modified: 2026-09-29
+category: writing
+tags: [q, kdb+, Evaluation, Claude Code, Benchmarks]
+author: nandan
+image:
+  path: /images/posts/no-headroom-kx-q-plugin/linkedin-card.png
+  hero: false
+comments: false
+share: false
+---
+
+*Article 2 of 5 in the [array-thinking-to-q](https://github.com/nandanito/array-thinking-to-q) series.*
+
+---
+
+I set out to answer a narrow question with an experiment instead of an opinion: **does KX's
+official Claude Code plugin for q measurably improve a frontier model's q output?**
+
+The answer, on fifteen paired tasks, is that I could not measure any improvement, and the more
+useful finding is *why* I could not. The comparison never got a chance to run. That is a different
+and more interesting result than "the plugin doesn't help", and the distance between those two
+sentences is most of what this article is about.
+
+<!--more-->
+
+## Why this experiment exists at all
+
+I am writing a curriculum that teaches array thinking through q. The original plan included
+authoring a q skill for Claude Code. Then I found that KX already ships a family of official
+plugins, covering q, PyKX, KDB-X and KDB.AI among others, with their own marketplace and a qlint
+integration.
+
+If you do not use Claude Code: a *plugin* there is a package that can bundle *skills*, agents, hooks
+and tool servers. A skill is a folder of written guidance that the model loads into its context
+when a request looks relevant. It does not change the model; it changes what the model has read
+just before it answers. KX's q plugin, at the commit I tested, was two skills: the q guidance
+itself, and `qlint-snippet`, which runs KX's linter over a piece of q. The guidance is exactly the
+kind this curriculum cares about: write q the way q wants to be written, reach for whole-list
+operations instead of loops, avoid the known traps.
+
+Writing a competing general-purpose q skill would be redundant. But the *learning* objective was
+never "author a skill"; it was "author and evaluate a skill". Evaluation survives the redundancy
+intact. So the deliverable changed from a skill to an independent evaluation of the one that
+already exists, with authoring gated behind the eval finding a gap.
+
+Which means this article was always going to publish whatever came back. That commitment was made
+in the protocol before any data existed, and it is doing real work now.
+
+## Reading the answers: three q idioms in two minutes
+
+*New to q? It is the language of kdb+, a column-oriented time-series database best known in
+finance. [Article 1](https://nandan.me/writing/array-thinking-all-the-way-to-q/) has a one-minute
+primer on array languages. This section is the minimum you need to read the answers below.*
+
+The eval scored answers on *idiomaticity* as well as correctness: not just "does it print the right
+thing" but "is this how q is meant to be written". What that means is easiest to see in the answers
+themselves. All three below are real answers from the eval, and `make verify` runs them.
+
+One task handed the model a `while` loop that built running totals the way most of us learned to:
+an index, an accumulator, an output list, and three updates on every pass. Both conditions threw all
+of it away and wrote this:
+
+```q
+x:5 3 8 1;
+show sums x;
+```
+
+`sums` is a running total over the whole list, and it prints `5 8 16 17`. The loop spelled out
+*how* to walk the list; `sums` names *what* you want from it. The index and the accumulator were
+never part of the problem, only of one way of solving it. That move, from steps to a description
+of the result, is the reflex the whole curriculum is about.
+
+Counting words, from the baseline's answer:
+
+```q
+words:`$(" " vs "the cat sat on the mat the");
+show count each group words;
+```
+
+q reads right to left. `" " vs` splits the string on spaces, `` `$ `` turns the pieces into
+*symbols* (q's interned strings), `group` maps each distinct word to the positions where it occurs,
+and `count each` counts each of those position lists: `the` 3, the others 1. There is no dictionary
+to fill in and no counter to increment; the count falls straight out of the grouping.
+
+And the database side. q has a SQL-like layer, qSQL, that runs over in-memory tables:
+
+```q
+t:([] sym:`AAPL`AAPL`MSFT`AAPL`MSFT; side:`buy`sell`buy`buy`sell)
+show select n:count i by sym,side from t
+```
+
+`i` is the row number, so `count i` counts the rows in each `sym`/`side` group. It returns a small
+keyed table: AAPL buy 2, the other three pairs 1. The imperative instinct here is a loop over rows
+that bumps a counter per key. Both conditions wrote this line character for character.
+
+Keep those three in mind. They are what "idiomatic" looked like in this eval, and the model wrote
+them without any plugin's help, which is most of the story that follows.
+
+## The design, in brief
+
+**Subject:** `q-knowledge@kx-skills`, pinned at commit `8b7040f` (plugin v0.1.0). There is no version
+tag upstream, so the SHA is the pin. What this run actually tested is the q guidance skill.
+`qlint-snippet` needs KX's linter installed locally and a shell to run it, and my harness had
+neither: in Part B the model invoked it four times and the lint never ran. The plugin's self-checking path is
+untested here, and nothing below speaks for it.
+
+> **Dated note, 2026-09-25.** KX has kept shipping since this run. On 14 Aug it bundled a
+> documentation-search MCP server into every plugin in the family and bumped `q-knowledge` to 0.1.1;
+> it has also added new plugins and Codex support. The q skill's own content is **byte-identical** to
+> the pinned commit (I checked the tree hashes). So every number below still describes exactly what I
+> tested, but the plugin you install today also searches KX's documentation, and this eval did not
+> test that. My harness allowed only `Skill`, `Read` and `Glob` (with one leak, below); a re-run would first
+> have to decide whether to let the docs server in.
+
+**Conditions:** A = baseline, no plugin. B = that plugin loaded. Identical prompts, identical
+model (`claude-opus-5`), identical settings, with one exception I found only when an adversarial
+review re-read the raw logs. In three condition-B sessions (tasks 03, 04 and 06), a claude.ai Google
+Drive connector on my account had finished connecting before the session started, and eight of its
+tools were listed in the session's context; in their condition-A twins it was still pending, so the
+three intended tools were all there was. None of those tools was ever called, and all three pairs
+scored identically, so no result turns on it. But those three pairs were not isolated by the plugin
+alone, and I should have pinned the connectors off rather than trusting the tool flag.
+
+**Part A: does it fire?** A skill that never activates is worth zero regardless of content.
+20 prompts: 10 that should fire, 10 adjacent traps that should not (NumPy vectorization, plain
+SQL, BQN trains, `merge_asof` in pandas, "group a JavaScript array by a key").
+
+**Part B: is the output better?** 15 q tasks (translate from Python, write from an English spec,
+fix a deliberately unidiomatic solution), each run under both conditions. Correctness by exact
+golden-file diff. Idiomaticity as a **five-item binary checklist**, never a 1–5 "feel" score,
+because a feel score drifts upward as my own q taste improves while the benchmark stays fixed.
+Every checklist item has to be justifiable against a published source, Q for Mortals or
+code.kx.com, rather than against my preferences. (One item did not live up to that, and it is the
+one that decided the only discordant pair; more below.)
+
+**Decision rule, fixed in advance:** a paired sign test on discordant pairs. Count only the tasks
+where the two conditions differ; the effect is real only if one side takes ≥~80% of them. (Strictly, that is a heuristic in the
+spirit of a sign test rather than an exact one: a two-sided exact sign test cannot reach 5%
+significance with fewer than six discordant pairs, because even 5–0 gives p = 0.0625.)
+
+I want to flag one thing I am *not* claiming. **The scoring was not blinded.** At the time I told
+myself it could not be, because idiomatic q gives away its condition. That was wrong: the saved
+answers are code only, five pairs turned out identical, and relabelling the thirty files with random
+IDs before scoring would have cost minutes. The published-source requirement on every checklist
+item is the defence I did use against evaluator drift. It is weaker than blinding, most of all on
+the one pair that turned on a judgement call. A blinded rescore of the committed answers is the
+cheapest improvement anyone repeating this could make.
+
+## The control that decided whether any of this meant anything
+
+My repository contains `.claude/skills/idiomatic-q/SKILL.md`. It carries anti-loop rules, "prefer
+qSQL over row-wise thinking", and the `aj` sort-discipline gotchas. The root `CLAUDE.md` adds more
+q guidance. The `lessons/` directory is full of verified idiomatic q.
+
+Run the eval with Claude Code from inside that working copy and **condition A is not a baseline.**
+It silently inherits a q idiom skill, which is approximately the thing under test. Both arms get
+treated, the comparison measures nothing, and **the results look completely normal.** That is the
+part that should scare you. A contaminated null and a clean null are the same numbers.
+
+So every one of the 50 sessions ran from an empty scratch directory outside the repository, with
+no `CLAUDE.md` and no `.claude/`, driven headless. I verified it rather than assuming it. The committed
+session logs record what each session loaded: every condition-A session had the same 16 skills,
+none q-related, no project instructions, and specifically no `idiomatic-q`. Every condition-B
+session had the same 16 plus exactly `q-knowledge:q` and `q-knowledge:qlint-snippet`. (When I
+asked a session to list its own skills it said 41. A model's account of its context is not a
+log, which is this article's point in miniature.)
+
+The general form: **when the environment can leak the treatment into the control, that control is a
+property of your harness, not of your analysis.** You cannot add it afterwards, and you cannot
+detect its absence from the output.
+
+<figure>
+  <img src="/images/posts/no-headroom-kx-q-plugin/figure-1-contamination-control.svg" alt="Two panels. Run from inside the repo: its own q skill, CLAUDE.md and lessons leak into both conditions, so both arms are treated and the results look normal. What the eval did: all 50 sessions ran headless from an empty scratch directory with no CLAUDE.md or .claude; the session logs show condition A loaded 16 skills, none q-related, and condition B the same 16 plus exactly q-knowledge:q and q-knowledge:qlint-snippet.">
+  <figcaption>Figure 1. The contamination control lives in the harness, not in the analysis.</figcaption>
+</figure>
+
+## Part A: it fires
+
+**8/10 on should-fire. 9/10 on the traps.**
+
+The two should-fire misses are my instrument's fault, not the plugin's. Both prompts say "fix
+*this* q code" and "convert *this* list comprehension", and my table supplies no code. In an empty
+directory the model searched for a file, found none, and asked me to paste the snippet. It never
+attempted q, so there was nothing for a skill to help with.
+
+I wrote "so really it's 8/8 on the well-formed prompts" in the first draft of this article, and an
+adversarial reviewer was right to call it. **Choosing your denominator after you have seen which
+items missed is the same overfitting my own protocol forbids** when tuning a skill's trigger
+against a test set. I would not have accepted it from the plugin's authors, so I do not get to do
+it in my own favour. Two of my twenty items were malformed. The recall this instrument measured is
+**8/10**. Repairing those prompts makes a *different* test set, and any number off it has to come
+from a fresh run.
+
+The single false positive was "Write a query to fetch users by email", answered entirely in q,
+schema and all. Good q; an answer to a question nobody asked in q. Two caveats keep me from making
+much of it: my harness deliberately strips all ambient context, so `q-knowledge` was the only
+domain skill on the bench, and every trap built to bait a keyword match (`merge_asof`, "group",
+J's rank operator) held firm. The mis-fire came from the *least* q-flavoured prompt in the set.
+
+The reason Part A matters is that it forecloses the easy explanation for what comes next. **In Part
+B the plugin loaded in 14 of 15 runs.** Whatever follows is a finding about an active plugin.
+
+One methodological note that paid for itself immediately. I decided firing **mechanically** (the
+session emitted a `Skill` tool call naming a `q-knowledge` skill, read off the session log) rather
+than by judging whether the answer felt q-flavoured. Good thing: one prompt produced fluent,
+correct q idioms (`xs where p xs`, `a f' b`) with **no skill loaded at all**, and in Part B one
+task matched its plugin-armed twin without ever invoking the plugin. Eyeballing would have scored
+both as fires. **If your eval measures activation, measure the tool call.**
+
+## Part B: the ceiling
+
+Generation and scoring were separate sittings: all 30 answers collected and saved verbatim first,
+then scored in one pass with both conditions side by side. Scoring an answer right after generating
+it means the second condition is read in the light of the first, and the checklist quietly stops
+being independent.
+
+Here is what came back.
+
+| | condition A (baseline) | condition B (plugin) |
+|---|---:|---:|
+| Correctness | 14/15 | 14/15 |
+| Idiomaticity | 73/75 | 74/75 |
+| **Discordant pairs** | **1** | |
+| Wins | 0 | 1 |
+
+An exact two-sided sign test needs at least six discordant pairs, all going one way, before it can
+reach 5% significance. I got one.
+**The test never engaged.**
+
+<figure>
+  <img src="/images/posts/no-headroom-kx-q-plugin/figure-2-the-ceiling.svg" alt="Fifteen tiles, one per paired task. Five (02, 07, 10, 13, 14) are byte-for-byte identical q in both conditions; eight differ in code but score the same; task 15 is a shared miss, failed identically by both; task 08 is the only discordant pair, decided by one checklist item. Correct 14/15 in both conditions; idiomatic 73/75 without the plugin, 74/75 with it; one discordant pair where an exact two-sided sign test needs at least six, all one way, to reach 5% significance.">
+  <figcaption>Figure 2. The ceiling. Fifteen pairs, one disagreement, and that one is a judgement call.</figcaption>
+</figure>
+
+And that one pair is thin. It turns entirely on whether writing
+
+```q
+t:update notional:price*qty from t
+show t
+```
+
+instead of
+
+```q
+show update notional:price*qty from t
+```
+
+counts as an unnecessary binding. Under the rule I fixed *before* scoring (a candidate fails the
+"no unnecessary temporaries" item only if it introduces a binding the verified reference solution
+does not need), it does. But the task said "add a column `notional` … and show the result", and
+mutating the table is a defensible reading of "add". A second scorer could call it a tie without
+straining. A margin that flips on one person's reading of one line is not a margin.
+
+Meanwhile **five of the fifteen task pairs came back byte-for-byte identical**, including two you
+met above: the `select … by sym,side` and the `sums x` that replaced the `while` loop. Another was
+simply `show sums 1 2 3 4 5`.
+
+This is a **ceiling**, and it is the honest headline. The tasks cannot discriminate between the
+conditions because baseline `claude-opus-5` already solves them. (Pedantically: my protocol defined
+the ceiling case as 15/15 in both arms, and I got 14/15, the one miss being the same task in both
+arms: correct join, failed on an extra output line. Substance yes, letter no. Pre-registering your
+degenerate cases is worth nothing if you then gesture at them approximately.)
+
+## The mistake I made, stated plainly
+
+I wrote fifteen tasks that were easy to *verify*. Every one has a reference solution that runs and
+a golden output that diffs. That discipline is what makes the eval trustworthy, and the way I got
+it is what broke the eval: **I kept verification simple by choosing simple tasks, and simple tasks
+left no headroom.** "Sum of squares." "Total qty by sym." A frontier model in 2026 does not need
+help with these from anyone. Exact-output checking does not require easy tasks; I just did not
+write any hard ones.
+
+The fix costs an hour and I did not spend it: **run the baseline arm alone first, and check that it
+fails often enough to leave room for the treatment to show.** Fifteen sessions would have told me
+this task set had no headroom, before I spent fifty on a comparison that could not resolve.
+
+So the result I am publishing is not "the plugin doesn't help". It is **"this instrument could not
+have detected a small effect, and detected no large one."** Those differ, and only the second is
+something I earned. The first would be the cleaner sentence, which is precisely why I have to
+resist writing it.
+
+## What did separate the conditions
+
+The tasks could not discriminate on quality. They discriminated cleanly on cost.
+
+| | A | B | ratio |
+|---|---:|---:|---:|
+| Total output tokens, 15 tasks | 3,671 | 10,337 | **2.8×** |
+| Median per-task ratio | | | **3.9×** |
+| Widest single task | 23 | 407 | **17.7×** |
+
+Roughly three times the output tokens, for code that scored identically on fourteen of fifteen
+tasks and was *literally the same code* on five of them. When your primary metric hits a ceiling,
+the secondary metrics are the finding.
+
+<figure>
+  <img src="/images/posts/no-headroom-kx-q-plugin/figure-3-the-cost.svg" alt="Bar chart of total output tokens over 15 tasks: 3,671 without the plugin, 10,337 with it, 2.8 times. Median per-task ratio 3.9 times; widest single task 23 to 407 tokens, 17.7 times. These are the language model's tokens, not a measurement of q.">
+  <figcaption>Figure 3. Same scores, about three times the tokens. (Model output tokens; nothing here measures q or KDB-X.)</figcaption>
+</figure>
+
+## The one genuinely interesting finding, which turned out to be mine, not theirs
+
+Task 15 is about the *as-of join*: for each trade, find the most recent quote at or before the
+trade's time. q's `aj` does this in one call, and it assumes the quote table is sorted by time
+within each symbol; when it is not, `aj` can return the wrong quote without complaint (lesson 04 of
+the curriculum shows it happening, with verified output). The task handed the model a join over an
+unsorted quote table, said it was returning wrong quotes, and asked for a fix and *the appropriate
+in-memory attribute*. An attribute is a flag you put on a column to promise q something about how its values
+are laid out: `` `g# `` (grouped) has q keep an index from each distinct value to the rows that hold it;
+`` `p# `` (parted) promises that equal values sit together in contiguous runs. (The as-of join gets its own article, the next in this series.)
+
+The premise was false, and I did not know until the last adversarial review ran the task's own code
+on the pinned build: with this particular data, the unsorted join returns the right rows anyway.
+Task 15 never contained the bug it described. Both models were asked to repair a join that worked,
+did what the prompt said, and could not have been credited for spotting a bug that was not there.
+Nothing in the scores moves (both arms missed this task for an unrelated reason, an extra output
+line), but the instrument is wrong in a second way, and the fix is the discipline this repo applies
+to everything else: **a task that claims a bug must be run and shown to fail before it is used.** I
+checked that my reference *passed*. That is not the same check.
+
+Both conditions sorted the table, produced the correct joined table, and applied `` `p# `` where
+my task sheet cites `` `g# ``.
+
+**I first wrote this section up as a finding, and I had it wrong.** The draft said both arms had
+reached for "the disk attribute on an in-memory table", citing [the `aj`
+page](https://code.kx.com/q/ref/aj/), which frames the pair as memory → `` `g# ``, disk →
+`` `p# ``. Then the sibling page: [set-attribute](https://code.kx.com/q/ref/set-attribute/) says
+parted applies in memory as well as on disk, whenever the data can be sorted so that it can be set.
+Both candidates sorted the table first. That is precisely the precondition. `` `p# `` there is
+defensible.
+
+The part that stings: **my own repository already contained that correction.** A licensing-and-docs
+audit I ran back at milestone one recorded, in writing, that `p#` "also works in memory … It is not useless in memory." I
+scored the eval only days later, cited the `aj` page, and never opened either the sibling page or my own notes on exactly
+this claim.
+
+So the honest version of this section is much smaller than the one I wanted to write. There is no
+"KX's plugin failed to correct a deviation from KX's own guidance." There is: both arms diverged
+from *my* task sheet, in a direction the documentation supports, and **my task sheet is the thing
+that was too narrow.** It names one attribute as though it were the only right answer.
+
+I have left the score at zero, because the scoring rule was fixed before the pass and gets applied
+consistently or it is not a rule. As a sensitivity check: scored as the documentation supports,
+idiomaticity would be 74/75 without the plugin and 75/75 with it: still one discordant pair, still
+no verdict. But the interpretation is retracted, and since both arms diverged
+identically it never touched the comparison anyway.
+
+That is also the end of the one candidate "gap" this eval produced. My protocol permits authoring a
+skill only if the eval exposes a gap the plugin does not fill; what it actually exposed was a defect
+in my own instrument. No skill, then — and a sharper task set goes in the notebook.
+
+## What I would tell you to steal
+
+- **Establish your baseline's failure rate before designing the comparison.** Otherwise you build
+  an instrument with no headroom and find out fifty sessions later.
+- **Measure activation as a tool call, not a vibe.** Fluent domain output is not evidence that a
+  domain skill loaded.
+- **Build the harness so it cannot leak the treatment into the control**, and verify that by
+  asking, not by assuming. A contaminated null is indistinguishable from a clean one.
+- **Smoke-test the treatment arm's happy path specifically.** My first run had condition B's reads
+  of its own bundled reference files being permission-denied. The harness was handicapping the
+  plugin against its own design. A harness bug that weakens the treatment reads as a null result.
+- **Write down the taste-dependent scoring rules before the scoring pass, and anchor them to an
+  artifact.** "No unnecessary temporaries" is pure preference until you tie it to something; for
+  me, the verified reference solution. Doing that first is what turned this run's entire margin
+  into a documented caveat instead of a headline.
+- **Read the sibling page before you call something a deviation from the docs.** My one juicy
+  finding evaporated on the second page of the same reference — and my own repo had already written
+  the correction down. When a result flatters your thesis, that is the moment to go looking for the
+  page that kills it.
+- **Publish the null.** It cost the same fifty sessions a positive would have.
+
+## Verdict
+
+No lift, on a task set that could not have shown a small one. KX's `q-knowledge` guidance, as
+pinned at `8b7040f`, activates reliably and writes good q (its linter path was not tested). So does the model without it, on tasks
+this easy, for about a third of the tokens. No skill authored. The curriculum ships on its own merits.
+
+The eval was underpowered, and that is the finding I actually have. It is worth publishing because
+the failure mode generalises far past q: **an A/B against a frontier model is measuring your task
+set at least as much as your treatment**, and if you did not check the baseline for headroom first,
+a null result is telling you about your benchmark, not about the thing you were testing.
+
+---
+
+*Everything behind this: [`eval/verdict.md`](https://github.com/nandanito/array-thinking-to-q/blob/main/eval/verdict.md) for the full writeup and the
+threats-to-validity list, [`eval/runs/`](https://github.com/nandanito/array-thinking-to-q/tree/main/eval/runs/) for all 30 answers verbatim and the
+per-task scoring rationale, [`eval/harness/`](https://github.com/nandanito/array-thinking-to-q/tree/main/eval/harness/) for the scripts. The correctness
+column recomputes from the committed answers with one command.*
+
+*Not affiliated with or endorsed by KX Systems. "q", "kdb+" and "KDB-X" are used nominatively.*
