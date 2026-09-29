@@ -6,14 +6,18 @@
 # with a future date goes live on that date without anyone pushing.
 #
 # Scheduled workflows run from the default branch (main), which is why this
-# file lives here and not on gh-pages. GitHub may start a scheduled run late
-# at busy times, so there are two runs; a rebuild with nothing new is harmless.
+# file lives here and not on gh-pages. GitHub does not guarantee when a
+# scheduled run starts: on 2026-09-28 the 05:15 UTC run started at 11:41, and
+# on 2026-09-29 none had started by 05:54. So it runs every hour through the
+# night and morning; the first run that starts on a post's date publishes it,
+# and a rebuild with nothing new is harmless. On publication days, still check
+# the post is live about an hour before any scheduled social post, and run this
+# workflow by hand (Actions > Scheduled Pages rebuild > Run workflow) if not.
 name: Scheduled Pages rebuild
 
 on:
   schedule:
-    - cron: "15 5 * * *"  # 05:15 UTC = 07:15 CEST / 06:15 CET
-    - cron: "45 5 * * *"  # backup run
+    - cron: "5 0-7 * * *"  # hourly 00:05-07:05 UTC = 02:05-09:05 CEST / 01:05-08:05 CET
   workflow_dispatch:
 
 permissions:
