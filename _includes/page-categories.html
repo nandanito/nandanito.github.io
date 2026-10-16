@@ -1,0 +1,26 @@
+{% comment %}
+  Local override of so-simple-theme's page-categories.html. The theme links every category to
+  category_archive_path + slug, but this site has no category archive page, so those links 404'd.
+  Each category in use links to its section page instead; any other category renders as plain
+  text, so a new category can never produce a dead link.
+{% endcomment %}
+{% if page.categories.size > 0 %}
+  <h3 class="page-taxonomies-title">{{ site.data.text[site.locale].categories | default: 'Categories' }}</h3>
+  {% assign categories = page.categories | sort %}
+  <ul class="page-taxonomies">
+    {%- for category in categories -%}
+      {%- case category -%}
+        {%- when 'writing' -%}{%- assign category_url = '/writing/' -%}
+        {%- when 'notes' -%}{%- assign category_url = '/writing/notes/' -%}
+        {%- else -%}{%- assign category_url = nil -%}
+      {%- endcase -%}
+      <li class="page-taxonomy">
+        {%- if category_url -%}
+          <a class="p-category" href="{{ category_url | relative_url }}" title="{{ site.data.text[site.locale].pages_categorized | default: 'Pages filed under' }} {{ category }}">{{ category }}</a>
+        {%- else -%}
+          {{ category }}
+        {%- endif -%}
+      </li>
+    {%- endfor -%}
+  </ul>
+{% endif %}

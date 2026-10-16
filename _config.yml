@@ -72,8 +72,9 @@ words_per_minute: 200
 paginate: 5  # amount of posts to show per page
 paginate_path: /page:num/
 
-category_archive_path: "/categories/#"
-tag_archive_path: "/tags/#"
+# Tag links on post pages go to the tag index at /topics/, whose anchors are slugified to match.
+# Category links are mapped to their section pages in _includes/page-categories.html.
+tag_archive_path: "/topics/#"
 
 author: nandan
 
