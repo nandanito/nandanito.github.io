@@ -433,7 +433,8 @@ chose; that takes an input the fixture was never built to contain.
 - **You can argue co-design without benchmarks.** Look at which edge cases a tool's primitives
   settle for free, and which ones it leaves to you.
 
-**Next in the series:** "Unlearn the loop: what J shows that q hides".
+{% assign article4 = site.posts | where: "slug", "unlearn-the-loop" | first -%}
+**Next in the series:** {% if article4 %}["Unlearn the loop: what J shows that q hides"]({{ article4.url }}){% else %}"Unlearn the loop: what J shows that q hides"{% endif %}.
 
 ---
 

@@ -1,0 +1,478 @@
+---
+layout: post
+title: "Unlearn the loop: what J shows that q hides"
+excerpt: "q has loops, and they work, so q alone will never make you stop writing them. J has loops too, but writing one means leaving its notation, and that feeling is the whole case for a short detour before q. Three ideas come back from it, and two of them break on the way home: one loudly, one in silence."
+modified: 2026-10-21
+category: writing
+tags: [q, kdb+, J, Array Programming]
+author: nandan
+image:
+  path: /images/posts/unlearn-the-loop/linkedin-card.png
+  hero: false
+comments: false
+share: false
+---
+
+*Article 4 of 5 in the [array-thinking-to-q](https://github.com/nandanito/array-thinking-to-q) series.*
+
+> **Provenance.** Every q and J snippet below is copied from the curriculum's
+> [J laboratory](https://github.com/nandanito/array-thinking-to-q/tree/main/lessons/00-j-laboratory/)
+> and [transition chapter](https://github.com/nandanito/array-thinking-to-q/tree/main/lessons/00-transition/),
+> plus one REPL transcript from
+> [lesson 01](https://github.com/nandanito/array-thinking-to-q/tree/main/lessons/01-atoms-and-lists/).
+> `make verify` runs those lessons on J 9.7.1 and KDB-X CE 5.0 and diffs every output against the
+> lesson pages, and a second check requires every block in this article to be identical to a block
+> on those pages. So no output here was typed by hand. The one exception is that transcript: it
+> shows q failing to parse a line, which no runnable file can contain, so it is quoted from a real
+> session and is one of the two blocks the repo marks as not run.
+
+---
+
+*New to q? It is the language of kdb+, a column-oriented time-series database best known in
+finance. [Article 1](https://nandan.me/writing/array-thinking-all-the-way-to-q/) has a one-minute
+primer on array languages. Beyond that, this article explains each piece of q and J syntax the
+first time it appears.*
+
+Here is a perfectly good q program. It sums a list.
+
+```q
+x:1 2 3 4 5;
+r:0; i:0;
+do[count x; r+:x i; i+:1];
+show r
+```
+
+```
+15
+```
+
+Fifteen. Correct. It will still be correct next year, in production.
+
+That is the problem.
+
+<!--more-->
+
+## The language will not tell you
+
+q has `do[]`. It has `while[]`. It has `x i` for indexed access, `r+:…` for add-and-reassign, and a
+perfectly ordinary notion of a counter you increment yourself. Every reflex you brought from
+Python or Java or C has somewhere to land, and the answers come out right. (The idiom, for the
+record, is `sum x`.)
+
+So you can write q for months, shipping and passing tests, and never once make the shift the
+language was built around. Nothing fails. There is no error and no warning. The loop is *right
+there*, and it works.
+
+I want to be precise about the contrast, because the easy version of this argument is wrong. J does
+not forbid loops either. To show that I need about two minutes of J, so here they are.
+
+```j
+2 * 3 + 4      NB. right to left: 3 + 4 first, then 2 * 7
+- 5            NB. one argument (monad): negate
+10 - 3         NB. two arguments (dyad): subtract
+i. 5           NB. monad i.: the first five integers, like q's til
+```
+
+```
+14
+_5
+7
+0 1 2 3 4
+```
+
+J reads right to left with no operator precedence (so does q), and `i. 5` counts from zero the
+way q's `til 5` does. Most primitives mean one thing with a single argument on the right and
+another with arguments on both sides. Negative numbers are
+written `_5`, `NB.` starts a comment, and `=:` assigns a name. That is enough to read everything
+below.
+
+Now the loop:
+
+```j
+sumloop =: 3 : 0
+r =. 0
+for_i. y do. r =. r + i end.
+r
+)
+sumloop 1 2 3 4 5
+```
+
+```
+15
+```
+
+Same fifteen. J has `for_i.`, `while.`, `if.` and local assignment: the whole imperative apparatus.
+
+The difference is what it *costs you in feel*. To write that loop I had to leave J's ordinary
+notation entirely. `3 : 0` opens an explicit definition, `=.` replaces `=:`, `y` is the argument's
+fixed name, `i` is a loop variable you name (it takes each item in turn), and the block closes with a lone `)` on its own line. That
+is five lines of visibly foreign machinery, in a language where the alternative is `+/`. Nothing
+stops you. Everything about it says *you have wandered off*.
+
+The q version says nothing of the kind. `do[count x; r+:x i; i+:1]` is one line of ordinary q,
+indistinguishable in texture from the q around it. It doesn't look like a detour. It looks like
+Tuesday.
+
+<figure>
+  <img src="/images/posts/unlearn-the-loop/figure-1-the-same-loop.svg" alt="Two panels, both summing 1 2 3 4 5 with an explicit loop and printing 15. J: a five-line explicit definition with its own assignment form and a lone closing parenthesis; the idiom is +/. q: one ordinary line, do[count x; r+:x i; i+:1]; the idiom is sum.">
+  <figcaption>Figure 1. The same loop. J makes it feel like a detour; q makes it feel like home.</figcaption>
+</figure>
+
+**That is the whole case for the laboratory.** J is no stricter than q. What it does is make the
+imperative path *feel* like what it is, where q makes it feel like home. A language that lets you
+stay comfortable will not teach you a paradigm shift. You have to go somewhere the loop cannot
+pass for ordinary code, and feel that before you come back.
+
+Three things become visible over there, and two of them will betray you on the way back.
+
+---
+
+## 1. Iteration is a modifier, not a statement
+
+In q you learn a vocabulary: `sum`, `sums`, `max`, `prd`, `mavg`. Good names, well chosen, and you
+can use them for a year without noticing that several of them are the *same construction* wearing
+different labels.
+
+They are. `sum` is `+` inserted between the items. q spells that with the `over` adverb, and the
+curriculum shows the machine under the built-in (in q, `/` starts a comment, and these comments
+show what each line returns):
+
+```q
+sum til 5          / 10
+(+/) til 5         / 10   — the same 10, now with the mechanism showing
+```
+
+J never lets the machine out of sight, because J has no `sum` to hide behind. You write `+/` and
+you write it every time. `/` is an **adverb**: it takes a verb and returns a modified verb. So is
+`\` (scan). So is `/.` (key: group by value, then apply).
+
+Which is a tidy observation until you see what it buys. In J, this is a running total:
+
+```j
++/\ 1 2 3 4 5 6
+```
+
+```
+1 3 6 10 15 21
+```
+
+and this, the *same three characters* with a left argument in front, is a 3-wide moving sum:
+
+```j
+3 +/\ 1 2 3 4 5 6
+```
+
+```
+6 9 12 15
+```
+
+One phrase. Supply a left argument and "scan the prefixes" becomes "scan the windows" (J calls
+this windowed form the **infix** use of `\`). The relationship is right there in the notation: a
+window is a scan with a width.
+
+Now q:
+
+```q
+sums 1 2 3 4 5 6      / 1 3 6 10 15 21
+3 msum 1 2 3 4 5 6    / 1 3 6 9 12 15
+```
+
+Two names, `sums` and `msum`. Nothing in either spelling suggests they are the same idea with a
+parameter, and there is a whole `m` family (`mavg`, `mmax`, `mmin`, `mcount`, `mdev`) that you
+learn as vocabulary rather than derive as a consequence.
+
+q's names are genuinely better for getting work done. `3 mavg px` says what it means to a reader
+who has never heard of an adverb. But you can hold that vocabulary completely and still not know
+that iteration in this language is a *thing you modify a verb with*, because q never made you say
+so out loud.
+
+<figure>
+  <img src="/images/posts/unlearn-the-loop/figure-2-iteration-is-a-modifier.svg" alt="In J, +/\ over 1 to 6 gives the running total 1 3 6 10 15 21, and the same phrase with a left argument of 3 gives the moving sum 6 9 12 15. In q the same two results come from two names: sums gives 1 3 6 10 15 21, and 3 msum gives 1 3 6 9 12 15.">
+  <figcaption>Figure 2. Iteration is a modifier. In J a window is a scan with a width; in q it is another word.</figcaption>
+</figure>
+
+## 2. Composition is something you can write down
+
+This is J's party trick:
+
+```j
+mean =: +/ % #     NB. a FORK: (sum) divided-by (count), read as one phrase
+mean 0 1 2 3 4
+```
+
+```
+2
+```
+
+`#` is count and `%` is divide. Read it left to right: *sum, divided by, count*. There is no
+argument anywhere in that definition. J sees the shape `(f g h)` and builds a new verb that feeds
+its argument to `f` and to `h` and combines the two with `g`. The mean is a **noun-free sentence**:
+a function assembled out of functions, with the data never mentioned.
+
+Once you have seen that, "a mean is a sum reduced against a count" stops being a sentence about
+arithmetic and becomes a sentence about *structure*. That reframing is the single most valuable
+thing the laboratory hands you.
+
+And it is also the first thing that will betray you.
+
+## 3. Depth is a parameter
+
+Here is the one I think q hides most completely.
+
+J has a conjunction, `"`, that sets the **rank** at which a verb applies: the depth of the
+sub-arrays it sees. Take a 2×3 matrix (`$` reshapes a list into the shape on its left):
+
+```j
+m =: 2 3 $ 1 2 3 4 5 6
++/ m        NB. + inserted between the ITEMS — and a matrix's items are its ROWS
++/"1 m      NB. rank 1: apply to each row instead
+```
+
+```
+5 7 9
+6 15
+```
+
+The first result is `1 2 3 + 4 5 6`, because "insert `+` between the items" means exactly that and
+a matrix's items are its rows. The second is one conjunction and a number: `"1` says *apply to each
+rank-1 cell*, so each row is summed on its own. `"0` would say each atom; `"2` the whole matrix.
+Boxing makes the difference visible without any arithmetic in the way (`<` is *box*: it wraps
+each value in a cell, and J draws the cells):
+
+```j
+<"0 m
+<"1 m
+```
+
+```
+┌─┬─┬─┐
+│1│2│3│
+├─┼─┼─┤
+│4│5│6│
+└─┴─┴─┘
+┌─────┬─────┐
+│1 2 3│4 5 6│
+└─────┴─────┘
+```
+
+Same verb, same argument; the number chose the depth.
+
+q reaches the same two answers:
+
+```q
+sum (1 2 3; 4 5 6)        / 5 7 9
+sum each (1 2 3; 4 5 6)   / 6 15
+```
+
+but by a different route, and the route is the point. **`each` is one fixed move, "one level
+down", with no depth to dial.** There is no `each 2`. Where J turns a knob, q gives you a word that
+only ever means 1.
+
+Be careful how far you push that, though, because q's other iterators are *not* rank in disguise:
+
+```q
+(-':) 1 3 6 10 15   / 1 2 3 4 5     each-prior
+```
+
+`each-prior` walks adjacent pairs, which says nothing about depth, and no rank number expresses
+it. J puts adjacent pairs in a different family entirely, the **infix** one from §1
+(`~` swaps a verb's arguments, so each pair gives later minus earlier):
+
+```j
+2 -~/\ 1 3 6 10 15
+```
+
+```
+2 3 4 5
+```
+
+Four results where q's `-':` gave five, because J's infix takes complete pairs only, while q's
+each-prior supplies a starting prior (here `0`, so the first output is `1-0`). That is the *same*
+complete-versus-partial split as the moving-window case, surfacing again in a second family. Worth
+noticing now; it is about to cost us.
+
+The practical payoff of rank is narrower than "it explains q's iterators", and real. The curriculum
+makes the point early that `each` is about **depth, not looping**, and that the atomic operators
+(`+`, `*`, `>`) already reach the atoms by themselves, so you never write `each` for those. That is
+a rule you can memorise. After rank it stops being a rule and becomes a consequence: `*` already
+applies at rank 0, so asking for `each` is asking for something you have.
+
+---
+
+## Where the laboratory lies to you
+
+Everything above is why the trip is worth taking. Here is the return fare. Both of these are real,
+both are in the curriculum's transition chapter, and the second is by far the more dangerous.
+
+### The fork does not survive the flight
+
+Take `+/ % #`, the phrase that made composition feel like a first-class thing, and type it into q:
+
+```q
+q)(+/ % #) til 5
+'                     / the error MESSAGE is blank (q also stamps the line with a wall-clock time)
+  [0]  (+/ % #) til 5
+          ^           / the caret lands mid-fork — where the parser gives up
+```
+
+It does not return the wrong answer. **It does not parse.** The message is blank and the caret
+lands in the middle of the fork.
+
+The rejection happens at parse time, before anything runs, and that has teeth: you cannot
+defend against it. The reflex is to wrap the risky expression in protected evaluation and handle
+the failure, but the wrapper sits on the same line, and the line never parses. You can check that
+without a REPL by handing the text to q's own parser as a string, which turns the failure into a
+value:
+
+```q
+parses:{@[{parse x; 1b}; x; 0b]}
+parses "(+/ % #) til 5"                        / 0b
+parses ".[{(+/ % #) til 5};();{(`caught;x)}]"  / 0b
+parses "{(sum x) % count x} til 5"             / 1b
+```
+
+`parses` returns `0b` when the parser rejects the text. The fork is rejected, and so is the fork
+inside a guard, because the guard's text contains it. Notice why `parses` itself gets away with it:
+the text arrives as a runtime string, so the parsing happens *inside* the protected call. That is
+the only way to trap this error, and it means building code as a string on purpose, which is not a
+program anyone writes by accident.
+
+**q has no tacit forks or trains.** A parenthesised run of functions does not make a new function
+in q, and the fork does not even parse. What q wants is for you to say the composition out loud
+(`2f` is the float 2.0):
+
+```q
+avg til 5                    / 2f
+{(sum x) % count x} til 5    / 2f   — the explicit lambda q DOES accept
+```
+
+As betrayals go this one is kind, because it is *loud*. You cannot ship it.
+
+### The windows have a different shape, and nothing complains
+
+This one ships fine.
+
+J's moving average of six numbers, three wide:
+
+```j
+3 (+/ % #)\ 1 2 3 4 5 6
+```
+
+```
+2 3 4 5
+```
+
+Four results. J's infix `\` gives you **complete windows only**. There is no 3-wide window ending
+at the first or second element, so there is no output for them.
+
+q, same request (the `f` on `6f` makes the whole list floats):
+
+```q
+3 mavg 1 2 3 4 5 6f    / 1 1.5 2 3 4 5
+```
+
+Six results. q's `m` family **ramps up through the partial windows**: the first output is the
+average of one element, the second of two, and only from the third does a full window exist. Six
+inputs, six outputs, always.
+
+Neither convention is wrong. They differ silently, and *"the 3-period moving average"* names
+both. In a q table, q's convention lines up exactly: each row gets the
+average of the window that ends at that row. The trouble is the habit you bring. Read q's first
+value as the first full window, the way J's would be, and you are two positions early (*width − 1*
+in general). Or keep q's first two values without noticing, and two numbers labelled "3-period
+average" are averages of one and two numbers. Either way there is no error and the answer looks
+plausible. That is the exact failure shape this curriculum's `aj` showcase exists to teach.
+
+**The thinking transfers. The plumbing does not.** That is the rule, and both examples above are
+just the rule with the volume turned up and down.
+
+<figure>
+  <img src="/images/posts/unlearn-the-loop/figure-3-where-the-laboratory-lies.svg" alt="Two J habits that break in q. The fork +/ % # does not parse in q: it fails loudly and cannot ship. The 3-period moving average of 1 to 6 gives four results in J (2 3 4 5) and six in q (1 1.5 2 3 4 5); compared position by position, the same values sit two slots apart, and nothing complains.">
+  <figcaption>Figure 3. Where the laboratory lies. The fork fails loudly; the windows fail silently.</figcaption>
+</figure>
+
+---
+
+## Does the shift actually take? Some evidence I did not expect
+
+I ran a controlled evaluation in late July for a different purpose, [testing whether KX's
+official q plugin improves a frontier model's q](https://nandan.me/writing/no-headroom-kx-q-plugin/), and three of its
+fifteen tasks are exactly this article's thesis stated as an exercise: *here is q that was
+transliterated from an imperative loop; make it idiomatic.* A `do` loop accumulating a sum. A
+`while` loop building a running total. Row-index iteration over a table. Several of the
+Python-to-q translation tasks probe the same instinct from the other side.
+
+Both conditions solved all three, immediately, correctly. `do[]` became `sum`, `while[]` became
+`sums`, and the row walk became one vectorised `update`. The loop-transliteration failure mode this
+whole curriculum is built to prevent did not appear at all.
+
+I want to be careful about how much weight that can carry, because my own verdict on that eval
+says it was **underpowered**. The fifteen tasks turned out to be easy enough that the baseline was
+already at the ceiling, so the study could not have detected a small effect at all. Three solved
+loop-fix tasks are three data points from a task set I built badly, and no evidence that models
+have absorbed array thinking.
+
+What they do support is narrower and still worth something. **On the loop-transliteration exercises
+I could think of, the failure mode this curriculum exists to prevent did not show up.**
+
+The rest of the eval does not say where the failures *are*, and I should not pretend it does. The
+one task where both arms departed from my reference was an as-of join: both set `` `p# `` where my
+task sheet expected `` `g# ``, two of q's column *attributes*, the flags a table carries about how a
+column is laid out. (I first wrote that up as both of them getting the attribute *wrong*. They didn't. The [set-attribute page](https://code.kx.com/q/ref/set-attribute/) says
+parted applies in memory as well as on disk when the data is sorted so it can be set, and both had
+sorted first.) Both arms also lost that task's correctness point, for printing an extra block, the
+table's schema, before the answer. And a later review ran the task's "broken" input and found that
+the unsorted join already returned the right rows on that data, so the task never tested whether a
+model can find a sort bug at all. That task is a record of my instrument's defects, not evidence
+about models.
+
+**J has nothing to say about sort order or attributes either.** There is no fork that teaches you
+`` `g# ``, and no rank that tells you when `` `p# `` is the better call.
+
+That is consistent with a short laboratory, which is what this curriculum commits to. J was cut from
+co-star to an illustrative prelude on a reviewer's advice, and it ended up as a single lesson. I went
+along with that at the time without evidence either way, and the eval did not supply any. The case
+for keeping the laboratory small is the one from the section above: the J habits that hurt you in q
+are the silent ones, catching them is q work, and that is where the bulk of the curriculum has to
+be.
+
+---
+
+## Why J, and not APL or BQN
+
+Because it is the array language I already think in, and honesty about that is worth more than a
+constructed justification.
+
+If you are arriving with no destination in mind, [BQN](https://mlochbaum.github.io/BQN/) is
+probably the better first array language. The glyphs are more regular, the documentation is
+friendlier, and it was designed with hindsight about what APL got awkward. J's advantages here are
+narrower and specific to this project: it is pure ASCII, so it survives any editor and any blog
+renderer; it is GPLv3 and needs no licence key, which makes it the one green check in this repo's
+CI that does not depend on a vendor; and its fork and its rank are the two ideas I most wanted to
+put in front of you.
+
+The concepts are the same wherever you meet them.
+
+---
+
+## What to carry across the wall
+
+- **q will let you write the loop, and it will work.** That is why q cannot teach you to stop.
+- **J does not forbid loops either.** It makes them feel foreign, which turns out to be the more
+  useful property.
+- **Iteration is a verb modifier**, and a window is a scan with a width. q gives you `sums` and
+  `msum` as separate vocabulary; J shows them as one phrase with an argument.
+- **Composition can be written down without mentioning data.** Feel the fork once. Then leave it:
+  it does not parse in q.
+- **Depth is a parameter**, in J. q's `each` is that idea frozen at one level, and q's other
+  iterators are *not* rank in disguise: `each-prior` walks adjacent pairs, which is the infix
+  family, not a depth. What rank buys you is knowing why you never write `each` for `*`.
+- **The thinking transfers; the plumbing does not.** The fork fails loudly. The window convention
+  fails silently. Respect the second one more.
+
+**Next in the series:** "What compounds: notes from a project where everything had to run".
+
+---
+
+*Not affiliated with or endorsed by KX Systems or Jsoftware. "q", "kdb+", "KDB-X" and "J" are used
+nominatively.*
