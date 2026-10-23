@@ -401,9 +401,9 @@ checked, read at source (E-353):
   yet in a release. I re-ran the check against the merged commit, and it resolves.
 - **The fixed zero, from JavaScript.** mpt-crypto's WASM and npm packages did not
   expose the function that computes the fixed encryption of zero, which is the check
-  an outside observer most needs. A maintainer agreed and a pull request is approved
-  and not merged. I have offered to write the JavaScript wrapper once it is
-  released.
+  an outside observer most needs. A maintainer agreed, and the WASM half has since
+  been merged on mpt-crypto's main branch, not yet in a release. I have offered to
+  write the JavaScript wrapper once it is released (E-360).
 - **Three filed most recently, against mpt-crypto, with no reply yet:** an
   ambiguity in what the compact sigma paper's nonce input covers; a WASM build
   script that fails outside its pinned toolchain; and a proof-size total in the
